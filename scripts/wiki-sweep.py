@@ -23,7 +23,7 @@ TODAY = datetime.date.today()
 
 # TTL defaults by category (days)
 TTL_DEFAULTS = {
-    "ai-research": {"review: 30, "stale": 90},
+    "ai-research": {"review": 30, "stale": 90},
     "cybersecurity": {"review": 7, "stale": 21},
     "cybersecurity-architecture": {"review": 90, "stale": 180},
     "software-dev": {"review": 60, "stale": 120},

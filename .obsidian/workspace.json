@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/overview-state-of-field.md",
+                "file": "wiki/mocs/ai-research.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "overview-state-of-field"
+              "title": "ai-research"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "wiki/overview-state-of-field.md",
+                "file": "raw/ai-research/2604.04853v1.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for overview-state-of-field"
+              "title": "Backlinks for 2604.04853v1"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "wiki/overview-state-of-field.md",
+                "file": "raw/ai-research/2604.04853v1.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from overview-state-of-field"
+              "title": "Outgoing links from 2604.04853v1"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "wiki/overview-state-of-field.md",
+                "file": "raw/ai-research/2604.04853v1.pdf",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of overview-state-of-field"
+              "title": "Outline of 2604.04853v1"
             }
           }
         ]
@@ -185,20 +185,41 @@
   },
   "active": "c14c6cb596964f03",
   "lastOpenFiles": [
-    "wiki/sources/cybersecurity/Welcome.md",
-    "wiki/overview-state-of-field.md",
-    "wiki/sessions",
-    "conflict-queue",
-    "wiki/scripts",
-    "wiki/sessionjs",
-    "workflows",
-    "sessions",
-    "wiki/analyses",
-    "wiki/entities",
-    "wiki/concepts",
-    "wiki/mocs",
-    "wiki/mocs.md",
+    "wiki/entities/wims-bfp-agentic-workflow.md",
+    "wiki/sources/ai-research/hermes-agent.md",
+    "wiki/sources/ai-research/memmachine.md",
+    "scripts/setup-4agents.sh",
+    "wiki/sources/ai-research/dspy-declarative-prompt-optimization.md",
+    "wiki/entities/dspy.md",
+    "wiki/entities/hermes-agent.md",
+    "wiki/entities/mem0.md",
+    "wiki/entities/mastras.md",
+    "wiki/entities/memmachine.md",
+    "wiki/entities/memgpt.md",
+    "raw/cybersecurity/Welcome.md",
+    "wiki/concepts/agent-memory-taxonomy.md",
+    "wiki/concepts/context-caching.md",
+    "wiki/concepts/hermes-production-stack.md",
+    "wiki/concepts/episodic-vs-semantic-memory.md",
+    "wiki/concepts/delegate-task-architecture.md",
+    "wiki/concepts/closed-learning-loop.md",
     "wiki/log.md",
-    "wiki/index.md"
+    "HERMES.md",
+    "raw/ai-research/HERMES-AGENT.md",
+    "raw/ai-research/2604.04853v1.pdf",
+    "wiki/mocs/ai-research.md",
+    "raw/ai-research/2604.04869v1.pdf",
+    "sessions/session-template.md",
+    "wiki/analyses/memory-systems-comparison.md",
+    "workflows/ingest-source.md",
+    "workflows/full-compile.md",
+    "raw/misc/2604.04853v1.pdf",
+    "raw/misc",
+    "workflows/session-close.md",
+    "scripts/wiki-sweep.py",
+    "scripts/wipe-and-recompile.py",
+    "scripts/token-budget.py",
+    "scripts",
+    "wiki/sessions"
   ]
 }
