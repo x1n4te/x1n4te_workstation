@@ -1,7 +1,7 @@
 # Wiki Index
 
 **Last updated:** 2026-04-07  
-**Total pages:** 6
+**Total pages:** 12
 
 ---
 
@@ -10,6 +10,7 @@
 | Date | Title | Type | Category |
 |---|---|---|---|
 | 2026-04-07 | MemMachine: A Ground-Truth-Preserving Memory System | source | ai-research |
+| 2026-04-07 | DSPy: Declarative Prompt Optimization | source | ai-research |
 
 ---
 
@@ -21,6 +22,7 @@
 | 2026-04-07 | Mem0 | entity |
 | 2026-04-07 | Mastra | entity |
 | 2026-04-07 | MemGPT | entity |
+| 2026-04-07 | DSPy | entity |
 
 ---
 
@@ -30,7 +32,8 @@
 |---|---|
 | 2026-04-07 | Agent Memory Taxonomy: STM, Episodic, Semantic, Procedural |
 | 2026-04-07 | Episodic vs. Semantic Memory (AI Agent Context) |
-| 2026-04-07 | LLM Wiki Pattern |
+| 2026-04-07 | Declarative Prompt Optimization |
+| 2026-04-07 | Hallucination Reduction |
 
 ---
 
@@ -44,7 +47,9 @@
 
 ## MOCs
 
-*None yet — pending category population*
+| Date | Title |
+|---|---|
+| 2026-04-07 | AI Research — Map of Content |
 
 ---
 
