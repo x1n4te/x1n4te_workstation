@@ -6,6 +6,13 @@ Append-only activity log. Newest entries first.
 
 ## 2026-04-07
 
+**2026-04-07 | ingest | Hermes-Agent deep research paper → 9 wiki pages**
+- Sources: wiki/sources/ai-research/hermes-agent.md
+- Entity: wiki/entities/hermes-agent.md
+- Concepts: wiki/concepts/closed-learning-loop.md, wiki/concepts/procedural-memory.md, wiki/concepts/delegate-task-architecture.md, wiki/concepts/model-routing.md, wiki/concepts/context-caching.md, wiki/concepts/hermes-production-stack.md
+- Index: updated (total pages: 20)
+- Raw: raw/ai-research/HERMES-AGENT.md
+
 **2026-04-07 | ingest | DSPy paper (2604.04869v1) + entity backfill → 7 wiki pages**
 - Sources: wiki/sources/ai-research/dspy-declarative-prompt-optimization.md
 - Entities: wiki/entities/dspy.md, wiki/entities/mem0.md, wiki/entities/mastras.md, wiki/entities/memgpt.md
