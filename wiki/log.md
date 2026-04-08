@@ -11,6 +11,14 @@ Append-only activity log. Newest entries first.
 - Patched: ultraplan skill with execution lessons (delegate failures, iterative deepening, ground truth sources)
 - Inventory: updated (25 dirs, ~85 skills)
 
+**2026-04-08 | ingest | WIMS-BFP codebase metrics — refactoring targets identified**
+- Created: wiki/sources/software-dev/wims-bfp-codebase-metrics.md
+- 118 code files, 19,879 lines (Python 45%, TSX 37%, TS 10%, SQL 8%)
+- CRITICAL: regional.py (1,876 lines), 01_wims_initial.sql (1,468 lines)
+- HIGH: WildlandAforManualForm (927), IncidentForm (772), api.ts (507)
+- Refactoring plan: Phase 1 backend (2 files → 10), Phase 2 frontend (4 files → 12)
+- Index: updated (total pages: 60)
+
 **2026-04-08 | ingest | WIMS-BFP thesis revision log — 51 changes documented**
 - Created: wiki/sources/software-dev/wims-bfp-thesis-revisions-2026-04-08.md
 - Ch1: 7 changes (microservices→containerized, Dexie→idb, hybrid→AES-256-GCM)
