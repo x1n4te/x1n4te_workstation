@@ -35,16 +35,16 @@ related:
 
 | Severity | Count | Action |
 |---|---|---|
-| CRITICAL | 3 | Must resolve before thesis defense |
-| HIGH | 2 | Should resolve before thesis defense |
-| MEDIUM | 4 | Verify or document as limitations |
+| CRITICAL | 2 | Must resolve before thesis defense |
+| HIGH | 5 | Should resolve before thesis defense |
+| MEDIUM | 3 | Verify or document as limitations |
 | LOW | 3 | Note for completeness |
 
 ---
 
 ## CRITICAL Discrepancies
 
-### C-1: Offline-First PWA NOT Implemented
+### C-1: Offline-First PWA — PARTIALLY IMPLEMENTED (DOWNGRADED TO HIGH)
 
 **Thesis claims (Ch 1.1, 1.3, 1.6, 3.4.1, 3.6.1, Abstract):**
 - "Offline-First architecture supported by local browser storage (IndexedDB)"
@@ -52,18 +52,44 @@ related:
 - "Service Workers for seamless local caching"
 - "TanStack Query manages offline synchronization"
 
-**Codebase reality:**
-- Dexie.js references: **0**
-- Service Worker references: **1** (minimal)
-- No IndexedDB abstraction layer found
-- No offline sync mechanism implemented
+**Codebase reality (VERIFIED 2026-04-08):**
+- `idb` package in package.json (v8.0.3) ✅ — lighter alternative to Dexie.js
+- `offlineStore.ts` (64 lines) — uses `openDB` from `idb`, stores incidents in `wims-bfp-db` IndexedDB
+- `IncidentForm.tsx` imports `queueIncident`, `getPendingIncidents`, `markSynced` ✅
+- BUT: No Service Worker ❌ (no background sync when connectivity restores)
+- BUT: No TanStack Query ❌ (not in package.json)
+- BUT: No automatic sync mechanism ❌ (manual push only)
 
-**Impact:** Thesis makes offline-first a core differentiator. Without implementation, the system is a standard online-only web app. This undermines the entire "dual-edge architecture" narrative and the BFP disaster resilience use case.
+**Impact:** Offline queuing EXISTS but is basic. Incidents can be stored locally but require manual intervention to sync. The "automatic background synchronization" and "Service Workers" claims are inaccurate. The thesis oversells the offline capability.
 
 **Resolution options:**
-1. **Implement** Dexie.js + Service Workers + TanStack Query offline sync before defense
-2. **Downgrade** thesis claims to "planned architecture" / "future work"
-3. **Document** as limitation in Ch 1.4
+1. **Add** Service Worker + background sync to complete offline-first before defense
+2. **Change** thesis language to "local queuing with manual sync" (not "offline-first PWA")
+3. **Add** TanStack Query for proper sync state management
+
+---
+
+### C-2 (renumbered): Model Inconsistency — Qwen2.5-3B vs Actual Deployment
+
+**Thesis claims (Ch 1.3 obj 4, 1.6, 3.4.6, 3.6.1, Abstract):**
+- "Qwen2.5-3B Small Language Model (SLM)"
+- "Llama.cpp quantized model runner for consumer hardware"
+- "3-billion parameter model runs on consumer-grade RAM"
+
+**Codebase reality:**
+- docker-compose.yml references `ollama` service ✅
+- `ai_service.py` references Ollama API ✅
+- CLAUDE.md confirms: "Ollama with Qwen2.5-3B (XAI for security narratives)" ✅
+- BUT: vLLM infrastructure on RTX 3090 targets Carnice-27b, Qwen3.5-27B (27B models)
+- Thesis says "Llama.cpp" but actual runtime is Ollama (which internally uses llama.cpp — technically correct)
+
+**Impact:** Partially resolved. Ollama does serve Qwen2.5-3B for the local XAI module (matching thesis). The vLLM/27B models are for a separate purpose (4-agent pipeline, which failed). The "Llama.cpp" reference is functionally correct since Ollama wraps it.
+
+**Verdict:** DOWNGRADED — thesis and codebase ARE aligned on Qwen2.5-3B via Ollama. The 27B models are unrelated to the thesis XAI pipeline.
+
+---
+
+### C-3 (renumbered): "Microservices" Architecture vs Monolith Reality
 
 ---
 
@@ -155,6 +181,65 @@ related:
 
 ---
 
+### H-3: OpenBao KMS NOT Deployed
+
+**Thesis claims (Ch 3.6.1, Table 21):**
+- "OpenBao Key Management Service (KMS) for hybrid encryption"
+- Listed as core security component alongside Suricata and Keycloak
+
+**Codebase reality (VERIFIED 2026-04-08):**
+- NOT in `docker-compose.yml`
+- No OpenBao/Vault configuration files in codebase
+- Secret management via env vars (`WIMS_MASTER_KEY` in `.env`)
+- No secret rotation, no centralized KMS
+
+**Impact:** Thesis claims centralized key management but the system uses raw env vars. This is a security gap — no key rotation, no audit trail for key access, no separation of key management from application.
+
+**Resolution options:**
+1. **Deploy** OpenBao in docker-compose + wire into crypto.py
+2. **Remove** OpenBao from thesis technology table
+3. **Document** env-var-based key management as acceptable for prototype scope
+
+---
+
+### H-4: Instructor Library NOT Installed
+
+**Thesis claims (Ch 3.6.1, Table 21):**
+- "Instructor — Enforces structured JSON output from the SLM"
+
+**Codebase reality (VERIFIED 2026-04-08):**
+- NOT in `requirements.txt`
+- No `import instructor` in any Python file
+- AI service likely uses raw Ollama API without structured output enforcement
+
+**Impact:** Without Instructor, the XAI narrative output format is uncontrolled. The SLM may return free-form text instead of structured JSON, breaking downstream consumers (dashboard, security_logs table schema).
+
+**Resolution options:**
+1. **Install** `instructor` + integrate with Ollama calls in `ai_service.py`
+2. **Remove** from thesis technology table
+3. **Document** as planned enhancement
+
+---
+
+### H-5: PyNaCl/Libsodium NOT Installed
+
+**Thesis claims (Ch 3.6.1, Table 21):**
+- "PyNaCl / Libsodium — Library for high-assurance X25519/AES-GCM encryption"
+
+**Codebase reality (VERIFIED 2026-04-08):**
+- NOT in `requirements.txt`
+- `cryptography` package used instead (which provides AES-GCM but not via PyNaCl)
+- Tied to H-2: the X25519 component of PyNaCl is completely absent
+
+**Impact:** Double evidence that the "hybrid ECC+AES" encryption claim is unimplemented. PyNaCl was supposed to provide the X25519 key exchange layer.
+
+**Resolution options:**
+1. **Add** `pynacl` to requirements + implement X25519 wrapping
+2. **Remove** PyNaCl from thesis table (already covered by H-2 fix)
+3. **Change** to "cryptography package for AES-256-GCM" in thesis
+
+---
+
 ## MEDIUM Discrepancies
 
 ### M-1: Append-Only Audit Logs — VERIFIED ✅
@@ -213,14 +298,18 @@ related:
 
 ## Recommended Actions
 
-| Priority | Action | Owner |
-|---|---|---|
-| 1 | Decide on C-1: implement offline-first or downgrade claims | xynate |
-| 2 | Decide on C-2: deploy Qwen2.5-3B or update thesis | xynate |
-| 3 | Decide on C-3: change "microservices" language | xynate |
-| 4 | Verify H-2: X25519 key wrapping in crypto.py | xynate |
-| 5 | Implement H-1: Alembic migrations (or document as limitation) | xynate |
-| 6 | Verify M-1 through M-3 (audit logs, AI pipeline, hash chain) | xynate |
+| Priority | Discrepancy | Action | Recommendation |
+|---|---|---|---|
+| 1 | C-1 (offline PWA) | Add Service Worker + TanStack Query, OR change thesis to "local queuing" | Easier to fix thesis language |
+| 2 | C-3 (microservices) | Change thesis to "modular monolith" or "containerized multi-tier" | Fix thesis language |
+| 3 | H-2 (X25519/ECC) | Implement X25519 wrapping, OR change thesis to "AES-256-GCM" | Fix thesis language (simpler) |
+| 4 | H-3 (OpenBao) | Deploy OpenBao, OR remove from thesis Table 21 | Remove from thesis (env vars fine for prototype) |
+| 5 | H-4 (Instructor) | Install instructor, OR remove from thesis Table 21 | Remove from thesis (Ollama works without it) |
+| 5 | H-5 (PyNaCl) | Add pynacl, OR remove from thesis Table 21 | Remove from thesis (covered by H-2 fix) |
+| 6 | H-1 (Alembic) | Implement Alembic, OR document as limitation | Document as limitation (4 SQL files work) |
+| 7 | C-2 (model) | Already resolved — Ollama serves Qwen2.5-3B correctly | No action needed |
+
+**Summary:** Most HIGH discrepancies are in the thesis Ch 3.6.1 technology table (Table 21). The cleanest fix is to **align the thesis table with what's actually in requirements.txt** rather than implementing everything the table claims. The codebase works — the thesis over-specifies tools that weren't needed.
 
 ---
 
