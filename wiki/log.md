@@ -10,6 +10,9 @@ Append-only activity log. Newest entries first.
 - Changed: provider: nous, default: mimo-v2-pro
 - Auth: hermes login --provider nous
 
+**2026-04-08 | wiki | MOC updated — added Agentic Architecture section, fixed open questions, updated thesis relevance**
+- MOC: wiki/mocs/ai-research.md (4 themes, Hermes-Agent reading path, corrected procedural memory status)
+
 **2026-04-08 | step-5 | Orchestrator delegation system prompt created (SOUL.md)**
 - Pipeline order: Builder → Tester → Critic
 - Delegation rules, cost management, security constraints defined
