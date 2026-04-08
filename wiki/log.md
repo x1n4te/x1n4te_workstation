@@ -10,6 +10,11 @@ Append-only activity log. Newest entries first.
 - Changed: provider: nous, default: mimo-v2-pro
 - Auth: hermes login --provider nous
 
+**2026-04-08 | step-5 | Orchestrator delegation system prompt created (SOUL.md)**
+- Pipeline order: Builder → Tester → Critic
+- Delegation rules, cost management, security constraints defined
+- File: ~/.hermes/profiles/orchestrator/SOUL.md
+
 **2026-04-08 | step-4 | RTX 3090 Ollama networking documented in builder .env**
 - SSH tunnel: ssh -p 62473 root@1.34.114.64 -L 11434:localhost:11434
 - Only builder needs tunnel (Critic uses Nous Portal, not Ollama)
