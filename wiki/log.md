@@ -10,7 +10,13 @@ Append-only activity log. Newest entries first.
 - Changed: provider: nous, default: mimo-v2-pro
 - Auth: hermes login --provider nous
 
-**2026-04-08 | ingest | Secure Coding Practices → 3 sources + 1 concept (OWASP, CWE, code review)**
+**2026-04-08 | ingest | PostgreSQL Security → 3 sources + 1 concept**
+- Sources: wiki/sources/software-dev/postgresql-security-best-practices.md, wiki/sources/software-dev/postgresql-rls-limitations.md, wiki/sources/software-dev/postgresql-cves-2025-2026.md
+- Concept: wiki/concepts/postgresql-security-wims-bfp.md (RLS rules, NULL safety, CVE checklist, ZTA mapping)
+- MOC: updated cybersecurity MOC with PostgreSQL security section
+- Index: updated (total pages: 35)
+
+**2026-04-08 | ingest | Secure Coding Practices** → 3 sources + 1 concept (OWASP, CWE, code review)**
 - Sources: wiki/sources/software-dev/owasp-top-10-2025.md, wiki/sources/software-dev/cwe-top-25-2025.md, wiki/sources/software-dev/owasp-secure-code-review.md
 - Concept: wiki/concepts/secure-coding-practices.md (synthesis, WIMS-BFP checklist, cross-links to ZTA/CVEs)
 - MOC: updated cybersecurity MOC with secure coding section

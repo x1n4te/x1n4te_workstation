@@ -25,6 +25,10 @@ related:
   - sources/software-dev/cwe-top-25-2025
   - sources/software-dev/owasp-secure-code-review
   - concepts/secure-coding-practices
+  - sources/software-dev/postgresql-security-best-practices
+  - sources/software-dev/postgresql-rls-limitations
+  - sources/software-dev/postgresql-cves-2025-2026
+  - concepts/postgresql-security-wims-bfp
 ---
 
 # Cybersecurity — Map of Content
@@ -100,6 +104,19 @@ MEDIUM (patch this month):
 2. [[sources/software-dev/owasp-top-10-2025]] — Web application security risks (2025)
 3. [[sources/software-dev/cwe-top-25-2025]] — Most dangerous software weaknesses (2025)
 4. [[sources/software-dev/owasp-secure-code-review]] — Code review methodology
+
+---
+
+## PostgreSQL Security
+
+*Start here for database-level security — RLS, CVEs, and WIMS-BFP patterns.*
+
+### Reading Path
+
+1. [[concepts/postgresql-security-wims-bfp]] — WIMS-BFP PostgreSQL security synthesis (RLS, CVEs, audit checklist)
+2. [[sources/software-dev/postgresql-security-best-practices]] — Authentication, authorization, encryption, auditing
+3. [[sources/software-dev/postgresql-rls-limitations]] — 6 RLS pitfalls + WIMS-BFP mitigations
+4. [[sources/software-dev/postgresql-cves-2025-2026]] — CVE-2025-1094 (psql RCE), CVE-2025-8714 (pg_dump RCE)
 
 ---
 

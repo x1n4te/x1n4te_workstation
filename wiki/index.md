@@ -1,7 +1,7 @@
 # Wiki Index
 
 **Last updated:** 2026-04-07  
-**Total pages:** 31
+**Total pages:** 35
 
 ---
 
@@ -9,6 +9,9 @@
 
 || Date | Title | Type | Category |
 |---|---|---|---|
+| 2026-04-08 | PostgreSQL CVEs (2025-2026) | source | software-dev |
+| 2026-04-08 | PostgreSQL RLS Limitations and Pitfalls | source | software-dev |
+| 2026-04-08 | PostgreSQL Security Best Practices | source | software-dev |
 | 2026-04-08 | OWASP Secure Code Review | source | software-dev |
 | 2026-04-08 | CWE Top 25 — Most Dangerous Software Weaknesses (2025) | source | software-dev |
 | 2026-04-08 | OWASP Top 10 — 2025 | source | software-dev |
@@ -41,6 +44,7 @@
 
 || Date | Title |
 |---|---|
+| 2026-04-08 | PostgreSQL Security for WIMS-BFP |
 | 2026-04-08 | Secure Coding Practices |
 | 2026-04-08 | Zero Trust Architecture |
 | 2026-04-07 | Closed Learning Loop Architecture |
