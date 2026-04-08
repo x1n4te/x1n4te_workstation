@@ -6,6 +6,10 @@ Append-only activity log. Newest entries first.
 
 ## 2026-04-08
 
+**2026-04-08 | ingest | Hermes skills inventory documented**
+- Created: wiki/sources/software-dev/hermes-skills-inventory.md (23 dirs, ~83 skills, categorized by priority tier)
+- Index: updated (total pages: 48)
+
 **2026-04-08 | postmortem | 4-agent pipeline failure documented**
 - Created: wiki/analyses/4-agent-pipeline-postmortem.md (full postmortem: 5 root causes, lessons learned, next steps)
 - Updated: wiki/entities/hermes-agent.md (WIMS-BFP section now references failure, not proposal)

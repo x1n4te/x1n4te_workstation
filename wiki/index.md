@@ -1,7 +1,7 @@
 # Wiki Index
 
 **Last updated:** 2026-04-08
-**Total pages:** 47
+**Total pages:** 48
 
 ---
 
@@ -9,6 +9,7 @@
 
 || Date | Title | Type | Category |
 ||---|---|---|---|
+|| 2026-04-08 | Hermes Skills Inventory (23 dirs, ~83 skills) | source | software-dev |
 || 2026-04-08 | Celery + Redis Security | source | software-dev |
 || 2026-04-08 | FastAPI CVEs (2025-2026) | source | software-dev |
 || 2026-04-08 | FastAPI Security Best Practices | source | software-dev |
