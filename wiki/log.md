@@ -6,6 +6,11 @@ Append-only activity log. Newest entries first.
 
 ## 2026-04-08
 
+**2026-04-08 | skill | Created docs-vs-code-discrepancy-scan + patched ultraplan**
+- Created: ~/.hermes/skills/software-development/docs-vs-code-discrepancy-scan/SKILL.md (5-phase methodology: extract claims → scan evidence → cross-reference matrix → severity → resolution)
+- Patched: ultraplan skill with execution lessons (delegate failures, iterative deepening, ground truth sources)
+- Inventory: updated (25 dirs, ~85 skills)
+
 **2026-04-08 | ingest | WIMS-BFP Thesis Chapters 1-3 + Abstract (55 files → 8 wiki pages)**
 - Created: wiki/sources/software-dev/wims-bfp-ch1-introduction.md (9 files, purpose/context/objectives/scope/CIA/STRIDE/definitions)
 - Created: wiki/sources/software-dev/wims-bfp-ch2-rrl.md (5 files, theoretical framework/4 paradigms, related literature/6 themes, related studies/6 comparative, synthesis/3 gaps)
