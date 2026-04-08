@@ -6,6 +6,11 @@ Append-only activity log. Newest entries first.
 
 ## 2026-04-08
 
+**2026-04-08 | postmortem | 4-agent pipeline failure documented**
+- Created: wiki/analyses/4-agent-pipeline-postmortem.md (full postmortem: 5 root causes, lessons learned, next steps)
+- Updated: wiki/entities/hermes-agent.md (WIMS-BFP section now references failure, not proposal)
+- Index: updated (total pages: 47)
+
 **2026-04-08 | step-1 | Orchestrator config → Nous Portal (OAuth)**
 - Changed: provider: nous, default: mimo-v2-pro
 - Auth: hermes login --provider nous

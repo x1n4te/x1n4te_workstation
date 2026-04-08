@@ -173,8 +173,12 @@ Modal/Daytona: serverless hibernation — zero compute cost when idle, instant w
 
 ## WIMS-BFP Relevance
 
-**Proposed 4-agent Discord setup** aligns directly with Hermes-Agent's native Discord gateway support. Each agent would run as a separate Hermes profile with its own API key, connected to shared Discord channels.
+**4-agent Discord pipeline was attempted (2026-04-08) and FAILED.** See [[analyses/4-agent-pipeline-postmortem]] for full postmortem.
 
-The **delegate_task** hierarchy (parent blocks until children complete) maps cleanly to the FRS escalation path: ENCODER → VALIDATOR → ANALYST.
+Architecture: 1 Discord bot (Orchestrator) + 3 delegate_task children (Builder/Tester/Critic). Configs created, Discord bot live, but RTX 3090 Ollama never served models and no integration test was executed. Pipeline never reached first live test run.
+
+Key failure: Sushi-Coder (competitive programming training) mismatched with WIMS-BFP production patterns (RLS, Celery, Keycloak JWT). Model domain fit > parameter count.
+
+The **delegate_task** hierarchy remains architecturally sound — the failure was execution/infra, not design.
 
 The **SKILL.md procedural memory** pattern is directly applicable to WIMS-BFP audit/remediation workflows — the agent can self-author skill documents for RLS policy fixes, Celery task patterns, etc.
