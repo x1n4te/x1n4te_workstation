@@ -21,6 +21,10 @@ related:
   - sources/cybersecurity/dod-zta-implementation-primer-2026
   - sources/cybersecurity/zero-trust-complete-guide-2026
   - concepts/zero-trust-architecture
+  - sources/software-dev/owasp-top-10-2025
+  - sources/software-dev/cwe-top-25-2025
+  - sources/software-dev/owasp-secure-code-review
+  - concepts/secure-coding-practices
 ---
 
 # Cybersecurity — Map of Content
@@ -83,6 +87,19 @@ MEDIUM (patch this month):
   - CVE-2026-27980 (Next.js, DoS)
   - CVE-2026-31937 (Suricata, DCERPC)
 ```
+
+---
+
+## Secure Coding Practices
+
+*Start here for writing secure code — OWASP, CWE, and code review methodology.*
+
+### Reading Path
+
+1. [[concepts/secure-coding-practices]] — Synthesis of OWASP Top 10 + CWE Top 25 + ZTA + code review
+2. [[sources/software-dev/owasp-top-10-2025]] — Web application security risks (2025)
+3. [[sources/software-dev/cwe-top-25-2025]] — Most dangerous software weaknesses (2025)
+4. [[sources/software-dev/owasp-secure-code-review]] — Code review methodology
 
 ---
 

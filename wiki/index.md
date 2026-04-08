@@ -1,7 +1,7 @@
 # Wiki Index
 
 **Last updated:** 2026-04-07  
-**Total pages:** 27
+**Total pages:** 31
 
 ---
 
@@ -9,6 +9,9 @@
 
 || Date | Title | Type | Category |
 |---|---|---|---|
+| 2026-04-08 | OWASP Secure Code Review | source | software-dev |
+| 2026-04-08 | CWE Top 25 — Most Dangerous Software Weaknesses (2025) | source | software-dev |
+| 2026-04-08 | OWASP Top 10 — 2025 | source | software-dev |
 | 2026-04-08 | Next.js CVEs — 2026 (Request Smuggling, DoS, RCE) | source | cybersecurity |
 | 2026-04-08 | Keycloak CVEs — 2026 (JWT, SSRF, POST) | source | cybersecurity |
 | 2026-04-08 | Zero Trust Architecture — Complete Guide 2026 | source | cybersecurity |
@@ -38,6 +41,7 @@
 
 || Date | Title |
 |---|---|
+| 2026-04-08 | Secure Coding Practices |
 | 2026-04-08 | Zero Trust Architecture |
 | 2026-04-07 | Closed Learning Loop Architecture |
 | 2026-04-07 | Procedural Memory (SKILL.md) |
