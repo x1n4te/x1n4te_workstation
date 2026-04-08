@@ -1,7 +1,7 @@
 # Wiki Index
 
 **Last updated:** 2026-04-07  
-**Total pages:** 23
+**Total pages:** 27
 
 ---
 
@@ -11,6 +11,9 @@
 |---|---|---|---|
 | 2026-04-08 | Next.js CVEs — 2026 (Request Smuggling, DoS, RCE) | source | cybersecurity |
 | 2026-04-08 | Keycloak CVEs — 2026 (JWT, SSRF, POST) | source | cybersecurity |
+| 2026-04-08 | Zero Trust Architecture — Complete Guide 2026 | source | cybersecurity |
+| 2026-04-08 | DoW/NSA ZTA Implementation Primer (Jan 2026) | source | cybersecurity |
+| 2026-04-08 | NIST SP 800-207 — Zero Trust Architecture | source | cybersecurity |
 | 2026-04-08 | Suricata CVEs — 2026 (DoS, Processing Flaws) | source | cybersecurity |
 | 2026-04-07 | MemMachine: A Ground-Truth-Preserving Memory System | source | ai-research |
 | 2026-04-07 | Hermes-Agent: Deep Research Architectures | source | ai-research |
@@ -35,6 +38,7 @@
 
 || Date | Title |
 |---|---|
+| 2026-04-08 | Zero Trust Architecture |
 | 2026-04-07 | Closed Learning Loop Architecture |
 | 2026-04-07 | Procedural Memory (SKILL.md) |
 | 2026-04-07 | delegate_task Architecture |
