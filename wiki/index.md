@@ -62,8 +62,9 @@
 
 ## MOCs
 
-| Date | Title |
+|| Date | Title |
 |---|---|
+| 2026-04-08 | Cybersecurity — Map of Content |
 | 2026-04-07 | AI Research — Map of Content |
 
 ---

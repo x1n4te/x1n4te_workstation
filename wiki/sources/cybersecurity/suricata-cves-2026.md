@@ -109,6 +109,9 @@ related:
 
 ---
 
-## Concepts Derived From This Source
+## Related Pages
 
-- [[concepts/threat-detection-pipeline]] — How Suricata fits into WIMS-BFP's threat detection chain
+- [[mocs/cybersecurity]] — Cybersecurity Map of Content (CVE tracking, ZTA, frameworks)
+- [[concepts/zero-trust-architecture]] — ZTA frameworks and WIMS-BFP alignment
+- [[sources/cybersecurity/keycloak-cves-2026]] — Keycloak CVEs (auth layer)
+- [[sources/cybersecurity/nextjs-cves-2026]] — Next.js CVEs (frontend layer)

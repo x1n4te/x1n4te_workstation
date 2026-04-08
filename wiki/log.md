@@ -10,6 +10,11 @@ Append-only activity log. Newest entries first.
 - Changed: provider: nous, default: mimo-v2-pro
 - Auth: hermes login --provider nous
 
+**2026-04-08 | wiki | Cybersecurity MOC created + cross-links fixed**
+- MOC: wiki/mocs/cybersecurity.md (CVE summary, ZTA reading path, WIMS-BFP relevance)
+- Fixed 7 broken cross-references (concepts/threat-detection-pipeline, authentication-architecture, frontend-security → replaced with existing pages)
+- Added bidirectional wikilinks between all 6 cybersecurity source pages + ZTA concept
+
 **2026-04-08 | ingest | Zero Trust Architecture → 3 sources + 1 concept page**
 - Sources: wiki/sources/cybersecurity/nist-sp-800-207-zero-trust-architecture.md, wiki/sources/cybersecurity/dod-zta-implementation-primer-2026.md, wiki/sources/cybersecurity/zero-trust-complete-guide-2026.md
 - Concept: wiki/concepts/zero-trust-architecture.md (7 tenets, 7 pillars, WIMS-BFP alignment)

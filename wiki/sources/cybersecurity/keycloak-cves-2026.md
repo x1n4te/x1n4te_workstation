@@ -88,6 +88,9 @@ related:
 
 ---
 
-## Concepts Derived From This Source
+## Related Pages
 
-- [[concepts/authentication-architecture]] — How Keycloak fits into WIMS-BFP's auth chain
+- [[mocs/cybersecurity]] — Cybersecurity Map of Content (CVE tracking, ZTA, frameworks)
+- [[concepts/zero-trust-architecture]] — ZTA frameworks and WIMS-BFP alignment
+- [[sources/cybersecurity/suricata-cves-2026]] — Suricata CVEs (detection layer)
+- [[sources/cybersecurity/nextjs-cves-2026]] — Next.js CVEs (frontend layer)

@@ -181,6 +181,7 @@
   },
   "active": "c14c6cb596964f03",
   "lastOpenFiles": [
+    "wiki/mocs/cybersecurity.md",
     "wiki/sources/cybersecurity/zero-trust-complete-guide-2026.md",
     "wiki/concepts/zero-trust-architecture.md",
     "wiki/sources/cybersecurity/nist-sp-800-207-zero-trust-architecture.md",
@@ -209,7 +210,6 @@
     "raw/ai-research/HERMES-AGENT.md",
     "raw/ai-research/2604.04853v1.pdf",
     "raw/ai-research/2604.04869v1.pdf",
-    "sessions/session-template.md",
     "raw/misc/2604.04853v1.pdf",
     "raw/misc",
     "scripts/wiki-sweep.py",

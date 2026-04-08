@@ -87,6 +87,9 @@ related:
 
 ---
 
-## Concepts Derived From This Source
+## Related Pages
 
-- [[concepts/frontend-security]] — How Next.js fits into WIMS-BFP's security posture
+- [[mocs/cybersecurity]] — Cybersecurity Map of Content (CVE tracking, ZTA, frameworks)
+- [[concepts/zero-trust-architecture]] — ZTA frameworks and WIMS-BFP alignment
+- [[sources/cybersecurity/suricata-cves-2026]] — Suricata CVEs (detection layer)
+- [[sources/cybersecurity/keycloak-cves-2026]] — Keycloak CVEs (auth layer)
