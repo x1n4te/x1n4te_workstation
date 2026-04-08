@@ -158,7 +158,7 @@ related:
 
 ---
 
-### H-2: ECC + AES Hybrid Encryption vs AES-256-GCM Only — CONFIRMED
+### H-2: ECC + AES Hybrid Encryption — OUT OF SCOPE (RESOLVED)
 
 **Thesis claims (Ch 1.7, 3.5.1, 3.5.2):**
 - "Hybrid Encryption (ECC + AES) for data at rest and in transit"
@@ -166,77 +166,48 @@ related:
 - "PyNaCl / Libsodium for X25519/AES-GCM encryption"
 
 **Codebase reality (VERIFIED 2026-04-08):**
-- `crypto.py` (169 lines) — pure AES-256-GCM via `cryptography.hazmat.primitives.ciphers.aead.AESGCM`
-- Master key loaded from `WIMS_MASTER_KEY` env var (base64-encoded 32-byte key)
-- NO X25519 key wrapping anywhere in the codebase
-- NO PyNaCl or Libsodium imports
-- `SecurityProvider` class has `encrypt_json()` / `decrypt_json()` — AES-GCM only
+- `crypto.py` (169 lines) — pure AES-256-GCM via `cryptography` package
+- Master key loaded from `WIMS_MASTER_KEY` env var
+- TLS 1.3 for encrypted communications in transit
+- No X25519, no PyNaCl — **confirmed out of scope per user**
 
-**Impact:** CONFIRMED HIGH. Thesis describes a "Digital Envelope" (ECC wraps AES key) but the actual implementation is symmetric-only AES-256-GCM. The X25519 key exchange layer is completely absent.
-
-**Resolution options:**
-1. **Implement** X25519 wrapping in `crypto.py` (add `cryptography.hazmat.primitives.asymmetric.x25519`)
-2. **Change** thesis language to "AES-256-GCM authenticated encryption" (drop "hybrid" / "Digital Envelope")
-3. **Document** X25519 as planned enhancement
+**Resolution:** Change thesis language:
+- "Hybrid Encryption (ECC + AES)" → "AES-256-GCM for data at rest, TLS 1.3 for encrypted communications"
+- Remove "Digital Envelope" / "X25519" / "PyNaCl" references entirely
+- Drop from Ch 1.7, 3.5.1, 3.5.2, and Table 21
 
 ---
 
-### H-3: OpenBao KMS NOT Deployed
+### H-3: OpenBao KMS — REMOVE FROM THESIS
 
 **Thesis claims (Ch 3.6.1, Table 21):**
 - "OpenBao Key Management Service (KMS) for hybrid encryption"
-- Listed as core security component alongside Suricata and Keycloak
 
-**Codebase reality (VERIFIED 2026-04-08):**
-- NOT in `docker-compose.yml`
-- No OpenBao/Vault configuration files in codebase
-- Secret management via env vars (`WIMS_MASTER_KEY` in `.env`)
-- No secret rotation, no centralized KMS
+**Codebase reality:** NOT deployed. Env vars (`WIMS_MASTER_KEY`) used directly. Fine for prototype scope.
 
-**Impact:** Thesis claims centralized key management but the system uses raw env vars. This is a security gap — no key rotation, no audit trail for key access, no separation of key management from application.
-
-**Resolution options:**
-1. **Deploy** OpenBao in docker-compose + wire into crypto.py
-2. **Remove** OpenBao from thesis technology table
-3. **Document** env-var-based key management as acceptable for prototype scope
+**Resolution:** Remove OpenBao from Table 21. If needed, note "Secret management via environment variables."
 
 ---
 
-### H-4: Instructor Library NOT Installed
+### H-4: Instructor Library — REMOVE FROM THESIS
 
 **Thesis claims (Ch 3.6.1, Table 21):**
 - "Instructor — Enforces structured JSON output from the SLM"
 
-**Codebase reality (VERIFIED 2026-04-08):**
-- NOT in `requirements.txt`
-- No `import instructor` in any Python file
-- AI service likely uses raw Ollama API without structured output enforcement
+**Codebase reality:** NOT installed. `ai_service.py` uses raw Ollama API. Output format controlled via prompt engineering, not library enforcement.
 
-**Impact:** Without Instructor, the XAI narrative output format is uncontrolled. The SLM may return free-form text instead of structured JSON, breaking downstream consumers (dashboard, security_logs table schema).
-
-**Resolution options:**
-1. **Install** `instructor` + integrate with Ollama calls in `ai_service.py`
-2. **Remove** from thesis technology table
-3. **Document** as planned enhancement
+**Resolution:** Remove Instructor from Table 21. The prompt template in `ai_service.py` handles output formatting.
 
 ---
 
-### H-5: PyNaCl/Libsodium NOT Installed
+### H-5: PyNaCl/Libsodium — REMOVE FROM THESIS (covered by H-2)
 
 **Thesis claims (Ch 3.6.1, Table 21):**
 - "PyNaCl / Libsodium — Library for high-assurance X25519/AES-GCM encryption"
 
-**Codebase reality (VERIFIED 2026-04-08):**
-- NOT in `requirements.txt`
-- `cryptography` package used instead (which provides AES-GCM but not via PyNaCl)
-- Tied to H-2: the X25519 component of PyNaCl is completely absent
+**Codebase reality:** NOT installed. `cryptography` package provides AES-256-GCM instead.
 
-**Impact:** Double evidence that the "hybrid ECC+AES" encryption claim is unimplemented. PyNaCl was supposed to provide the X25519 key exchange layer.
-
-**Resolution options:**
-1. **Add** `pynacl` to requirements + implement X25519 wrapping
-2. **Remove** PyNaCl from thesis table (already covered by H-2 fix)
-3. **Change** to "cryptography package for AES-256-GCM" in thesis
+**Resolution:** Remove PyNaCl from Table 21. Change to "cryptography — AES-256-GCM authenticated encryption." Already covered by H-2.
 
 ---
 
@@ -309,7 +280,13 @@ related:
 | 6 | H-1 (Alembic) | Implement Alembic, OR document as limitation | Document as limitation (4 SQL files work) |
 | 7 | C-2 (model) | Already resolved — Ollama serves Qwen2.5-3B correctly | No action needed |
 
-**Summary:** Most HIGH discrepancies are in the thesis Ch 3.6.1 technology table (Table 21). The cleanest fix is to **align the thesis table with what's actually in requirements.txt** rather than implementing everything the table claims. The codebase works — the thesis over-specifies tools that weren't needed.
+**Summary:** All HIGH discrepancies are thesis-language fixes, not code changes. The codebase works correctly. The thesis Ch 3.6.1 Table 21 over-specifies tools that were descoped or replaced. Align the thesis with what's actually in `requirements.txt`.
+
+**Quick fix list for thesis paper:**
+1. Ch 3.6.1 Table 21: Remove OpenBao, Instructor, PyNaCl. Change "Dexie.js" to "idb". Drop "Llama.cpp" (Ollama wraps it).
+2. Ch 1.7, 3.5.1, 3.5.2: "Hybrid ECC+AES" → "AES-256-GCM at rest, TLS 1.3 for encrypted communications"
+3. Ch 1.2, 3.4.1: "microservices" → "containerized multi-tier" or "modular monolith"
+4. Ch 1.6: "Offline-First Cache (IndexedDB/Dexie.js)" → acknowledge partial implementation (idb queuing, no Service Worker)
 
 ---
 
