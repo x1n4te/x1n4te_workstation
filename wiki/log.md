@@ -10,6 +10,12 @@ Append-only activity log. Newest entries first.
 - Changed: provider: nous, default: mimo-v2-pro
 - Auth: hermes login --provider nous
 
+**2026-04-08 | ingest | Docker Security → 2 sources + 1 concept**
+- Sources: wiki/sources/software-dev/docker-security-best-practices.md, wiki/sources/software-dev/docker-cves-2025-2026.md
+- Concept: wiki/concepts/docker-security-wims-bfp.md (Compose template, runc CVEs, ZTA mapping, audit checklist)
+- MOC: updated cybersecurity MOC with Docker section
+- Index: updated (total pages: 38)
+
 **2026-04-08 | ingest | PostgreSQL Security → 3 sources + 1 concept**
 - Sources: wiki/sources/software-dev/postgresql-security-best-practices.md, wiki/sources/software-dev/postgresql-rls-limitations.md, wiki/sources/software-dev/postgresql-cves-2025-2026.md
 - Concept: wiki/concepts/postgresql-security-wims-bfp.md (RLS rules, NULL safety, CVE checklist, ZTA mapping)
