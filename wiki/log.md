@@ -6,6 +6,18 @@ Append-only activity log. Newest entries first.
 
 ## 2026-04-08
 
+**2026-04-08 | ingest | WIMS-BFP Thesis Chapters 1-3 + Abstract (55 files → 8 wiki pages)**
+- Created: wiki/sources/software-dev/wims-bfp-ch1-introduction.md (9 files, purpose/context/objectives/scope/CIA/STRIDE/definitions)
+- Created: wiki/sources/software-dev/wims-bfp-ch2-rrl.md (5 files, theoretical framework/4 paradigms, related literature/6 themes, related studies/6 comparative, synthesis/3 gaps)
+- Created: wiki/sources/software-dev/wims-bfp-ch3a-research-design.md (8 files, hybrid research design, FR/NFR/security requirements, V-model)
+- Created: wiki/sources/software-dev/wims-bfp-ch3b-architecture.md (10 files, 3-layer architecture, ER diagram, AI 4-stage pipeline, deployment)
+- Created: wiki/sources/software-dev/wims-bfp-ch3c-security-tools.md (7 files, security practices/hybrid encryption, FARM stack, testing tools)
+- Created: wiki/sources/software-dev/wims-bfp-ch3d-testing-data.md (13 files, testing methodologies, ISO 25010 evaluation, data gathering, ethics/RA 10173)
+- Created: wiki/sources/software-dev/wims-bfp-abstract.md (full abstract)
+- Created: wiki/sources/software-dev/wims-bfp-knowledge-graph.md (architecture alignment, health report findings)
+- Created: wiki/analyses/wims-bfp-thesis-codebase-gaps.md (3 CRITICAL, 2 HIGH discrepancies: offline PWA not implemented, model mismatch, microservices claim)
+- Index: updated (total pages: 58)
+
 **2026-04-08 | skill | Created ultraplan skill**
 - Created: ~/.hermes/skills/software-development/ultraplan/SKILL.md
 - 4-phase workflow: AUDIT (scan codebase) → ANALYZE (gaps/risks) → PLAN (bite-sized tasks) → REVIEW (security gate)

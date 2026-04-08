@@ -31,6 +31,15 @@ related:
   - sources/software-dev/postgis-secure-coding-practices
   - concepts/postgis-security-wims-bfp
   - concepts/postgresql-security-wims-bfp
+  - sources/software-dev/wims-bfp-ch1-introduction
+  - sources/software-dev/wims-bfp-ch2-rrl
+  - sources/software-dev/wims-bfp-ch3a-research-design
+  - sources/software-dev/wims-bfp-ch3b-architecture
+  - sources/software-dev/wims-bfp-ch3c-security-tools
+  - sources/software-dev/wims-bfp-ch3d-testing-data
+  - sources/software-dev/wims-bfp-abstract
+  - sources/software-dev/wims-bfp-knowledge-graph
+  - analyses/wims-bfp-thesis-codebase-gaps
   - sources/software-dev/docker-security-best-practices
   - sources/software-dev/docker-cves-2025-2026
   - concepts/docker-security-wims-bfp
@@ -208,13 +217,38 @@ MEDIUM (patch this month):
 
 ---
 
+## WIMS-BFP Thesis
+
+*Start here for the thesis itself — introduction, literature review, methodology, and thesis-vs-codebase gap analysis.*
+
+### Reading Path
+
+1. [[sources/software-dev/wims-bfp-abstract]] — Thesis abstract (keywords: PWA, Offline-First, XAI, IDS, BFP)
+2. [[sources/software-dev/wims-bfp-ch1-introduction]] — Purpose, context, objectives (9), scope (12 modules), CIA triad threats, STRIDE model, definitions
+3. [[sources/software-dev/wims-bfp-ch2-rrl]] — Theoretical framework (ZTA, Cyber Resilience, Offline-First, Digital Sovereignty), 6 related studies, synthesis gaps
+4. [[sources/software-dev/wims-bfp-ch3a-research-design]] — Hybrid research design, FR/NFR/security requirements, Hybrid V-Model
+5. [[sources/software-dev/wims-bfp-ch3b-architecture]] — 3-layer architecture, ER diagram, AI 4-stage pipeline, deployment diagram
+6. [[sources/software-dev/wims-bfp-ch3c-security-tools]] — Security practices (hybrid encryption, SHA-256 chain), FARM stack, testing tools
+7. [[sources/software-dev/wims-bfp-ch3d-testing-data]] — Testing methodologies, ISO/IEC 25010 evaluation, data gathering, RA 10173 ethics
+8. [[sources/software-dev/wims-bfp-knowledge-graph]] — Architecture alignment (thesis ↔ codebase), backend health report (2026-03-28)
+9. [[analyses/wims-bfp-thesis-codebase-gaps]] — **3 CRITICAL discrepancies** (offline PWA not implemented, model mismatch, microservices claim)
+
+### Key Gaps (from discrepancy analysis)
+
+- **CRITICAL:** Offline-first PWA (Dexie.js/Service Workers) claimed but NOT implemented
+- **CRITICAL:** Qwen2.5-3B claimed but vLLM targets 27B models
+- **CRITICAL:** "Microservices" claimed but codebase is monolith (1,876-line regional.py)
+- **HIGH:** No Alembic migrations (raw SQL only)
+- **HIGH:** ECC+AES hybrid encryption claimed but only AES-256-GCM verified
+
+---
+
 ## Open Questions / Research Gaps
 
-- No cybersecurity MOC existed before today — CVEs were isolated pages
-- No concept pages for: threat detection pipeline, authentication architecture, defense-in-depth
-- Biomechanics and software-dev raw sources not yet ingested
-- How does ZTA apply to multi-agent architectures (WIMS-BFP 4-agent setup)?
+- Thesis Ch1-3 fully ingested (55 files → 8 pages + 1 analysis)
+- 3 CRITICAL thesis-codebase discrepancies need xynate decision before defense
 - Post-quantum cryptography impact on WIMS-BFP's RSA/ECDSA key infrastructure (not yet researched)
+- How does ZTA apply to multi-agent architectures (4-agent pipeline failed — see postmortem)?
 
 ---
 
