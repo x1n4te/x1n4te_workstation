@@ -1,7 +1,7 @@
 # Wiki Index
 
-**Last updated:** 2026-04-07  
-**Total pages:** 45
+**Last updated:** 2026-04-08
+**Total pages:** 46
 
 ---
 
@@ -30,7 +30,8 @@
 | 2026-04-08 | Suricata CVEs — 2026 (DoS, Processing Flaws) | source | cybersecurity |
 | 2026-04-07 | MemMachine: A Ground-Truth-Preserving Memory System | source | ai-research |
 | 2026-04-07 | Hermes-Agent: Deep Research Architectures | source | ai-research |
-| 2026-04-07 | DSPy: Declarative Prompt Optimization | source | ai-research |
+|| 2026-04-07 | DSPy: Declarative Prompt Optimization | source | ai-research |
+|| 2026-04-08 | WIMS-BFP Codebase Ingestion (Pre-Refactor) | source | software-dev |
 
 ---
 

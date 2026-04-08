@@ -113,3 +113,13 @@ Append-only activity log. Newest entries first.
 - 3 scripts created (token-budget.py, wipe-and-recompile.py, wiki-sweep.py)
 - Session template created
 - Git history: 6 commits on master
+
+---
+
+**2026-04-08 | ingest | WIMS-BFP full codebase ingestion (pre-refactor) | 1 page created**
+- Read all 199 source files from ~/WIMS-BFP-NEW/LOCAL-WIMS-BFP-PROTOTYPE/
+- Captured: 8 route modules, 6 models, 1468-line SQL DDL with 65 RLS policies, 10 Docker services, CI/CD, 18 test files
+- Also ingested ~/Documents/x1n4te-workstation/ (82 files: 46 wiki pages, workflows, scripts, MOCs)
+- Created: wiki/sources/software-dev/wims-bfp-codebase-ingestion-2026-04-08.md
+- Updated: wiki/index.md (page count: 45 → 46)
+- Pre-refactor baseline captured for ground-up feature restructuring
