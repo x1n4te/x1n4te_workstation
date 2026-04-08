@@ -1,7 +1,7 @@
 # Wiki Index
 
 **Last updated:** 2026-04-08
-**Total pages:** 58
+**Total pages:** 59
 
 ---
 
@@ -9,6 +9,7 @@
 
 | Date | Title | Type | Category |
 |---|---|---|---|
+| 2026-04-08 | WIMS-BFP Thesis Revisions (Ch 1–3, 51 changes) | source | software-dev |
 | 2026-04-08 | WIMS-BFP Knowledge Graph + Backend Health Report | source | software-dev |
 | 2026-04-08 | WIMS-BFP Abstract | source | software-dev |
 | 2026-04-08 | WIMS-BFP Ch3d: Testing, Evaluation, Data Gathering + Ethics | source | software-dev |

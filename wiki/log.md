@@ -11,6 +11,14 @@ Append-only activity log. Newest entries first.
 - Patched: ultraplan skill with execution lessons (delegate failures, iterative deepening, ground truth sources)
 - Inventory: updated (25 dirs, ~85 skills)
 
+**2026-04-08 | ingest | WIMS-BFP thesis revision log — 51 changes documented**
+- Created: wiki/sources/software-dev/wims-bfp-thesis-revisions-2026-04-08.md
+- Ch1: 7 changes (microservices→containerized, Dexie→idb, hybrid→AES-256-GCM)
+- Ch2: 6 changes (offline claims toned down, hybrid→AES-256-GCM)
+- Ch3: 38 changes (Table 21 rewrite, Dexie→idb, X25519 removed, OpenBao/Instructor/PyNaCl/TanStack removed, Llama.cpp→Ollama)
+- All 10 discrepancies resolved. No code changes needed.
+- Index: updated (total pages: 59)
+
 **2026-04-08 | ingest | WIMS-BFP Thesis Chapters 1-3 + Abstract (55 files → 8 wiki pages)**
 - Created: wiki/sources/software-dev/wims-bfp-ch1-introduction.md (9 files, purpose/context/objectives/scope/CIA/STRIDE/definitions)
 - Created: wiki/sources/software-dev/wims-bfp-ch2-rrl.md (5 files, theoretical framework/4 paradigms, related literature/6 themes, related studies/6 comparative, synthesis/3 gaps)
