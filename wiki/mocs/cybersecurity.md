@@ -35,6 +35,10 @@ related:
   - sources/software-dev/keycloak-production-security
   - sources/software-dev/fastapi-keycloak-jwt-rbac
   - concepts/keycloak-fastapi-security-wims-bfp
+  - sources/software-dev/fastapi-security-best-practices
+  - sources/software-dev/fastapi-cves-2025-2026
+  - sources/software-dev/celery-redis-security
+  - concepts/fastapi-security-wims-bfp
 ---
 
 # Cybersecurity — Map of Content
@@ -110,6 +114,19 @@ MEDIUM (patch this month):
 2. [[sources/software-dev/owasp-top-10-2025]] — Web application security risks (2025)
 3. [[sources/software-dev/cwe-top-25-2025]] — Most dangerous software weaknesses (2025)
 4. [[sources/software-dev/owasp-secure-code-review]] — Code review methodology
+
+---
+
+## FastAPI + Celery/Redis Backend Security
+
+*Start here for API and task queue security — FastAPI hardening, rate limiting, Celery, Redis.*
+
+### Reading Path
+
+1. [[concepts/fastapi-security-wims-bfp]] — WIMS-BFP backend security synthesis (8-layer security stack, complete checklist)
+2. [[sources/software-dev/fastapi-security-best-practices]] — OWASP API Top 10, 7 FastAPI security patterns
+3. [[sources/software-dev/fastapi-cves-2025-2026]] — CVE-2025-68481 (OAuth injection), CVE-2026-24486 (ReDoS)
+4. [[sources/software-dev/celery-redis-security]] — TLS, serialization, time limits, worker resource limits
 
 ---
 

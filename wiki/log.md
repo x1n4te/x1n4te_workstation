@@ -10,6 +10,12 @@ Append-only activity log. Newest entries first.
 - Changed: provider: nous, default: mimo-v2-pro
 - Auth: hermes login --provider nous
 
+**2026-04-08 | ingest | FastAPI + Celery/Redis Security → 3 sources + 1 concept**
+- Sources: wiki/sources/software-dev/fastapi-security-best-practices.md, wiki/sources/software-dev/fastapi-cves-2025-2026.md, wiki/sources/software-dev/celery-redis-security.md
+- Concept: wiki/concepts/fastapi-security-wims-bfp.md (8-layer security stack, complete backend checklist)
+- MOC: updated cybersecurity MOC with FastAPI/Celery section
+- Index: updated (total pages: 45)
+
 **2026-04-08 | ingest | Keycloak + FastAPI Auth Security → 2 sources + 1 concept**
 - Sources: wiki/sources/software-dev/keycloak-production-security.md, wiki/sources/software-dev/fastapi-keycloak-jwt-rbac.md
 - Concept: wiki/concepts/keycloak-fastapi-security-wims-bfp.md (auth flow, ZTA mapping, complete auth audit checklist)

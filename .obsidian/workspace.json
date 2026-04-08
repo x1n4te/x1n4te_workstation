@@ -11,14 +11,10 @@
             "id": "c14c6cb596964f03",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "wiki/mocs/cybersecurity.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "cybersecurity"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -185,6 +181,20 @@
   },
   "active": "c14c6cb596964f03",
   "lastOpenFiles": [
+    "Untitled 1.canvas",
+    "wiki/sources/cybersecurity/keycloak-cves-2026.md",
+    "wiki/concepts/fastapi-security-wims-bfp.md",
+    "wiki/sources/software-dev/celery-redis-security.md",
+    "wiki/sources/software-dev/fastapi-security-best-practices.md",
+    "wiki/sources/software-dev/fastapi-cves-2025-2026.md",
+    "wiki/sources/cybersecurity/nextjs-cves-2026.md",
+    "wiki/sources/cybersecurity/dod-zta-implementation-primer-2026.md",
+    "wiki/sources/cybersecurity/zero-trust-complete-guide-2026.md",
+    "wiki/sources/cybersecurity/suricata-cves-2026.md",
+    "wiki/sources/cybersecurity/nist-sp-800-207-zero-trust-architecture.md",
+    "wiki/sources/ai-research/dspy-declarative-prompt-optimization.md",
+    "Untitled.canvas",
+    "wiki/mocs/cybersecurity.md",
     "sessions/2026-04-08.md",
     "sessions/session-template.md",
     "wiki/analyses/memory-systems-comparison.md",
@@ -198,19 +208,6 @@
     "wiki/concepts/postgresql-security-wims-bfp.md",
     "wiki/sources/software-dev/postgresql-cves-2025-2026.md",
     "wiki/sources/software-dev/postgresql-security-best-practices.md",
-    "wiki/sources/software-dev/postgresql-rls-limitations.md",
-    "wiki/mocs/cybersecurity.md",
-    "wiki/sources/software-dev/owasp-top-10-2025.md",
-    "wiki/sources/software-dev/owasp-secure-code-review.md",
-    "wiki/sources/software-dev/cwe-top-25-2025.md",
-    "wiki/sources/ai-research/dspy-declarative-prompt-optimization.md",
-    "wiki/concepts/agent-memory-taxonomy.md",
-    "wiki/overview-state-of-field.md",
-    "wiki/sources/cybersecurity/zero-trust-complete-guide-2026.md",
-    "wiki/concepts/zero-trust-architecture.md",
-    "wiki/sources/cybersecurity/nist-sp-800-207-zero-trust-architecture.md",
-    "wiki/sources/cybersecurity/dod-zta-implementation-primer-2026.md",
-    "wiki/mocs/ai-research.md",
     "scripts/setup-4agents.sh",
     "raw/ai-research/2604.04853v1.pdf",
     "raw/ai-research/2604.04869v1.pdf",
