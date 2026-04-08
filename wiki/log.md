@@ -11,6 +11,14 @@ Append-only activity log. Newest entries first.
 - Patched: ultraplan skill with execution lessons (delegate failures, iterative deepening, ground truth sources)
 - Inventory: updated (25 dirs, ~85 skills)
 
+**2026-04-08 | audit | Regional Encoder CRUD + backend security scan**
+- Created: wiki/sources/software-dev/wims-bfp-regional-encoder-audit-2026-04-08.md
+- CRUD: POST/PUT/DELETE routes added to regional.py (8 total routes)
+- Security: 4 error message leakage fixes (str(e) -> generic messages + logger.exception)
+- CVE check: all packages at safe versions
+- Tests: 10/10 passing
+- Index: updated (total pages: 61)
+
 **2026-04-08 | ingest | WIMS-BFP codebase metrics — refactoring targets identified**
 - Created: wiki/sources/software-dev/wims-bfp-codebase-metrics.md
 - 118 code files, 19,879 lines (Python 45%, TSX 37%, TS 10%, SQL 8%)
