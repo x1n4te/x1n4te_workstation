@@ -6,6 +6,11 @@ Append-only activity log. Newest entries first.
 
 ## 2026-04-08
 
+**2026-04-08 | skill | Created ultraplan skill**
+- Created: ~/.hermes/skills/software-development/ultraplan/SKILL.md
+- 4-phase workflow: AUDIT (scan codebase) → ANALYZE (gaps/risks) → PLAN (bite-sized tasks) → REVIEW (security gate)
+- WIMS-BFP specific: RLS, PostGIS, DMZ, Celery RLS context, SRID 4326 checks
+
 **2026-04-08 | ingest | PostGIS Secure Coding Practices + concept**
 - Sources: wiki/sources/software-dev/postgis-secure-coding-practices.md (15-point audit checklist, CVE-2025-69662, spatial SQL injection, geometry validation, RLS integration)
 - Concept: wiki/concepts/postgis-security-wims-bfp.md (5 security layers, ZTA mapping, critical rules)

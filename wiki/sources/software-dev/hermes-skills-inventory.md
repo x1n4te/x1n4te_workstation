@@ -24,8 +24,8 @@ related:
 
 **Location:** `~/.hermes/skills/`
 **Last audited:** 2026-04-08
-**Total skill directories:** 23
-**Total individual skills:** ~80+
+**Total skill directories:** 24
+**Total individual skills:** ~84+
 
 ---
 
@@ -65,6 +65,7 @@ Core agent orchestration and development workflow.
 | software-development/ | tdd-triple-agent | 3-agent TDD (critic+builder+tester) |
 | software-development/ | subagent-driven-development | Parallel delegate_task execution |
 | software-development/ | systematic-debugging | 4-phase root cause investigation |
+| software-development/ | ultraplan | 4-phase deep audit + plan before coding (AUDIT → ANALYZE → PLAN → REVIEW) |
 | llm-wiki/ | llm-wiki-ingest-pdf | Ingest PDFs into LLM Wiki |
 | llm-wiki/ | llm-wiki-ingest-blog | Ingest blog posts into LLM Wiki |
 | llm-wiki/ | llm-wiki-ingest-github | Ingest GitHub repos into LLM Wiki |
