@@ -1,0 +1,211 @@
+---
+id: keycloak-fastapi-security-wims-bfp-concept-001
+type: concept
+created: 2026-04-08
+updated: 2026-04-08
+last_verified: 2026-04-08
+review_after: 2026-05-08
+stale_after: 2026-10-08
+confidence: high
+source_refs:
+  - sources/software-dev/keycloak-production-security
+  - sources/software-dev/fastapi-keycloak-jwt-rbac
+  - sources/cybersecurity/keycloak-cves-2026
+  - concepts/postgresql-security-wims-bfp
+  - concepts/zero-trust-architecture
+  - concepts/docker-security-wims-bfp
+status: active
+tags:
+  - keycloak
+  - fastapi
+  - jwt
+  - rbac
+  - authentication
+  - wims-bfp
+  - security
+  - software-dev
+related:
+  - sources/software-dev/keycloak-production-security
+  - sources/software-dev/fastapi-keycloak-jwt-rbac
+  - sources/cybersecurity/keycloak-cves-2026
+  - concepts/postgresql-security-wims-bfp
+  - concepts/docker-security-wims-bfp
+  - concepts/secure-coding-practices
+  - concepts/zero-trust-architecture
+  - mocs/cybersecurity
+---
+
+# Keycloak + FastAPI Security for WIMS-BFP
+
+**Synthesis of:** Keycloak hardening, FastAPI JWT RBAC, PostgreSQL RLS, Zero Trust Architecture
+**Purpose:** Unified auth security reference for WIMS-BFP's authentication and authorization layer
+
+---
+
+## Auth Flow (WIMS-BFP)
+
+```
+User → Keycloak (authenticate, MFA)
+  → JWT token (RS256, 10min TTL)
+    → FastAPI endpoint
+      → validate_token() — 5 checks (kid, iss, aud, sig, exp)
+      → get_current_wims_user() — resolve user from JWT
+      → require_role() — check FRS role
+      → get_db() — SET LOCAL wims.current_user_id + role + region
+      → RLS policy evaluates — per-user/region access control
+      → Query executes — data filtered by RLS
+```
+
+---
+
+## ZTA Mapping
+
+| Component | ZTA Tenet | Implementation |
+|---|---|---|
+| Keycloak MFA | Tenet 6: Dynamic auth | TOTP required for all users |
+| JWT 5-check validation | Tenet 4: Dynamic policy | kid, iss, aud, signature, expiry |
+| FRS role enforcement | Tenet 3: Per-session access | require_role() on every endpoint |
+| RLS context | Tenet 3: Per-session access | SET LOCAL wims.current_user_id |
+| Token TTL 10min | Tenet 4: Dynamic policy | Short-lived credentials |
+| Audit logging | Tenet 7: Improve posture | Login events, admin events, RLS denials |
+
+---
+
+## FRS Role Matrix
+
+| Role | JWT Claim | API Access | RLS Scope | MFA | Description |
+|---|---|---|---|---|---|
+| CIVILIAN_REPORTER | realm_access.roles | DMZ only | None (air-locked) | Optional | External incident submission |
+| REGIONAL_ENCODER | realm_access.roles | CRUD | Region-scoped | Required | Regional data entry |
+| NATIONAL_VALIDATOR | realm_access.roles | CRUD | Region-scoped | Required | Regional validation |
+| NATIONAL_ANALYST | realm_access.roles | Read-only | Global | Required | Analytics, reporting |
+| SYSTEM_ADMIN | realm_access.roles | Full CRUD | Global | Required | Infrastructure management |
+
+---
+
+## Keycloak Security Configuration
+
+### Master Realm (Admin)
+
+| Setting | Value |
+|---|---|
+| MFA | TOTP required |
+| Password Policy | 12+ chars, special, digits, uppercase |
+| Brute Force | 5 failures → 15min lockout |
+| Admin IP | localhost + VPN only |
+| Session Idle | 30 minutes |
+| Session Max | 8 hours |
+
+### Application Realm (WIMS)
+
+| Setting | Value |
+|---|---|
+| MFA | TOTP required for all users |
+| Password Policy | 12+ chars, special, digits, uppercase |
+| Brute Force | 10 failures → 30min lockout |
+| Token TTL | 10 minutes |
+| Refresh Token | Single-use |
+| Client Type | Confidential |
+
+---
+
+## FastAPI JWT Validation (5 Checks)
+
+```python
+# ALL 5 checks are mandatory — skip none
+jwt.decode(
+    token,
+    signing_key,
+    algorithms=["RS256"],
+    audience="wims-bfp-backend",     # ← aud
+    issuer=ISSUER_URL,               # ← iss
+    options={
+        "verify_signature": True,    # ← sig
+        "verify_aud": True,          # ← aud
+        "verify_exp": True,          # ← exp
+        "verify_iss": True,          # ← iss
+    },
+)
+# kid is checked implicitly by PyJWKClient
+```
+
+---
+
+## RLS Context Wiring
+
+```python
+# Every request MUST execute this before any query:
+cursor.execute("SET LOCAL wims.current_user_id = %s", (user.user_id,))
+cursor.execute("SET LOCAL wims.current_role = %s", (user.role.value,))
+if user.region:
+    cursor.execute("SET LOCAL wims.current_region = %s", (user.region,))
+```
+
+---
+
+## Complete Auth Audit Checklist
+
+### Keycloak Configuration
+```
+[ ] Master realm: MFA ON, brute force ON, admin IP restricted
+[ ] Application realm: MFA ON, password policy enforced
+[ ] FRS roles: exactly 5, created as realm roles
+[ ] Client scopes: wims:read, wims:write, wims:admin
+[ ] Token lifespan: 10 minutes (not default 1 hour)
+[ ] Refresh tokens: single-use
+[ ] Brute force: 5-10 failures → temporary lockout
+[ ] SMTP configured for login alerts
+[ ] Admin events enabled, login events enabled
+```
+
+### FastAPI Implementation
+```
+[ ] JWT validation: all 5 checks (kid, iss, aud, sig, exp)
+[ ] get_current_wims_user: resolve user, attach to request.state
+[ ] require_role: enforce FRS role literals exactly
+[ ] get_db: SET LOCAL wims.current_user_id in every transaction
+[ ] National Analyst: read-only enforcement (no write endpoints)
+[ ] Civilian Reporter: DMZ-only (no internal table access)
+[ ] No hardcoded secrets (client secret in secrets file)
+[ ] CORS: frontend origin only
+[ ] Rate limiting: all endpoints
+[ ] Pydantic validation: all external input
+```
+
+### PostgreSQL
+```
+[ ] RLS enabled on all wims.* tables
+[ ] FORCE ROW LEVEL SECURITY set
+[ ] Policies use OR logic (not multiple AND policies)
+[ ] NULL checks in RLS predicates
+[ ] Indexes on RLS predicate columns
+[ ] Child tables have independent policies
+```
+
+### Docker
+```
+[ ] Keycloak container: non-root, read-only, no-new-privileges
+[ ] Network isolation: Keycloak can't reach internet directly
+[ ] Database: TLS connection, no port published to host
+[ ] Secrets via files, not env vars
+```
+
+### CVEs
+```
+[ ] Keycloak patched: CVE-2026-1529, CVE-2026-4366, CVE-2026-4634
+[ ] PostgreSQL patched: CVE-2025-1094, CVE-2025-8714
+[ ] runc patched: CVE-2025-31133, CVE-2025-52565, CVE-2025-52881
+```
+
+---
+
+## Related
+
+- [[sources/software-dev/keycloak-production-security]] — Keycloak hardening guide
+- [[sources/software-dev/fastapi-keycloak-jwt-rbac]] — FastAPI + Keycloak JWT implementation
+- [[sources/cybersecurity/keycloak-cves-2026]] — Keycloak CVEs
+- [[concepts/postgresql-security-wims-bfp]] — PostgreSQL RLS security
+- [[concepts/docker-security-wims-bfp]] — Docker container security
+- [[concepts/secure-coding-practices]] — OWASP/CWE coding standards
+- [[concepts/zero-trust-architecture]] — ZTA framework
+- [[mocs/cybersecurity]] — Cybersecurity Map of Content

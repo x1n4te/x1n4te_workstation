@@ -32,6 +32,9 @@ related:
   - sources/software-dev/docker-security-best-practices
   - sources/software-dev/docker-cves-2025-2026
   - concepts/docker-security-wims-bfp
+  - sources/software-dev/keycloak-production-security
+  - sources/software-dev/fastapi-keycloak-jwt-rbac
+  - concepts/keycloak-fastapi-security-wims-bfp
 ---
 
 # Cybersecurity — Map of Content
@@ -107,6 +110,19 @@ MEDIUM (patch this month):
 2. [[sources/software-dev/owasp-top-10-2025]] — Web application security risks (2025)
 3. [[sources/software-dev/cwe-top-25-2025]] — Most dangerous software weaknesses (2025)
 4. [[sources/software-dev/owasp-secure-code-review]] — Code review methodology
+
+---
+
+## Keycloak + FastAPI Auth Security
+
+*Start here for authentication and authorization — Keycloak hardening, JWT RBAC, FRS roles.*
+
+### Reading Path
+
+1. [[concepts/keycloak-fastapi-security-wims-bfp]] — WIMS-BFP auth security synthesis (complete auth audit checklist)
+2. [[sources/software-dev/keycloak-production-security]] — Keycloak hardening (admin, MFA, brute force, TLS, sessions)
+3. [[sources/software-dev/fastapi-keycloak-jwt-rbac]] — FastAPI JWT validation, RBAC dependencies, RLS wiring
+4. [[sources/cybersecurity/keycloak-cves-2026]] — Keycloak CVEs (JWT bypass, SSRF, POST exhaustion)
 
 ---
 

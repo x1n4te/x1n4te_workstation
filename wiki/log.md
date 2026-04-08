@@ -10,6 +10,12 @@ Append-only activity log. Newest entries first.
 - Changed: provider: nous, default: mimo-v2-pro
 - Auth: hermes login --provider nous
 
+**2026-04-08 | ingest | Keycloak + FastAPI Auth Security → 2 sources + 1 concept**
+- Sources: wiki/sources/software-dev/keycloak-production-security.md, wiki/sources/software-dev/fastapi-keycloak-jwt-rbac.md
+- Concept: wiki/concepts/keycloak-fastapi-security-wims-bfp.md (auth flow, ZTA mapping, complete auth audit checklist)
+- MOC: updated cybersecurity MOC with Keycloak section
+- Index: updated (total pages: 41)
+
 **2026-04-08 | ingest | Docker Security → 2 sources + 1 concept**
 - Sources: wiki/sources/software-dev/docker-security-best-practices.md, wiki/sources/software-dev/docker-cves-2025-2026.md
 - Concept: wiki/concepts/docker-security-wims-bfp.md (Compose template, runc CVEs, ZTA mapping, audit checklist)

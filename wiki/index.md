@@ -1,7 +1,7 @@
 # Wiki Index
 
 **Last updated:** 2026-04-07  
-**Total pages:** 38
+**Total pages:** 41
 
 ---
 
@@ -9,6 +9,8 @@
 
 || Date | Title | Type | Category |
 |---|---|---|---|
+| 2026-04-08 | FastAPI + Keycloak JWT RBAC Integration | source | software-dev |
+| 2026-04-08 | Keycloak Production Security Hardening | source | software-dev |
 | 2026-04-08 | Docker/runc CVEs (2025-2026) | source | software-dev |
 | 2026-04-08 | Docker Security Best Practices (2026) | source | software-dev |
 | 2026-04-08 | PostgreSQL CVEs (2025-2026) | source | software-dev |
@@ -46,6 +48,7 @@
 
 || Date | Title |
 |---|---|
+| 2026-04-08 | Keycloak + FastAPI Security for WIMS-BFP |
 | 2026-04-08 | Docker Security for WIMS-BFP |
 | 2026-04-08 | PostgreSQL Security for WIMS-BFP |
 | 2026-04-08 | Secure Coding Practices |

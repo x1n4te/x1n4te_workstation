@@ -11,10 +11,14 @@
             "id": "c14c6cb596964f03",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "wiki/mocs/cybersecurity.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "cybersecurity"
             }
           }
         ]
@@ -181,8 +185,15 @@
   },
   "active": "c14c6cb596964f03",
   "lastOpenFiles": [
-    "wiki/sources/software-dev/docker-cves-2025-2026.md",
+    "sessions/2026-04-08.md",
+    "sessions/session-template.md",
+    "wiki/analyses/memory-systems-comparison.md",
+    "wiki/concepts/secure-coding-practices.md",
+    "wiki/concepts/keycloak-fastapi-security-wims-bfp.md",
+    "wiki/sources/software-dev/fastapi-keycloak-jwt-rbac.md",
+    "wiki/sources/software-dev/keycloak-production-security.md",
     "wiki/concepts/docker-security-wims-bfp.md",
+    "wiki/sources/software-dev/docker-cves-2025-2026.md",
     "wiki/sources/software-dev/docker-security-best-practices.md",
     "wiki/concepts/postgresql-security-wims-bfp.md",
     "wiki/sources/software-dev/postgresql-cves-2025-2026.md",
@@ -191,23 +202,16 @@
     "wiki/mocs/cybersecurity.md",
     "wiki/sources/software-dev/owasp-top-10-2025.md",
     "wiki/sources/software-dev/owasp-secure-code-review.md",
-    "wiki/concepts/secure-coding-practices.md",
     "wiki/sources/software-dev/cwe-top-25-2025.md",
     "wiki/sources/ai-research/dspy-declarative-prompt-optimization.md",
     "wiki/concepts/agent-memory-taxonomy.md",
-    "wiki/analyses/memory-systems-comparison.md",
     "wiki/overview-state-of-field.md",
     "wiki/sources/cybersecurity/zero-trust-complete-guide-2026.md",
     "wiki/concepts/zero-trust-architecture.md",
     "wiki/sources/cybersecurity/nist-sp-800-207-zero-trust-architecture.md",
     "wiki/sources/cybersecurity/dod-zta-implementation-primer-2026.md",
     "wiki/mocs/ai-research.md",
-    "wiki/entities/wims-bfp-agentic-workflow.md",
-    "wiki/sources/ai-research/hermes-agent.md",
-    "wiki/sources/ai-research/memmachine.md",
     "scripts/setup-4agents.sh",
-    "wiki/entities/dspy.md",
-    "wiki/entities/hermes-agent.md",
     "raw/ai-research/2604.04853v1.pdf",
     "raw/ai-research/2604.04869v1.pdf",
     "raw/misc/2604.04853v1.pdf",
