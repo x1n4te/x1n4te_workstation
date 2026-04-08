@@ -6,6 +6,12 @@ Append-only activity log. Newest entries first.
 
 ## 2026-04-08
 
+**2026-04-08 | ingest | PostGIS Secure Coding Practices + concept**
+- Sources: wiki/sources/software-dev/postgis-secure-coding-practices.md (15-point audit checklist, CVE-2025-69662, spatial SQL injection, geometry validation, RLS integration)
+- Concept: wiki/concepts/postgis-security-wims-bfp.md (5 security layers, ZTA mapping, critical rules)
+- MOC: updated cybersecurity MOC
+- Index: updated (total pages: 50)
+
 **2026-04-08 | ingest | Hermes skills inventory documented**
 - Created: wiki/sources/software-dev/hermes-skills-inventory.md (23 dirs, ~83 skills, categorized by priority tier)
 - Index: updated (total pages: 48)

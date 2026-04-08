@@ -28,6 +28,8 @@ related:
   - sources/software-dev/postgresql-security-best-practices
   - sources/software-dev/postgresql-rls-limitations
   - sources/software-dev/postgresql-cves-2025-2026
+  - sources/software-dev/postgis-secure-coding-practices
+  - concepts/postgis-security-wims-bfp
   - concepts/postgresql-security-wims-bfp
   - sources/software-dev/docker-security-best-practices
   - sources/software-dev/docker-cves-2025-2026
@@ -165,6 +167,24 @@ MEDIUM (patch this month):
 2. [[sources/software-dev/postgresql-security-best-practices]] — Authentication, authorization, encryption, auditing
 3. [[sources/software-dev/postgresql-rls-limitations]] — 6 RLS pitfalls + WIMS-BFP mitigations
 4. [[sources/software-dev/postgresql-cves-2025-2026]] — CVE-2025-1094 (psql RCE), CVE-2025-8714 (pg_dump RCE)
+
+---
+
+## PostGIS Security
+
+*Start here for spatial data security — geometry injection, SRID enforcement, RLS + spatial queries.*
+
+### Reading Path
+
+1. [[concepts/postgis-security-wims-bfp]] — 5 security layers, ZTA mapping, WIMS-BFP spatial data flow
+2. [[sources/software-dev/postgis-secure-coding-practices]] — 15-point audit checklist, CVE-2025-69662, spatial SQL injection, geometry validation
+
+### Key Risks
+
+- **CVE-2025-69662** — GeoPandas `to_postgis()` SQL injection (CVSS 9.8 Critical)
+- **Spatial SQL injection** — f-string interpolation in ST_GeomFromText, Find_SRID
+- **SRID confusion** — Mixed SRIDs silently break distance calculations and regional RLS
+- **Geometry DoS** — 10K+ vertex geometries exhaust CPU on spatial operations
 
 ---
 
