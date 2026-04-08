@@ -1,4 +1,4 @@
-# WIMS-BFP 4-Agent CLI Delegation Architecture
+# WIMS-BFP 4-Agent Delegate Architecture
 
 **Created:** 2026-04-07
 **Updated:** 2026-04-08
@@ -8,31 +8,67 @@
 
 ## Overview
 
-Four Hermes-Agent profiles with one visible on Discord (Orchestrator), three invoked silently via CLI delegation. The Orchestrator is the only gateway — Builder, Tester, and Critic are one-shot CLI sub-agents spawned by the Orchestrator's terminal tool.
+Four Hermes-Agent profiles — one connected to Discord (Orchestrator), three spawned as local sub-agents via `delegate_task`. All cloud API, no local GPU inference required.
 
 ## Agent Profiles
 
 | Profile | Model | Provider | Invocation | Role |
 |---|---|---|---|---|
-| orchestrator | MiniMax-M2.7 | minimax | Discord + CLI | Routes, delegates, coordinates |
-| builder | Qwen3.5-27B-Sushi-Coder-RL-GGUF:Q4_K_M | Ollama (RTX 3090) | CLI only | Code implementation |
-| tester | Gemini Flash 2.0 | OpenRouter | CLI only | Validation, pytest |
-| critic | Qwen3.5-27B-Sushi-Coder-RL-GGUF:Q4_K_M | Ollama (RTX 3090) | CLI only | Security/RLS review |
+| orchestrator | MiMo-V2-Pro | OpenRouter | Discord + local | Routes, delegates, coordinates |
+| builder | MiMo-V2-Pro | OpenRouter | delegate_task | Code implementation |
+| tester | Gemini Flash 2.0 | OpenRouter | delegate_task | Validation, pytest |
+| critic | MiMo-V2-Pro | OpenRouter | delegate_task | Security/RLS review |
 
-Builder and Critic share the RTX 3090 Ollama instance — **sequential use**, never concurrent.
+All profiles use cloud APIs — no RTX 3090 / Ollama dependency.
+
+## Delegation Flow
+
+```
+Discord (@hermes-orchestrator)
+  → Orchestrator receives task
+    → delegate_task(goal="write FastAPI route + RLS policy",
+                    toolsets=['terminal','file','code_execution'])
+      → Builder child (MiMo-V2-Pro, isolated context, separate terminal)
+        → Returns: code + output
+
+    → delegate_task(goal="run pytest on the new code",
+                    toolsets=['terminal','file','code_execution'])
+      → Tester child (Gemini Flash 2.0, fast/cheap)
+        → Returns: test results
+
+    → delegate_task(goal="review RLS policy for security anti-patterns",
+                    toolsets=['terminal','file'])
+      → Critic child (MiMo-V2-Pro, isolated context)
+        → Returns: approved / needs_fix
+
+  → Orchestrator synthesizes → responds to Discord
+```
+
+## Cost Model
+
+| Profile | Model | Cost per 1M tokens |
+|---|---|---|
+| orchestrator | MiMo-V2-Pro | $1.00 input / $3.00 output |
+| builder | MiMo-V2-Pro | Same (delegation override) |
+| critic | MiMo-V2-Pro | Same (delegation override) |
+| tester | Gemini Flash 2.0 | $0.10 input / $0.40 output |
+
+**Cost optimization:** Override `delegation.model` to Gemini Flash for non-critical tasks:
+```bash
+# In orchestrator terminal tool:
+delegate_task(goal="simple test", model="google/gemini-2.0-flash")
+```
 
 ## Discord Setup
 
 **Only 1 Discord bot needed:** `hermes-orchestrator`
 
-Create 1 Discord application at https://discord.com/developers/applications.
-
 ### Bot Settings
 
 - Enable: **Presence Intent**, **Server Members Intent**, **Message Content Intent**
-- Permissions integer: `274878286912` (View Channels, Send Messages, Read Message History, Attach Files, Embed Links, Send Messages in Threads, Add Reactions)
+- Permissions: `274878286912`
 
-### Recommended Discord Server Structure
+### Recommended Server Structure
 
 ```
 wims-agents/
@@ -41,95 +77,32 @@ wims-agents/
 └── 🛡-admin/           # x1n4te oversight
 ```
 
-**Key principle:** Orchestrator bot responds when @mentioned. Routes internally via CLI.
-
-## Message Flow
-
-```
-User (@hermes-orchestrator): "build RLS policy for incidents table"
-
-orchestrator (CLI invocation):
-  → hermes -p builder -q "Write FastAPI route + RLS policy for wims.incidents table"
-  → builder runs Qwen3.5-27B on RTX 3090
-  → builder returns: code to file
-
-orchestrator (CLI invocation):
-  → hermes -p tester -q "Run pytest on the new RLS policy code"
-  → tester runs Gemini Flash 2.0
-  → tester returns: pytest results
-
-orchestrator (CLI invocation):
-  → hermes -p critic -q "Review the RLS policy for security anti-patterns"
-  → critic runs Qwen3.5-27B on RTX 3090
-  → critic returns: approved / needs_fix
-
-orchestrator → summarizes to Discord
-```
-
-## RTX 3090 Ollama Setup
-
-```bash
-# On the rented RTX 3090 box:
-
-# 1. Pull the base model
-ollama pull hf.co/bigatuna/Qwen3.5-27b-Sushi-Coder-RL-GGUF:Q4_K_M
-
-# 2. Create optimized models (different Ollama model names)
-cd ~/.hermes/profiles/builder
-ollama create qwen3.5-27b-sushi-coder-builder -f Modelfile
-
-cd ~/.hermes/profiles/critic
-ollama create qwen3.5-27b-sushi-coder-critic -f Modelfile
-
-# 3. Start Ollama with GPU access
-export OLLAMA_NUM_GPU=999
-export CUDA_VISIBLE_DEVICES=0
-ollama serve
-
-# 4. Test
-curl http://localhost:11434/api/generate \
-  -d '{"model":"qwen3.5-27b-sushi-coder-builder","prompt":"def hello(): pass","stream":false}'
-```
-
-## Profile Startup
-
-```bash
-# Terminal 1 — Orchestrator (with Discord gateway)
-hermes -p orchestrator          # or: orchestrator gateway start
-
-# Builder/Tester/Critic don't need to run — spawned by orchestrator via:
-# hermes -p builder -q "task"
-# hermes -p tester -q "task"
-# hermes -p critic -q "task"
-```
-
-## Config Files
+## Profile Configs
 
 ```
 ~/.hermes/profiles/
 ├── orchestrator/
-│   ├── config.yaml    # MiniMax-M2.7, Discord gateway, all toolsets
-│   └── .env           # DISCORD_BOT_TOKEN, MINIMAX_API_KEY, OPENROUTER_API_KEY
+│   ├── config.yaml    # MiMo-V2-Pro, Discord gateway, all toolsets
+│   └── .env           # DISCORD_BOT_TOKEN, OPENROUTER_API_KEY
 ├── builder/
-│   ├── config.yaml    # Qwen3.5-27B-Sushi-Coder, Ollama endpoint, no memory
-│   └── .env           # Ollama endpoint only
+│   ├── config.yaml    # MiMo-V2-Pro, no memory, code toolsets
+│   └── .env           # OPENROUTER_API_KEY
 ├── tester/
-│   ├── config.yaml    # Gemini Flash 2.0, OpenRouter, no memory
+│   ├── config.yaml    # Gemini Flash 2.0, no memory, validation toolsets
 │   └── .env           # OPENROUTER_API_KEY
 └── critic/
-    ├── config.yaml    # Qwen3.5-27B-Sushi-Coder, Ollama endpoint, no memory
-    └── .env           # Ollama endpoint only
+    ├── config.yaml    # MiMo-V2-Pro, no memory, review toolsets
+    └── .env           # OPENROUTER_API_KEY
 ```
 
 ## Pending Setup Checklist
 
 - [ ] Create 1 Discord bot token (hermes-orchestrator)
 - [ ] Set up Discord server + invite bot
-- [ ] SSH to RTX 3090 → ollama pull + create both models
-- [ ] Confirm Ollama networking (SSH tunnel or OLLAMA_HOST=0.0.0.0)
-- [ ] Fill API keys: MINIMAX_API_KEY, OPENROUTER_API_KEY
-- [ ] Fill DISCORD_BOT_TOKEN + DISCORD_ALLOWED_USERS
-- [ ] Orchestrator delegation system prompt
+- [ ] Fill OPENROUTER_API_KEY in all 4 profile .env files
+- [ ] Fill DISCORD_BOT_TOKEN + DISCORD_ALLOWED_USERS in orchestrator .env
+- [ ] Orchestrator delegation system prompt (routing rules)
+- [ ] Honcho PostgreSQL memory backend (optional)
 - [ ] First live test run
 
 ## Key Reference Files

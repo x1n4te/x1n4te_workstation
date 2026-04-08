@@ -4,6 +4,18 @@ Append-only activity log. Newest entries first.
 
 ---
 
+## 2026-04-08
+
+**2026-04-08 | step-1 | Orchestrator config → Nous Portal (OAuth)**
+- Changed: provider: nous, default: mimo-v2-pro
+- Auth: hermes login --provider nous
+
+**2026-04-08 | step-2 | Critic config → Nous Portal (OAuth)**
+- Changed: provider: nous, default: mimo-v2-pro
+- Auth: hermes login --provider nous
+
+---
+
 ## 2026-04-07
 
 **2026-04-07 | ingest | Hermes-Agent deep research paper → 9 wiki pages**
