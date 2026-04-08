@@ -10,7 +10,12 @@ Append-only activity log. Newest entries first.
 - Changed: provider: nous, default: mimo-v2-pro
 - Auth: hermes login --provider nous
 
-**2026-04-08 | wiki | MOC updated — added Agentic Architecture section, fixed open questions, updated thesis relevance**
+**2026-04-08 | ingest | 10 CVEs across Suricata, Keycloak, Next.js → 3 source pages**
+- Sources: wiki/sources/cybersecurity/suricata-cves-2026.md, wiki/sources/cybersecurity/keycloak-cves-2026.md, wiki/sources/cybersecurity/nextjs-cves-2026.md
+- CVEs: CVE-2026-31934, CVE-2026-22264, CVE-2026-22262, CVE-2026-22259, CVE-2026-31937 (Suricata), CVE-2026-4634, CVE-2026-4366, CVE-2026-1529 (Keycloak), CVE-2026-29057, CVE-2026-27980, CVE-2025-55182 (Next.js)
+- Index: updated (total pages: 23)
+
+**2026-04-08 | wiki | MOC updated** — added Agentic Architecture section, fixed open questions, updated thesis relevance**
 - MOC: wiki/mocs/ai-research.md (4 themes, Hermes-Agent reading path, corrected procedural memory status)
 
 **2026-04-08 | step-5 | Orchestrator delegation system prompt created (SOUL.md)**

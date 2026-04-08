@@ -1,14 +1,17 @@
 # Wiki Index
 
 **Last updated:** 2026-04-07  
-**Total pages:** 20
+**Total pages:** 23
 
 ---
 
-## Sources (ai-research/)
+## Sources
 
-| Date | Title | Type | Category |
+|| Date | Title | Type | Category |
 |---|---|---|---|
+| 2026-04-08 | Next.js CVEs — 2026 (Request Smuggling, DoS, RCE) | source | cybersecurity |
+| 2026-04-08 | Keycloak CVEs — 2026 (JWT, SSRF, POST) | source | cybersecurity |
+| 2026-04-08 | Suricata CVEs — 2026 (DoS, Processing Flaws) | source | cybersecurity |
 | 2026-04-07 | MemMachine: A Ground-Truth-Preserving Memory System | source | ai-research |
 | 2026-04-07 | Hermes-Agent: Deep Research Architectures | source | ai-research |
 | 2026-04-07 | DSPy: Declarative Prompt Optimization | source | ai-research |
