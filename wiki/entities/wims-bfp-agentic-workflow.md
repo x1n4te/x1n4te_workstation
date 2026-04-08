@@ -1,120 +1,139 @@
-# WIMS-BFP 4-Agent Discord Architecture
+# WIMS-BFP 4-Agent CLI Delegation Architecture
 
-**Created:** 2026-04-07  
+**Created:** 2026-04-07
+**Updated:** 2026-04-08
 **Status:** Active
 
 ---
 
 ## Overview
 
-Four Hermes-Agent profiles connected via Discord, orchestrating WIMS-BFP development via structured agent delegation.
+Four Hermes-Agent profiles with one visible on Discord (Orchestrator), three invoked silently via CLI delegation. The Orchestrator is the only gateway — Builder, Tester, and Critic are one-shot CLI sub-agents spawned by the Orchestrator's terminal tool.
 
 ## Agent Profiles
 
-| Profile | Model | Endpoint | Cost | Role |
+| Profile | Model | Provider | Invocation | Role |
 |---|---|---|---|---|
-| orchestrator | MiniMax-M2.7 | MiniMax API | ~$0.002/1K tokens | Routes, coordinates, delegates |
-| builder | Qwen3.5-24B-Sushi-Coder | RTX 3090 ($0.15/hr) | $0.15/hr | Code implementation |
-| tester | Gemma 4 | Ollama Cloud/OpenRouter | ~$0.001/1K tokens | Validation, pytest |
-| critic | Qwen3.5-24B-Sushi-Coder | RTX 3090 (shared w/ Builder) | included above | Security/RLS review |
+| orchestrator | MiniMax-M2.7 | minimax | Discord + CLI | Routes, delegates, coordinates |
+| builder | Qwen3.5-27B-Sushi-Coder-RL-GGUF:Q4_K_M | Ollama (RTX 3090) | CLI only | Code implementation |
+| tester | Gemini Flash 2.0 | OpenRouter | CLI only | Validation, pytest |
+| critic | Qwen3.5-27B-Sushi-Coder-RL-GGUF:Q4_K_M | Ollama (RTX 3090) | CLI only | Security/RLS review |
+
+Builder and Critic share the RTX 3090 Ollama instance — **sequential use**, never concurrent.
 
 ## Discord Setup
 
-### Required: 4 Discord Bot Tokens
+**Only 1 Discord bot needed:** `hermes-orchestrator`
 
-Create 4 separate Discord applications at https://discord.com/developers/applications:
+Create 1 Discord application at https://discord.com/developers/applications.
 
-1. **hermes-orchestrator** — Primary coordinator
-2. **hermes-builder** — Code implementation
-3. **hermes-tester** — Validation
-4. **hermes-critic** — Security review
+### Bot Settings
 
-For each:
-1. Create application → Bot → Add Bot
-2. Copy bot token to respective `~/.hermes/profiles/<name>/.env`
-3. Enable: Presence Intent, Server Members Intent, Message Content Intent
+- Enable: **Presence Intent**, **Server Members Intent**, **Message Content Intent**
+- Permissions integer: `274878286912` (View Channels, Send Messages, Read Message History, Attach Files, Embed Links, Send Messages in Threads, Add Reactions)
 
 ### Recommended Discord Server Structure
 
 ```
 wims-agents/
-├── 🏛-orchestrator/         # Bot only responds to @hermes-orchestrator mentions
-├── 🔨-builder/
-├── 🧪-tester/
-├── 🔍-critic/
-├── 📋-handoff/             # Shared channel — Builder posts → Tester reads → Critic reads
-└── 🛡-admin/               # x1n4te only — direct oversight
+├── 🏛-orchestrator/    # Bot responds to @hermes-orchestrator
+├── 🔧-coding/          # Bot posts code outputs, diffs, etc.
+└── 🛡-admin/           # x1n4te oversight
 ```
 
-**Key principle:** Bots only respond when explicitly @mentioned. This prevents loops.
+**Key principle:** Orchestrator bot responds when @mentioned. Routes internally via CLI.
 
 ## Message Flow
 
 ```
-User (@orchestrator): "build RLS policy for incidents table"
+User (@hermes-orchestrator): "build RLS policy for incidents table"
 
-orchestrator → delegate_task(goal="write FastAPI route + RLS policy for incidents table", to="builder")
-    builder runs on RTX 3090
-    builder → writes code to file / shared handoff doc
+orchestrator (CLI invocation):
+  → hermes -p builder -q "Write FastAPI route + RLS policy for wims.incidents table"
+  → builder runs Qwen3.5-27B on RTX 3090
+  → builder returns: code to file
 
-orchestrator → delegate_task(goal="run pytest on the new RLS policy code", to="tester")
-    tester runs Gemma 4
-    tester → reports: pytest pass/fail
+orchestrator (CLI invocation):
+  → hermes -p tester -q "Run pytest on the new RLS policy code"
+  → tester runs Gemini Flash 2.0
+  → tester returns: pytest results
 
-orchestrator → delegate_task(goal="review the RLS policy for security anti-patterns", to="critic")
-    critic runs on shared RTX 3090
-    critic → reports: approved / needs_fix
+orchestrator (CLI invocation):
+  → hermes -p critic -q "Review the RLS policy for security anti-patterns"
+  → critic runs Qwen3.5-27B on RTX 3090
+  → critic returns: approved / needs_fix
 
-orchestrator → summarizes to user in orchestrator channel
+orchestrator → summarizes to Discord
 ```
 
-## RTX 3090 Endpoint Setup
+## RTX 3090 Ollama Setup
 
 ```bash
 # On the rented RTX 3090 box:
-ollama run hf.co/bigatuna/Qwen3.5-27b-Sushi-Coder-RL-GGUF:Q4_K_M
 
-# Ollama serves at http://localhost:11434/v1 by default
-# Verify:
-curl http://localhost:11434/v1/models
+# 1. Pull the base model
+ollama pull hf.co/bigatuna/Qwen3.5-27b-Sushi-Coder-RL-GGUF:Q4_K_M
 
-# If you want external access, bind Ollama to 0.0.0.0:
-OLLAMA_HOST=0.0.0.0 ollama serve
+# 2. Create optimized models (different Ollama model names)
+cd ~/.hermes/profiles/builder
+ollama create qwen3.5-27b-sushi-coder-builder -f Modelfile
+
+cd ~/.hermes/profiles/critic
+ollama create qwen3.5-27b-sushi-coder-critic -f Modelfile
+
+# 3. Start Ollama with GPU access
+export OLLAMA_NUM_GPU=999
+export CUDA_VISIBLE_DEVICES=0
+ollama serve
+
+# 4. Test
+curl http://localhost:11434/api/generate \
+  -d '{"model":"qwen3.5-27b-sushi-coder-builder","prompt":"def hello(): pass","stream":false}'
 ```
 
 ## Profile Startup
 
 ```bash
-# Terminal 1 — Orchestrator
-hermes -p orchestrator
+# Terminal 1 — Orchestrator (with Discord gateway)
+hermes -p orchestrator          # or: orchestrator gateway start
 
-# Terminal 2 — Builder
-hermes -p builder
-
-# Terminal 3 — Tester
-hermes -p tester
-
-# Terminal 4 — Critic
-hermes -p critic
+# Builder/Tester/Critic don't need to run — spawned by orchestrator via:
+# hermes -p builder -q "task"
+# hermes -p tester -q "task"
+# hermes -p critic -q "task"
 ```
 
-## Delegation Config (Orchestrator)
+## Config Files
 
-```yaml
-delegation:
-  model: google/gemma-4-7b    # Children use Gemma (fast/cheap)
-  provider: openrouter
-  max_depth: 2
+```
+~/.hermes/profiles/
+├── orchestrator/
+│   ├── config.yaml    # MiniMax-M2.7, Discord gateway, all toolsets
+│   └── .env           # DISCORD_BOT_TOKEN, MINIMAX_API_KEY, OPENROUTER_API_KEY
+├── builder/
+│   ├── config.yaml    # Qwen3.5-27B-Sushi-Coder, Ollama endpoint, no memory
+│   └── .env           # Ollama endpoint only
+├── tester/
+│   ├── config.yaml    # Gemini Flash 2.0, OpenRouter, no memory
+│   └── .env           # OPENROUTER_API_KEY
+└── critic/
+    ├── config.yaml    # Qwen3.5-27B-Sushi-Coder, Ollama endpoint, no memory
+    └── .env           # Ollama endpoint only
 ```
 
-Children (Builder/Tester/Critic) are spawned via `delegate_task` with:
-- Isolated context (no cross-agent memory leakage)
-- Restricted toolsets
-- Separate terminal session
+## Pending Setup Checklist
 
-## WIMS-BFP Specific Notes
+- [ ] Create 1 Discord bot token (hermes-orchestrator)
+- [ ] Set up Discord server + invite bot
+- [ ] SSH to RTX 3090 → ollama pull + create both models
+- [ ] Confirm Ollama networking (SSH tunnel or OLLAMA_HOST=0.0.0.0)
+- [ ] Fill API keys: MINIMAX_API_KEY, OPENROUTER_API_KEY
+- [ ] Fill DISCORD_BOT_TOKEN + DISCORD_ALLOWED_USERS
+- [ ] Orchestrator delegation system prompt
+- [ ] First live test run
 
-- Critic has access to `WIMS_SECURITY_CHECKLIST` pointing to `wiki/entities/hermes-agent.md`
-- All agents have WIMS-BFP workspace as `cwd`
-- Orchestrator maintains cross-agent handoff state in Honcho memory (PostgreSQL)
-- RLS policy changes always go through Critic before merge
+## Key Reference Files
+
+- `~/Documents/x1n4te-workstation/scripts/setup-4agents.sh`
+- `~/.hermes/profiles/{orchestrator,builder,tester,critic}/`
+- `~/.hermes/skills/hermes-4agent-discord-setup/`
