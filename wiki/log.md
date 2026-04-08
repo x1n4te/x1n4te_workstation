@@ -10,6 +10,9 @@ Append-only activity log. Newest entries first.
 - Changed: provider: nous, default: mimo-v2-pro
 - Auth: hermes login --provider nous
 
+**2026-04-08 | step-3 | Discord bot token wired into orchestrator .env**
+- DISCORD_TOKEN_ORCHESTRATOR, DISCORD_BOT_PERMISSIONS, DISCORD_USER_ID set manually by user
+
 **2026-04-08 | step-2 | Critic config → Nous Portal (OAuth)**
 - Changed: provider: nous, default: mimo-v2-pro
 - Auth: hermes login --provider nous
