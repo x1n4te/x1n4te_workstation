@@ -21,7 +21,12 @@ related:
 
 # WIMS-BFP Abstract
 
-**Thesis:** "WIMS-BFP: A Secure Web Incident Monitoring System with AI-Assisted Threat Detection for Cybersecurity-Specific Forensics-Driven Analysis in the Bureau of Fire Protection"
+**Thesis:** "WIMS-BFP: A Secured Web Offline-First Incident Monitoring System with Explainable AI for Threat Interpretability in the Bureau of Fire Protection"
+
+**Authors:** Cabrales, Nathan Josua C.; Camama, Earl Justin P.; Dela Cruz, Red Gabrielle A.; Tendero, Guinevere T.
+**Adviser:** Dr. Kirk Alvin S. Awat
+**Institution:** FEU Institute of Technology, March 2026
+**Source:** `raw/misc/WIMS-BFP.pdf` (revised, 2026-04-09)
 
 ---
 

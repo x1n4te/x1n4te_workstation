@@ -8,7 +8,15 @@ Append-only activity log. Newest entries first.
 
 ## 2026-04-09
 
-**2026-04-09 | fix | Auth loop — 5 root causes in docker-compose.yml**
+**2026-04-09 | ingest | Revised thesis PDF ingested (title updated, 2 Table 21 items remaining)**
+- Updated: wiki/sources/software-dev/wims-bfp-abstract.md — new title, authors, adviser, institution
+- Updated: wiki/sources/software-dev/wims-bfp-thesis-revisions-2026-04-08.md — status 49/51, 2 remaining
+- Title changed: "A Secure Web Incident Monitoring System with AI-Assisted Threat Detection" → "A Secured Web Offline-First Incident Monitoring System with Explainable AI for Threat Interpretability"
+- Remaining: Instructor (line 5674) and TanStack Query (line 5657) still in Table 21
+- Removed confirmed: PyNaCl, X25519, OpenBao, Llama.cpp all at 0 occurrences
+- Added confirmed: AES-256-GCM (29), TLS 1.3 (8), Ollama (4), idb (23)
+
+**2026-04-09 | fix | Auth loop — 10 root causes in docker-compose + auth + nginx + frontend**
 - Fixed: keycloak ports 8080:8080 (browser OIDC redirect blocked)
 - Fixed: keycloak healthcheck accepts 302 (was expecting 200 OK)
 - Fixed: frontend ports 3000:3000 (callback URL unreachable)

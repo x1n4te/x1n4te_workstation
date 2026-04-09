@@ -2,8 +2,8 @@
 id: wims-bfp-thesis-revisions-2026-04-08-001
 type: source
 created: 2026-04-08
-updated: 2026-04-08
-last_verified: 2026-04-08
+updated: 2026-04-09
+last_verified: 2026-04-09
 review_after: 2026-05-08
 stale_after: 2026-10-08
 confidence: high
@@ -29,9 +29,12 @@ related:
 # WIMS-BFP Thesis Revisions — 2026-04-08
 
 **Date:** 2026-04-08
+**Updated:** 2026-04-09 (PDF regenerated, title revised)
 **Scope:** Full thesis Ch 1–3 review against codebase
 **Method:** Ultraplan (AUDIT → ANALYZE → PLAN → REVIEW)
-**Verdict:** All discrepancies resolved via thesis-language edits. Codebase unchanged.
+**Verdict:** 49/51 changes applied. Title updated. 2 remaining in Table 21.
+**Revised Title:** "WIMS-BFP: A Secured Web Offline-First Incident Monitoring System with Explainable AI for Threat Interpretability in the Bureau of Fire Protection"
+**Remaining:** Instructor row (line 5674), TanStack Query row (line 5657) in Table 21.
 
 ---
 

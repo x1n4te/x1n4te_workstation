@@ -54,14 +54,14 @@ Suricata is widely deployed but produces high-volume, low-context alerts. The in
 
 ## Where WIMS-BFP Fits
 
-| Dimension | State of the Art | WIMS-BFP Position |
-|-----------|-----------------|-------------------|
-| Offline-first PWA | Common in commercial, rare in PH gov | First-class offline with encrypted sync |
-| Geospatial heatmaps | Standard in commercial GIS | Open-source PostGIS on VPS |
-| XAI for security | LIME/SHAP for ML models | SLM narrative generation (novel application) |
-| IDS integration | SIEM-based aggregation | On-premise AI interpretation |
-| Data sovereignty | Cloud SIEM (Splunk, Elastic) | Fully self-hosted, no external AI dependency |
-| Compliance | Varies | RA 10173 + ISO 27001 + STRIDE mapped |
+| Dimension           | State of the Art                     | WIMS-BFP Position                            |
+| ------------------- | ------------------------------------ | -------------------------------------------- |
+| Offline-first PWA   | Common in commercial, rare in PH gov | First-class offline with encrypted sync      |
+| Geospatial heatmaps | Standard in commercial GIS           | Open-source PostGIS on VPS                   |
+| XAI for security    | LIME/SHAP for ML models              | SLM narrative generation (novel application) |
+| IDS integration     | SIEM-based aggregation               | On-premise AI interpretation                 |
+| Data sovereignty    | Cloud SIEM (Splunk, Elastic)         | Fully self-hosted, no external AI dependency |
+| Compliance          | Varies                               | RA 10173 + ISO 27001 + STRIDE mapped         |
 
 ---
 
