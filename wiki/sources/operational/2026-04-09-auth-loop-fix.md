@@ -77,6 +77,26 @@ Ollama image has no `curl` or `wget`. Health check `curl -sf http://localhost:11
 
 ---
 
+## 6. BACKEND_URL bypassed nginx — cookies never reached backend
+
+Session route at `/api/auth/session` (Next.js server-side) was calling `http://backend:8000` directly. Cookie was set on `localhost` origin (via nginx port 80). Direct call to `backend:8000` = different origin = browser doesn't send cookie = 401 on every session check.
+
+**Fix:** Changed `BACKEND_URL` from `http://backend:8000` to `http://nginx-gateway:80` — routes through nginx so cookies flow properly.
+
+---
+
+## 7. Service worker intercepted API and auth routes (CORS + OIDC state)
+
+`sw.js` was a naive cache-first implementation with no URL filtering. Intercepted ALL requests including `/api/*` and `/callback`. Caused:
+- CORS errors on `/api/ref/regions` (SW fetch didn't include CORS headers)
+- OIDC "No matching state found in storage" (cached callback page had stale state)
+
+**Fix:** Added early return in fetch handler — skip intercepting `/api/` and `/auth/` routes.
+
+---
+
 ## Lesson
 
 Docker `depends_on: condition: service_healthy` is a hard gate. If the health check is wrong (Keycloak 302, ollama missing tools), ALL dependent services refuse to start. Always verify health checks actually work in the target container.
+
+Service workers are dangerous in auth flows — they can serve stale pages, break OIDC state, and cause CORS issues. Always exclude API and auth routes from SW interception.

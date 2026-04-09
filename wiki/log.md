@@ -14,7 +14,9 @@ Append-only activity log. Newest entries first.
 - Fixed: frontend ports 3000:3000 (callback URL unreachable)
 - Fixed: ollama healthcheck removed (no curl/wget in image)
 - Fixed: backend ollama dependency relaxed to service_started
-- Root cause: 4 containers exited 4 days ago + 3 missing port mappings + 2 broken healthchecks
+- Fixed: BACKEND_URL routed through nginx (cookie domain fix)
+- Fixed: sw.js URL exclusions for /api/ and /auth/ (CORS + OIDC state fix)
+- Root cause: 7 issues total — exited containers, missing ports, broken healthchecks, cookie routing, service worker interception
 - Wiki: created wiki/sources/operational/2026-04-09-auth-loop-fix.md
 - Commit: cd519f6
 
