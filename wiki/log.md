@@ -8,6 +8,11 @@ Append-only activity log. Newest entries first.
 
 ## 2026-04-09
 
+**2026-04-09 | ingest | LLM Learning Pathway — Category 5 (LLM Security) expanded**
+- Updated: wiki/concepts/llm-security-learning-path.md — full content (15KB)
+- Covers: NIST adversarial ML taxonomy (NIST.AI.100-2e2025), OWASP LLM Top 10, attack techniques (prompt injection, jailbreaking, data poisoning, model extraction, membership inference), red teaming process, defense strategies, 6 tools (Garak, DeepTeam, PyRIT, ART, promptmap, LLM Guard), 5 hands-on exercises, WIMS-BFP thesis security evaluation recommendations
+- All 5 categories now complete: 36.5 hours total
+
 **2026-04-09 | ingest | LLM Learning Pathway — Category 4 (Applied LLMs) expanded**
 - Updated: wiki/concepts/llm-applied-learning-path.md — full content (12KB)
 - Covers: API usage, fine-tuning (LoRA, RLHF, DPO), RAG pipeline, agents & tool use, deployment & quantization, 4 hands-on projects
