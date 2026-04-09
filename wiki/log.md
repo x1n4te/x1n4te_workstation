@@ -8,6 +8,11 @@ Append-only activity log. Newest entries first.
 
 ## 2026-04-09
 
+**2026-04-09 | ingest | LLM Learning Pathway — Category 3 (Papers) expanded**
+- Updated: wiki/concepts/llm-papers-learning-path.md — full content (11KB)
+- Covers: 8 essential papers with summaries, 18 extended reading list, reading strategy, 4-week plan, cybersecurity connections per paper
+- Papers: Attention Is All You Need, BERT, GPT-2, GPT-3, Scaling Laws, InstructGPT/RLHF, LLaMA, DeepSeek-R1/GRPO
+
 **2026-04-09 | ingest | LLM Learning Pathway — Category 2 (Transformers & Attention) expanded**
 - Updated: wiki/concepts/llm-transformers-learning-path.md — full content (11KB)
 - Covers: transformer architecture diagram, attention mechanism step-by-step, Q/K/V walkthrough, RNN comparison, 5 cybersecurity connections
