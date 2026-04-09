@@ -8,11 +8,9 @@ Append-only activity log. Newest entries first.
 
 ## 2026-04-09
 
-**2026-04-09 | ingest | Signs of AI Writing — detection guide from Wikipedia**
-- Created: wiki/concepts/signs-of-ai-writing.md (9.3KB)
-- Covers: 24+ signs across content, language, style, communication, markup, citation categories
-- Adapted for cybersecurity: phishing detection, threat report verification, social engineering, disidentification
-- Includes: composite confidence scoring, quick reference checklist, ineffective indicators
+**2026-04-09 | ingest | Signs of AI Writing — full Wikipedia page ingested (52KB)**
+- Updated: wiki/concepts/signs-of-ai-writing.md — full content from Wikipedia (52KB, 18 sections, 561 lines)
+- Covers: Caveats, Content (6 subsections), Language & Grammar (5 subsections), Style (10 subsections), Communication (3 subsections), Markup (7 subsections), Citations (7 subsections), Miscellaneous, Signs of Human Writing, Ineffective Indicators, Historical Indicators
 - Source: en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing
 
 **2026-04-09 | ingest | LLM Learning Pathway — Category 5 (LLM Security) expanded**
