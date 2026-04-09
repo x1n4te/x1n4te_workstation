@@ -95,6 +95,30 @@ Session route at `/api/auth/session` (Next.js server-side) was calling `http://b
 
 ---
 
+## 8. JWT issuer mismatch (Invalid issuer)
+
+Backend expected issuer `http://keycloak:8080/auth/realms/bfp/` (KEYCLOAK_REALM_URL). Token had `http://localhost/auth/realms/bfp` (from `KC_HOSTNAME=localhost`). Backend couldn't reach `localhost:8080` inside Docker (port mapping is host→container only).
+
+**Fix:** Added `KEYCLOAK_ISSUER` env var to separate issuer validation from JWKS fetching. Backend fetches keys from `keycloak:8080`, validates issuer as `http://localhost/auth/realms/bfp`.
+
+---
+
+## 9. Dual entry points + cookie domain mismatch
+
+Frontend exposed on both `localhost:80` (nginx) and `localhost:3000` (direct port mapping). Cookie set at `localhost:3000` was host-only (port-specific). Session check at `localhost:80` didn't send the cookie → 401 → redirect loop.
+
+**Fix:** Removed `ports: "3000:3000"`. Single entry point via nginx port 80. All URLs changed to `http://localhost` (no port). Added `proxy_cookie_domain nginx-gateway localhost;` in nginx to rewrite backend cookie domain.
+
+---
+
+## 10. React 18 StrictMode double-calls signinCallback()
+
+StrictMode double-invokes `useEffect` in dev. First `signinCallback()` succeeds and consumes OIDC state. Second call fails with "No matching state found."
+
+**Fix:** Added `didRun` guard in callback page's useEffect.
+
+---
+
 ## Lesson
 
 Docker `depends_on: condition: service_healthy` is a hard gate. If the health check is wrong (Keycloak 302, ollama missing tools), ALL dependent services refuse to start. Always verify health checks actually work in the target container.
