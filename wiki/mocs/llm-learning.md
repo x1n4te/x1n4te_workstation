@@ -47,13 +47,13 @@ related:
 
 ## Categories
 
-| # | Category | Page | Status | Time |
-|---|----------|------|--------|------|
-| 1 | Foundations | [[concepts/llm-foundations-learning-path]] | Complete | 4.5h |
-| 2 | Transformers & Attention | [[concepts/llm-transformers-learning-path]] | Complete | 6h |
-| 3 | Papers | [[concepts/llm-papers-learning-path]] | Stub | 8h |
-| 4 | Applied LLMs | [[concepts/llm-applied-learning-path]] | Stub | 6h |
-| 5 | LLM Security | [[concepts/llm-security-learning-path]] | Complete | 7.5h |
+| #   | Category                 | Page                                        | Status   | Time |
+| --- | ------------------------ | ------------------------------------------- | -------- | ---- |
+| 1   | Foundations              | [[concepts/llm-foundations-learning-path]]  | Complete | 4.5h |
+| 2   | Transformers & Attention | [[concepts/llm-transformers-learning-path]] | Complete | 6h   |
+| 3   | Papers                   | [[concepts/llm-papers-learning-path]]       | Stub     | 8h   |
+| 4   | Applied LLMs             | [[concepts/llm-applied-learning-path]]      | Stub     | 6h   |
+| 5   | LLM Security             | [[concepts/llm-security-learning-path]]     | Complete | 7.5h |
 
 ---
 

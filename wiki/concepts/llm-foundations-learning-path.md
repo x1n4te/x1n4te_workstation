@@ -45,12 +45,12 @@ Answer in 4 steps:
 
 The single best visual introduction to neural networks. Grant Sanderson's animations make the math intuitive.
 
-| Video | Duration | What You Learn |
-|---|---|---|
-| But what is a Neural Network? | 19 min | Neurons, layers, weights — introduced through handwritten digit recognition |
-| Gradient descent, how neural networks learn | 21 min | Loss functions, learning rate, why models converge (or don't) |
-| What is backpropagation really doing? | 13 min | The chain rule applied to neural nets — how errors flow backward |
-| Backpropagation calculus | 11 min | The actual math — partial derivatives, weight updates |
+| Video                                       | Duration | What You Learn                                                              |
+| ------------------------------------------- | -------- | --------------------------------------------------------------------------- |
+| But what is a Neural Network?               | 19 min   | Neurons, layers, weights — introduced through handwritten digit recognition |
+| Gradient descent, how neural networks learn | 21 min   | Loss functions, learning rate, why models converge (or don't)               |
+| What is backpropagation really doing?       | 13 min   | The chain rule applied to neural nets — how errors flow backward            |
+| Backpropagation calculus                    | 11 min   | The actual math — partial derivatives, weight updates                       |
 
 **Watch order:** Sequential (Ch 1 → 2 → 3 → 4). Each builds on the previous.
 
@@ -132,13 +132,13 @@ Understanding foundations directly applies to:
 
 ## Estimated Time
 
-| Resource | Time |
-|---|---|
-| 3Blue1Brown (Ch 1-4) | ~1 hour |
-| Karpathy micrograd | ~1.5 hours (watch + code along) |
-| Welch Labs (Parts 1-3) | ~1.5 hours |
-| Key concepts review | 30 min |
-| **Total** | **~4.5 hours** |
+| Resource               | Time                            |
+| ---------------------- | ------------------------------- |
+| 3Blue1Brown (Ch 1-4)   | ~1 hour                         |
+| Karpathy micrograd     | ~1.5 hours (watch + code along) |
+| Welch Labs (Parts 1-3) | ~1.5 hours                      |
+| Key concepts review    | 30 min                          |
+| **Total**              | **~4.5 hours**                  |
 
 One weekend of focused study.
 

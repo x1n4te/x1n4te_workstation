@@ -49,12 +49,12 @@ AI research in this vault covers four primary themes:
 
 ### Quick Reference: Systems
 
-| System | Ground Truth | Benchmark | Token Cost |
-|---|---|---|---|
-| [[entities/memmachine|MemMachine]] | ✓ | LoCoMo 0.9169 | Low (~80% less vs Mem0) |
-| [[entities/mem0|Mem0]] | ✗ | — | High |
-| [[entities/mastras|Mastra]] | ✗ | 94.87% LongMemEval | Very low |
-| [[entities/memgpt|MemGPT]] | Partial | — | Variable |
+| System                  | Ground Truth   | Benchmark | Token Cost         |                         |
+| ----------------------- | -------------- | --------- | ------------------ | ----------------------- |
+| [[entities/memmachine]] | [[MemMachine]] | ✓         | LoCoMo 0.9169      | Low (~80% less vs Mem0) |
+| [[entities/mem0]]       | [[Mem0]]       | ✗         | —                  | High                    |
+| [[entities/mastras]]    | [[Mastras]]    | ✗         | 94.87% LongMemEval | Very low                |
+| [[entities/memgpt]]     | [[MemGPT]]     | Partial   | —                  | Variable                |
 
 ### Key Insight
 

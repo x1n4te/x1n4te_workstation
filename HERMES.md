@@ -105,12 +105,12 @@ The alias: unlocks `raw/` (requires sudo), copies file(s), re-locks `raw/`, git-
 
 ## Filename Conventions
 
-| Type | Format | Example |
-|---|---|---|
-| Wiki page | `kebab-case.md` | `suricata-pipeline.md` |
-| Source page | mirrors raw/ path | `ai-research/ai-2027.md` |
-| Session file | `YYYY-MM-DD.md` | `2026-04-07.md` |
-| Raw note | `YYYY-MM-DD-topic.md` | `2026-04-07-attention-mechanism.md` |
+| Type          | Format                           | Example                                 |
+| ------------- | -------------------------------- | --------------------------------------- |
+| Wiki page     | `kebab-case.md`                  | `suricata-pipeline.md`                  |
+| Source page   | mirrors raw/ path                | `ai-research/ai-2027.md`                |
+| Session file  | `YYYY-MM-DD.md`                  | `2026-04-07.md`                         |
+| Raw note      | `YYYY-MM-DD-topic.md`            | `2026-04-07-attention-mechanism.md`     |
 | Archived page | `*.archived/YYYY-MM-DD-title.md` | `suricata-rules.archived/2026-03-15.md` |
 
 ---
