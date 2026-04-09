@@ -41,22 +41,22 @@ related:
 ```
 ┌─────────────────────────────────────────────┐
 │                 chat-network                │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  │
-│  │ FastAPI   │  │ Celery   │  │ Suricata  │ │
-│  │ (backend) │  │ (worker) │  │ (beat)    │ │
-│  └────┬─────┘  └────┬─────┘  └────┬─────┘  │
-│       │              │              │        │
-│  ┌────┴──────────────┴──────────────┴─────┐  │
-│  │           PostgreSQL + PostGIS         │  │
-│  └────────────────────────────────────────┘  │
-│  ┌────────────────────────────────────────┐  │
-│  │              Redis                     │  │
-│  └────────────────────────────────────────┘  │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐   │
+│  │ FastAPI  │  │ Celery   │  │ Suricata │   │
+│  │(backend) │  │ (worker) │  │ (beat)   │   │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘   │
+│       │              │              │       │
+│  ┌────┴──────────────┴──────────────┴─────┐ │
+│  │           PostgreSQL + PostGIS         │ │
+│  └────────────────────────────────────────┘ │
+│  ┌────────────────────────────────────────┐ │
+│  │              Redis                     │ │
+│  └────────────────────────────────────────┘ │
 └─────────────────────────────────────────────┘
                 │
            ┌────┴────┐
-           │ Next.js  │
-           │ (PWA)    │
+           │ Next.js │
+           │ (PWA)   │
            └─────────┘
 ```
 
@@ -64,13 +64,13 @@ related:
 
 ## ZTA Mapping for Docker
 
-| Component | ZTA Tenet | Implementation |
-|---|---|---|
-| **Network isolation** | Tenet 2: Security regardless of network | chat-network internal bridge, no exposed DB ports |
-| **Non-root containers** | Tenet 6: Dynamic auth | Containers run as dedicated service accounts |
-| **Secrets via files** | Tenet 4: Dynamic policy | DB passwords in `/run/secrets/`, not env vars |
-| **Image scanning** | Tenet 7: Improve posture | trivy in CI/CD pipeline |
-| **Read-only filesystem** | Tenet 5: Monitor assets | Immutable container filesystem |
+| Component                | ZTA Tenet                               | Implementation                                    |
+| ------------------------ | --------------------------------------- | ------------------------------------------------- |
+| **Network isolation**    | Tenet 2: Security regardless of network | chat-network internal bridge, no exposed DB ports |
+| **Non-root containers**  | Tenet 6: Dynamic auth                   | Containers run as dedicated service accounts      |
+| **Secrets via files**    | Tenet 4: Dynamic policy                 | DB passwords in `/run/secrets/`, not env vars     |
+| **Image scanning**       | Tenet 7: Improve posture                | trivy in CI/CD pipeline                           |
+| **Read-only filesystem** | Tenet 5: Monitor assets                 | Immutable container filesystem                    |
 
 ---
 

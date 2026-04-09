@@ -27,16 +27,16 @@ related:
 
 ## Abstract
 
-This study presents the development and evaluation of WIMS-BFP, an offline-capable Progressive Web Application (PWA) designed to provide the Bureau of Fire Protection's (BFP) Fire Suppression Operation Division (FSOD) with a resilient and secure incident monitoring system.
+This study presents the development and evaluation of [[sources/software-dev/wims-bfp-ch1-introduction|WIMS-BFP]], an offline-capable Progressive Web Application (PWA) designed to provide the Bureau of Fire Protection's (BFP) Fire Suppression Operation Division (FSOD) with a resilient and secure incident monitoring system.
 
-Addressing the operational realities of unstable connectivity and infrastructure disruption in disaster-affected areas, WIMS-BFP adopts an Offline-First architecture supported by local browser storage (IndexedDB) to enable uninterrupted data capture and subsequent synchronization.
+Addressing the operational realities of unstable connectivity and infrastructure disruption in disaster-affected areas, WIMS-BFP adopts an [[concepts/episodic-vs-semantic-memory|Offline-First]] architecture supported by local browser storage (IndexedDB) to enable uninterrupted data capture and subsequent synchronization.
 
-The system is deployed through a cloud-hosted Virtual Private Server (VPS) environment while maintaining the strict custody of sensitive records through role-based access control, secure transmission protocols, and immutable audit logging.
+The system is deployed through a cloud-hosted Virtual Private Server (VPS) environment while maintaining the strict custody of sensitive records through [[concepts/keycloak-fastapi-security-wims-bfp|role-based access control]], secure transmission protocols, and immutable audit logging.
 
-To reduce the opacity of conventional cybersecurity tools and mitigate alert fatigue, WIMS-BFP incorporates a self-hosted Explainable AI (XAI) support layer powered by the Qwen2.5-3B Small Language Model (SLM). Integrated alongside a Suricata Intrusion Detection System (IDS), this component converts deterministic network security alerts into human-readable forensic narratives for administrator review.
+To reduce the opacity of conventional cybersecurity tools and mitigate alert fatigue, WIMS-BFP incorporates a self-hosted Explainable AI (XAI) support layer powered by the Qwen2.5-3B Small Language Model (SLM). Integrated alongside a [[concepts/docker-security-wims-bfp|Suricata Intrusion Detection System (IDS)]], this component converts deterministic network security alerts into human-readable forensic narratives for administrator review.
 
-Testing methodologies applied the OWASP Application Security Verification Standard (ASVS) Level 2 mapped against a STRIDE threat model, while system quality was evaluated using ISO/IEC 25010 standards.
+Testing methodologies applied the [[sources/software-dev/owasp-secure-code-review|OWASP Application Security Verification Standard (ASVS)]] Level 2 mapped against a STRIDE threat model, while system quality was evaluated using [[sources/software-dev/wims-bfp-ch3d-testing-data|ISO/IEC 25010]] standards.
 
-The final design successfully bridges offline-first resilience, cloud-based regional accessibility, and explainable security support, all while aligning with the strict compliance mandates of the Data Privacy Act of 2012 (RA 10173).
+The final design successfully bridges offline-first resilience, cloud-based regional accessibility, and explainable security support, all while aligning with the strict compliance mandates of the Data Privacy Act of 2012 ([[concepts/zero-trust-architecture|RA 10173]]).
 
 **Keywords:** Progressive Web Application (PWA), Offline-First Architecture, Explainable AI (XAI), Intrusion Detection System (IDS), Bureau of Fire Protection (BFP)

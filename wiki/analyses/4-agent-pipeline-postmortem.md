@@ -4,31 +4,42 @@ type: analysis
 created: 2026-04-08
 updated: 2026-04-08
 last_verified: 2026-04-08
-review_after: 2026-05-08
-stale_after: 2026-10-08
+review_after: 2026-10-08
+stale_after: 2027-04-08
 confidence: high
 source_refs:
   - sessions/2026-04-08.md
   - raw/ai-research/HERMES-AGENT.md
-status: active
+status: archived
 tags:
   - hermes-agent
   - multi-agent
   - postmortem
   - wims-bfp
-  - discord
-  - failure-analysis
+  - lessons-learned
+  - archived
 related:
-  - entities/hermes-agent
+  - entities/hermes-agent-setup
+  - concepts/decisions-and-rationale
   - concepts/delegate-task-architecture
-  - concepts/hermes-production-stack
 ---
 
-# 4-Agent Pipeline: Postmortem
+# 4-Agent Pipeline: Lessons Learned (Archived)
 
 **Date:** 2026-04-08
-**Status:** FAILED — never reached first live test run
-**Verdict:** Architecture viable on paper, execution blocked by infra + integration gaps
+**Status:** ARCHIVED — multi-agent architecture abandoned
+**Replaced by:** Single-agent with Telegram + CLI → [[entities/hermes-agent-setup]]
+**Decision rationale:** [[concepts/decisions-and-rationale]]
+
+---
+
+> **This document is preserved as a lessons-learned artifact.** The multi-agent Discord architecture was attempted and failed. The failure analysis below is retained for future reference if multi-agent is ever reconsidered.
+
+**Key lesson:** Single-agent with good tools beats multi-agent with coordination overhead.
+
+---
+
+## What Was Planned
 
 ---
 

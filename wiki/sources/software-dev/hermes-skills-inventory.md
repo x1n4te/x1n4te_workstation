@@ -81,6 +81,7 @@ Model training, inference, evaluation, and research tools.
 ### mlops/ (25 skills)
 
 **Inference (6):**
+
 | Skill | Purpose |
 |---|---|
 | inference/vllm | Serve LLMs with PagedAttention, continuous batching |
@@ -91,6 +92,7 @@ Model training, inference, evaluation, and research tools.
 | inference/obliteratus | Remove refusal behaviors from LLMs |
 
 **Training (6):**
+
 | Skill | Purpose |
 |---|---|
 | training/unsloth | Fast fine-tuning (2-5x speed, 50-80% less memory) |
@@ -101,6 +103,7 @@ Model training, inference, evaluation, and research tools.
 | training/pytorch-fsdp | Fully Sharded Data Parallel training |
 
 **Models (5):**
+
 | Skill | Purpose |
 |---|---|
 | models/whisper | Speech recognition (99 languages) |
@@ -109,7 +112,9 @@ Model training, inference, evaluation, and research tools.
 | models/stable-diffusion | Text-to-image generation |
 | models/segment-anything | Zero-shot image segmentation |
 
+
 **Cloud/Eval/Research (8):**
+
 | Skill | Purpose |
 |---|---|
 | cloud/modal | Serverless GPU platform |

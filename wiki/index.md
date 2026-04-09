@@ -1,7 +1,7 @@
 # Wiki Index
 
 **Last updated:** 2026-04-08
-**Total pages:** 61
+**Total pages:** 68
 
 ---
 
@@ -52,12 +52,14 @@
 
 | Date | Title | Type |
 |---|---|---|
+| 2026-04-08 | Hermes Agent — Personal Setup (x1n4te) | entity |
 | 2026-04-07 | Hermes-Agent | entity |
 | 2026-04-07 | MemMachine | entity |
 | 2026-04-07 | Mem0 | entity |
 | 2026-04-07 | Mastra | entity |
 | 2026-04-07 | MemGPT | entity |
 | 2026-04-07 | DSPy | entity |
+| 2026-04-08 | WIMS-BFP Agentic Workflow | entity |
 
 ---
 
@@ -65,6 +67,10 @@
 
 | Date | Title |
 |---|---|
+| 2026-04-08 | State of the Field — WIMS-BFP Context |
+| 2026-04-08 | Common Hermes Commands — Quick Reference |
+| 2026-04-08 | Decisions & Rationale |
+| 2026-04-08 | Environment Snapshot |
 | 2026-04-08 | PostGIS Security for WIMS-BFP |
 | 2026-04-08 | FastAPI + Celery/Redis Security for WIMS-BFP |
 | 2026-04-08 | Keycloak + FastAPI Security for WIMS-BFP |
@@ -99,8 +105,16 @@
 
 | Date | Title |
 |---|---|
+| 2026-04-08 | WIMS-BFP — Map of Content (thesis hub) |
+| 2026-04-08 | Skills — Map of Content (88 skills) |
 | 2026-04-08 | Cybersecurity — Map of Content |
 | 2026-04-07 | AI Research — Map of Content |
+
+---
+
+## Artifacts (Image Descriptions)
+
+*No artifacts yet — images received via Telegram are vision-analyzed and stored in wiki/artifacts/.*
 
 ---
 

@@ -84,17 +84,17 @@ LOCAL-WIMS-BFP-PROTOTYPE/
 
 ## 2. Stack Summary
 
-| Layer | Technology | Version |
-|---|---|---|
-| Frontend | Next.js (App Router), React, TypeScript, TailwindCSS | 16 / 19 / 4 |
-| Backend | FastAPI + SQLAlchemy + GeoAlchemy2 | Python 3.11 |
-| Queue | Celery + Redis | 5.4 / 7.2 |
-| Database | PostgreSQL + PostGIS | 15 / 3.4 |
-| Auth | Keycloak (JWT/OIDC, PKCE) | 24.0.0 |
-| AI/XAI | Ollama + Qwen2.5-3B | local inference |
-| IDS | Suricata (EVE JSON) | latest |
-| Gateway | Nginx reverse proxy | alpine |
-| Encryption | AES-256-GCM (cryptography lib) | 43.0+ |
+| Layer      | Technology                                           | Version         |
+| ---------- | ---------------------------------------------------- | --------------- |
+| Frontend   | Next.js (App Router), React, TypeScript, TailwindCSS | 16 / 19 / 4     |
+| Backend    | FastAPI + SQLAlchemy + GeoAlchemy2                   | Python 3.11     |
+| Queue      | Celery + Redis                                       | 5.4 / 7.2       |
+| Database   | PostgreSQL + PostGIS                                 | 15 / 3.4        |
+| Auth       | Keycloak (JWT/OIDC, PKCE)                            | 24.0.0          |
+| AI/XAI     | Ollama + Qwen2.5-3B                                  | local inference |
+| IDS        | Suricata (EVE JSON)                                  | latest          |
+| Gateway    | Nginx reverse proxy                                  | alpine          |
+| Encryption | AES-256-GCM (cryptography lib)                       | 43.0+           |
 
 ---
 

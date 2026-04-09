@@ -40,24 +40,24 @@ related:
 
 ## Architecture Overview
 
-**Pattern:** Highly decoupled, hybrid architecture bridging public VPS with Sovereign LAN, enforcing Zero-Trust.
+**Pattern:** Highly decoupled, hybrid architecture bridging public VPS with Sovereign LAN, enforcing [[concepts/zero-trust-architecture|Zero-Trust]].
 
 ### Three-Layer Architecture
 
 **1. Public and Regional Edge**
 - Public-facing VPS portal for Civilian Reporters (crowdsourced fire alerts)
-- Offline-first PWA for Regional Encoders (Dexie.js/IndexedDB for local caching)
+- Offline-first PWA for Regional Encoders ([[sources/software-dev/wims-bfp-ch3b-architecture|Dexie.js/IndexedDB]] for local caching)
 - Auto-sync on connectivity restoration
 
 **2. Internal Workstations and Access Control**
 - Nginx reverse proxy routes all incoming traffic
-- Keycloak enforces RBAC via JWT
+- [[concepts/keycloak-fastapi-security-wims-bfp|Keycloak]] enforces RBAC via JWT
 - Strict Separation of Duties (SoD)
 
-**3. Sovereign Core (Docker-containerized)**
-- FastAPI orchestrator (ingests alerts, parses sync data, executes triage)
+**3. Sovereign Core ([[concepts/docker-security-wims-bfp|Docker-containerized]])**
+- [[concepts/fastapi-security-wims-bfp|FastAPI]] orchestrator (ingests alerts, parses sync data, executes triage)
 - Redis + Celery for async operations (AI inference, report generation)
-- PostgreSQL + PostGIS for verified records + geospatial heatmaps
+- [[concepts/postgresql-security-wims-bfp|PostgreSQL]] + [[concepts/postgis-security-wims-bfp|PostGIS]] for verified records + geospatial heatmaps
 - Suricata IDS for network monitoring
 - Qwen2.5-3B for XAI narrative generation
 
@@ -106,7 +106,7 @@ National Analyst → Heatmaps → PostGIS spatial queries → Geospatial output
 | 3. In-Context Inference | Qwen2.5-3B receives structured prompt | In-Context Learning synthesizes technobabble | Concise narrative |
 | 4. Forensic Presentation | Narrative stored in security_logs | Displayed on admin dashboard | Human-readable intelligence |
 
-**Key distinction:** AI does NOT perform anomaly detection. It only translates deterministic Suricata alerts into narratives. Detection = Suricata (rules). Interpretation = Qwen2.5-3B (XAI).
+**Key distinction:** AI does NOT perform anomaly detection. It only translates deterministic [[sources/software-dev/wims-bfp-ch3c-security-tools|Suricata alerts]] into narratives. Detection = Suricata (rules). Interpretation = Qwen2.5-3B (XAI).
 
 ---
 
