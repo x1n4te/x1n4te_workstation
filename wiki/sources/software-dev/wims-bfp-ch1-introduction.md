@@ -35,7 +35,7 @@ related:
 
 **Source:** raw/misc/ (9 files, ~42 KB)
 **Chapter:** 1 — Introduction
-**Thesis:** "WIMS-BFP: A Secure Web Incident Monitoring System with AI-Assisted Threat Detection for Cybersecurity-Specific Forensics-Driven Analysis in the Bureau of Fire Protection"
+**Thesis:** "WIMS-BFP: A Secured Web Offline-First Incident Monitoring System with Explainable AI for Threat Interpretability in the Bureau of Fire Protection"
 
 ---
 

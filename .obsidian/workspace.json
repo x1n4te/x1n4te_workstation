@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "f8fdfe553a72afec",
+        "id": "e6fa9aaec6e493b1",
         "type": "tabs",
         "children": [
           {
-            "id": "c14c6cb596964f03",
+            "id": "3b87d219b9fade2d",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -74,7 +74,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "59176cab81153f26",
@@ -179,8 +179,45 @@
       "bases:Create new base": false
     }
   },
+  "floating": {
+    "id": "98a43ffedb2cc4d3",
+    "type": "floating",
+    "children": [
+      {
+        "id": "007b1c8e71f89fd5",
+        "type": "window",
+        "children": [
+          {
+            "id": "1b0e4e5aaff688c4",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "c14c6cb596964f03",
+                "type": "leaf",
+                "state": {
+                  "type": "graph",
+                  "state": {},
+                  "icon": "lucide-git-fork",
+                  "title": "Graph view"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 1034,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
   "active": "c14c6cb596964f03",
   "lastOpenFiles": [
+    "wiki/mocs/cybersecurity.md",
+    "wikilinks.md",
     "sessions/2026-04-08.md",
     "raw/misc/WIMS-BFP.pdf",
     "wiki/entities/hermes-agent-setup.md",
@@ -213,7 +250,6 @@
     "wiki/sources/software-dev/wims-bfp-abstract.md",
     "wiki/sources/software-dev/wims-bfp-regional-encoder-audit-2026-04-08.md",
     "wiki/sources/software-dev/wims-bfp-codebase-metrics.md",
-    "wiki/sources/software-dev/wims-bfp-thesis-revisions-2026-04-08.md",
     "scripts/setup-4agents.sh",
     "raw/ai-research/2604.04869v1.pdf",
     "raw/misc/2604.04853v1.pdf",
