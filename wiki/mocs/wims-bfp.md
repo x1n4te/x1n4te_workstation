@@ -124,6 +124,13 @@ Civilian Reporter → VPS Portal (Next.js PWA)
 | Thesis revisions (51 changes) | [[sources/software-dev/wims-bfp-thesis-revisions-2026-04-08]] |
 | Thesis vs codebase gaps | [[analyses/wims-bfp-thesis-codebase-gaps]] |
 
+## Pending Refactoring
+
+| Task | Status | Rationale |
+|------|--------|-----------|
+| Split regional.py (1,876 lines) | Deferred | See [[concepts/decisions-and-rationale]] — DX problem, not runtime. Thesis + frontend CRUD higher priority. |
+| Alembic migrations | Pending | Versioned schema management, currently manual SQL. |
+
 ---
 
 ## Operational

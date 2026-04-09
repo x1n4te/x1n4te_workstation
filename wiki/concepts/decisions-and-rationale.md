@@ -69,6 +69,27 @@ Log of significant decisions and why they were made. Prevents second-guessing an
 
 ## Pending Decisions
 
+### Split regional.py (1,876 lines → 5 modules)
+- **Status:** Deferred
+- **Why not now:** CRUD endpoints are tested and passing. Splitting introduces import/circular dependency risk. Thesis paper fixes and frontend CRUD integration are higher priority.
+- **Case for splitting:** Cognitive load (can't hold 1,876 lines in head), merge conflicts (concurrent edits guaranteed), test isolation (CRUD vs AFOR vs stats all in one file), import side effects (one break kills all regional endpoints).
+- **Case against (for now):** It works. 1,876 lines isn't a runtime problem, it's a DX problem. Split itself is non-trivial — AFOR import/commit/CRUD/stats share models, auth guards, helpers. Half-day minimum, every route needs re-testing.
+- **Planned split structure when ready:**
+  ```
+  regional/
+  ├── __init__.py       # mount sub-routers
+  ├── crud.py           # POST/PUT/DELETE/GET incidents (~400 lines)
+  ├── afor_import.py    # import + commit (~500 lines)
+  ├── stats.py          # analytics endpoints (~100 lines)
+  └── _deps.py          # shared auth guards, helpers
+  ```
+- **Trigger to revisit:** When thesis work is done and you have breathing room for refactoring.
+
+### Split get_db() into get_db() + get_db_with_rls()
+- **Status:** DONE (2026-04-09)
+- **Why:** Avoid dependency cycle where `get_current_wims_user` depends on `get_db` but `get_db` needs user resolved first to set RLS context. Split into bare session (`get_db()`) and RLS-aware session (`get_db_with_rls(request)`).
+- **Also fixed:** Eager initialization of `_engine`/`_SessionLocal` (was lazy `None`, caused TypeError in tests), `load_dotenv()` before URL resolution (was falling back to Docker hostname).
+
 ### Matrix gateway for localhost image sending
 - **Status:** Deferred
 - **Why deferred:** Telegram image pipeline sufficient for now, Matrix adds infrastructure overhead
