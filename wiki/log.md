@@ -8,6 +8,11 @@ Append-only activity log. Newest entries first.
 
 ## 2026-04-09
 
+**2026-04-09 | ingest | LLM Learning Pathway — Category 2 (Transformers & Attention) expanded**
+- Updated: wiki/concepts/llm-transformers-learning-path.md — full content (11KB)
+- Covers: transformer architecture diagram, attention mechanism step-by-step, Q/K/V walkthrough, RNN comparison, 5 cybersecurity connections
+- Resources: 3Blue1Brown Ch 5-7, Karpathy build GPT + tokenizer, Welch Labs DeepSeek MLA
+
 **2026-04-09 | ingest | Revised thesis PDF ingested (title updated, 2 Table 21 items remaining)**
 - Updated: wiki/sources/software-dev/wims-bfp-abstract.md — new title, authors, adviser, institution
 - Updated: wiki/sources/software-dev/wims-bfp-thesis-revisions-2026-04-08.md — status 49/51, 2 remaining

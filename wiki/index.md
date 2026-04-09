@@ -1,7 +1,7 @@
 # Wiki Index
 
 **Last updated:** 2026-04-08
-**Total pages:** 68
+**Total pages:** 75
 
 ---
 
@@ -89,7 +89,12 @@
 | 2026-04-07 | Agent Memory Taxonomy: STM, Episodic, Semantic, Procedural |
 | 2026-04-07 | Episodic vs. Semantic Memory (AI Agent Context) |
 | 2026-04-07 | Declarative Prompt Optimization |
-| 2026-04-07 | Hallucination Reduction |
+|| 2026-04-09 | LLM Security — Learning Path (Category 5) |
+|| 2026-04-09 | LLM Applied — Learning Path (Category 4, stub) |
+|| 2026-04-09 | LLM Papers — Learning Path (Category 3, stub) |
+|| 2026-04-09 | LLM Transformers & Attention — Learning Path (Category 2) |
+|| 2026-04-09 | LLM Foundations — Learning Path (Category 1) |
+|| 2026-04-08 | Hallucination Reduction |
 
 ---
 
@@ -107,6 +112,7 @@
 
 | Date | Title |
 |---|---|
+| 2026-04-09 | LLM Learning Pathway — Map of Content (5 categories) |
 | 2026-04-08 | WIMS-BFP — Map of Content (thesis hub) |
 | 2026-04-08 | Skills — Map of Content (88 skills) |
 | 2026-04-08 | Cybersecurity — Map of Content |
