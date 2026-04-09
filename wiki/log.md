@@ -8,6 +8,16 @@ Append-only activity log. Newest entries first.
 
 ## 2026-04-09
 
+**2026-04-09 | fix | Auth loop — 5 root causes in docker-compose.yml**
+- Fixed: keycloak ports 8080:8080 (browser OIDC redirect blocked)
+- Fixed: keycloak healthcheck accepts 302 (was expecting 200 OK)
+- Fixed: frontend ports 3000:3000 (callback URL unreachable)
+- Fixed: ollama healthcheck removed (no curl/wget in image)
+- Fixed: backend ollama dependency relaxed to service_started
+- Root cause: 4 containers exited 4 days ago + 3 missing port mappings + 2 broken healthchecks
+- Wiki: created wiki/sources/operational/2026-04-09-auth-loop-fix.md
+- Commit: cd519f6
+
 **2026-04-09 | code | Database refactor + integration tests delegated to Claude Code**
 - Delegated: Claude Code print mode ($1.74, 23 turns)
 - Fixed: database.py — eager init of _engine/_SessionLocal, load_dotenv() before URL resolution
