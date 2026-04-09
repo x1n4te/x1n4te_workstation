@@ -29,16 +29,18 @@ related:
 # LLM Security — The Cybersecurity Edge
 
 **Category 5 of 5** in the LLM Learning Pathway (Cybersecurity-Aligned)
-**Prerequisites:** Categories 1-4
+**Prerequisites:** [[concepts/llm-foundations-learning-path]] + [[concepts/llm-transformers-learning-path]] + [[concepts/llm-papers-learning-path]] + [[concepts/llm-applied-learning-path]]
 **Goal:** Master LLM-specific attack vectors, defenses, red teaming, and the NIST adversarial ML taxonomy. This is your highest-value category.
 
 ---
 
-## Why This Is Your Edge
+## The Core Question
 
-Most AI people don't understand security. Most security people don't understand LLMs. You can bridge both. AI Red Teaming is the emerging niche — compensation exceeds general security roles by 10-20%.
+You understand [[concepts/llm-transformers-learning-path|transformers]] and [[concepts/llm-papers-learning-path|research papers]]. Now: how do you ATTACK and DEFEND LLMs?
 
-Your WIMS-BFP thesis already has an LLM component (Qwen2.5-3B XAI). Understanding LLM security directly strengthens your thesis evaluation and your career.
+Most AI people don't understand security. Most security people don't understand LLMs. You can bridge both. This is the highest-value category for your career.
+
+Your WIMS-BFP thesis already has an LLM component (Qwen2.5-3B XAI). Understanding LLM security directly strengthens your [[sources/software-dev/wims-bfp-ch3c-security-tools|thesis security evaluation]] and your career.
 
 ---
 
@@ -340,6 +342,23 @@ Deploy: Add as a pre-processing guardrail to your XAI pipeline
 
 ---
 
+## Cybersecurity Connection
+
+This IS the cybersecurity content. Every section above is directly relevant to your security career:
+
+| Section | Career Relevance |
+|---|---|
+| NIST taxonomy | Framework for categorizing AI threats — use in reports and audits |
+| OWASP LLM Top 10 | Industry standard — required knowledge for any AI security role |
+| Attack techniques | Your red teaming toolkit — prompt injection, jailbreaking, poisoning |
+| Red teaming | The job itself — finding vulnerabilities before attackers do |
+| Defense strategies | How to fix what you find — defense-in-depth for LLMs |
+| Tools | Garak, DeepTeam, PyRIT — the scanners you'll use professionally |
+
+Your cybersecurity degree + this knowledge + [[sources/software-dev/wims-bfp-ch3c-security-tools|WIMS-BFP hands-on experience]] positions you for AI Red Teaming roles.
+
+---
+
 ## Connection to WIMS-BFP — Thesis Security Evaluation
 
 Your thesis Chapter 3 evaluates security using OWASP ASVS Level 2 + STRIDE. Adding LLM-specific security evaluation would strengthen it:
@@ -384,9 +403,9 @@ Your thesis Chapter 3 evaluates security using OWASP ASVS Level 2 + STRIDE. Addi
 
 ---
 
-## Completion
+## Next Step
 
-This is the final category of the LLM Learning Pathway.
+You've completed all 5 categories. Apply this knowledge to your [[sources/software-dev/wims-bfp-ch3c-security-tools|WIMS-BFP thesis]] — document LLM-specific threats to the XAI pipeline.
 
 | # | Category | Status | Time |
 |---|---|---|---|

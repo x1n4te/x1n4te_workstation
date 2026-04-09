@@ -277,6 +277,20 @@ You're already running Qwen2.5-3B via Llama.cpp on consumer hardware. This is "A
 
 ---
 
+## Cybersecurity Connection
+
+| Concept | Security Application |
+|---|---|
+| API usage | Prompt injection via API parameters, token smuggling |
+| Fine-tuning | Data poisoning during training, backdoor injection |
+| RAG | Vector database poisoning (OWASP LLM08), retrieval manipulation |
+| Agents | Excessive agency (OWASP LLM06), tool misuse via prompt injection |
+| Deployment | Model extraction, membership inference, side-channel attacks |
+
+Your [[sources/software-dev/wims-bfp-ch3c-security-tools|WIMS-BFP XAI pipeline]] uses in-context learning (RAG-like) with Qwen2.5-3B. Understanding these applied concepts helps you evaluate and secure your own system.
+
+---
+
 ## Hands-On Projects
 
 ### Project 1: Build a RAG System for Your Wiki

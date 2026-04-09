@@ -29,6 +29,14 @@ related:
 
 ---
 
+## The Core Question
+
+You understand [[concepts/llm-transformers-learning-path|transformers and attention]]. Now: which papers shaped the field, and what do you actually need to read?
+
+8 papers cover the essentials. 18 more fill the gaps. Read smart, not everything.
+
+---
+
 ## How to Read Papers
 
 Don't read front-to-back. Use this strategy:
