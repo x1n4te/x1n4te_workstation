@@ -8,6 +8,11 @@ Append-only activity log. Newest entries first.
 
 ## 2026-04-09
 
+**2026-04-09 | ingest | LLM Learning Pathway — Category 4 (Applied LLMs) expanded**
+- Updated: wiki/concepts/llm-applied-learning-path.md — full content (12KB)
+- Covers: API usage, fine-tuning (LoRA, RLHF, DPO), RAG pipeline, agents & tool use, deployment & quantization, 4 hands-on projects
+- Projects: RAG for wiki, fine-tune Qwen2.5-3B for security narratives, security agent, XAI pipeline security evaluation
+
 **2026-04-09 | ingest | LLM Learning Pathway — Category 3 (Papers) expanded**
 - Updated: wiki/concepts/llm-papers-learning-path.md — full content (11KB)
 - Covers: 8 essential papers with summaries, 18 extended reading list, reading strategy, 4-week plan, cybersecurity connections per paper
