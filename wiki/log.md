@@ -6,6 +6,19 @@ Append-only activity log. Newest entries first.
 
 ---
 
+## 2026-04-09
+
+**2026-04-09 | code | Database refactor + integration tests delegated to Claude Code**
+- Delegated: Claude Code print mode ($1.74, 23 turns)
+- Fixed: database.py — eager init of _engine/_SessionLocal, load_dotenv() before URL resolution
+- Added: get_db() (bare) + get_db_with_rls() (RLS-aware) split to avoid dependency cycle
+- Tests: 15/15 passed (test_regional_crud.py — create, read, update, delete with status gating)
+- Docs: updated docs/API_AND_FUNCTIONS.md (3 CRUD endpoints added), docs/ARCHITECTURE.md (DB session management section), docs/CHANGELOG.md (new Unreleased entry)
+- Cleanup: Claude removed 11 stale files (1,655 lines), CHANGELOG.md moved to docs/
+- Wiki: created wiki/sources/operational/2026-04-09-database-refactor-integration-tests.md
+
+---
+
 ## 2026-04-08
 
 **2026-04-08 | wiki | LLM Wiki audit gate — 6 Karpathy-pattern fixes applied**

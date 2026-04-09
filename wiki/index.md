@@ -9,6 +9,7 @@
 
 | Date | Title | Type | Category |
 |---|---|---|---|
+| 2026-04-09 | Database Refactor + Integration Tests (Claude Code) | source | operational |
 | 2026-04-08 | WIMS-BFP Regional Encoder CRUD + Security Audit | source | software-dev |
 | 2026-04-08 | WIMS-BFP Codebase Metrics (pygount, refactoring targets) | source | software-dev |
 | 2026-04-08 | WIMS-BFP Thesis Revisions (Ch 1–3, 51 changes) | source | software-dev |
