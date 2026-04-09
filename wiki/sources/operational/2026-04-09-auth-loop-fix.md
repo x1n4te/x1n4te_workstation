@@ -21,6 +21,8 @@ related:
 
 **Problem:** Infinite authentication loop on dashboard login. User authenticates via Keycloak, gets redirected, app can't validate session, loops back to login.
 
+**Status:** RESOLVED — 2026-04-09. All 10 root causes fixed. Auth flow functional.
+
 **Root causes (3):**
 
 ---
