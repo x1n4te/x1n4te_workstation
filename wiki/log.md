@@ -8,6 +8,13 @@ Append-only activity log. Newest entries first.
 
 ## 2026-04-09
 
+**2026-04-09 | ingest | Signs of AI Writing — detection guide from Wikipedia**
+- Created: wiki/concepts/signs-of-ai-writing.md (9.3KB)
+- Covers: 24+ signs across content, language, style, communication, markup, citation categories
+- Adapted for cybersecurity: phishing detection, threat report verification, social engineering, disidentification
+- Includes: composite confidence scoring, quick reference checklist, ineffective indicators
+- Source: en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing
+
 **2026-04-09 | ingest | LLM Learning Pathway — Category 5 (LLM Security) expanded**
 - Updated: wiki/concepts/llm-security-learning-path.md — full content (15KB)
 - Covers: NIST adversarial ML taxonomy (NIST.AI.100-2e2025), OWASP LLM Top 10, attack techniques (prompt injection, jailbreaking, data poisoning, model extraction, membership inference), red teaming process, defense strategies, 6 tools (Garak, DeepTeam, PyRIT, ART, promptmap, LLM Guard), 5 hands-on exercises, WIMS-BFP thesis security evaluation recommendations

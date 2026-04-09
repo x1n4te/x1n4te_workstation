@@ -135,10 +135,10 @@ Civilian Reporter → VPS Portal (Next.js PWA)
 
 ## Operational
 
-| Date | What | Page |
-|------|------|------|
+| Date       | What                                                | Page                                                                   |
+| ---------- | --------------------------------------------------- | ---------------------------------------------------------------------- |
 | 2026-04-09 | Database refactor + integration tests (Claude Code) | [[sources/operational/2026-04-09-database-refactor-integration-tests]] |
-| 2026-04-08 | 4-Agent pipeline postmortem (archived) | [[analyses/4-agent-pipeline-postmortem]] |
+| 2026-04-08 | 4-Agent pipeline postmortem (archived)              | [[analyses/4-agent-pipeline-postmortem]]                               |
 
 ---
 

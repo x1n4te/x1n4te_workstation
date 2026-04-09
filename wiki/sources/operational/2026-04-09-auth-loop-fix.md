@@ -69,13 +69,13 @@ Ollama image has no `curl` or `wget`. Health check `curl -sf http://localhost:11
 
 ## Docker Compose Changes Summary
 
-| Service | Change | Why |
-|---|---|---|
-| keycloak | +ports 8080:8080 | Browser → OIDC endpoint |
-| keycloak | healthcheck accepts 302 | Keycloak redirects /auth/ |
-| frontend | +ports 3000:3000 | Browser → callback URL |
-| ollama | -healthcheck | No curl/wget in image |
-| backend | ollama: service_started | Don't gate on ollama health |
+| Service  | Change                  | Why                         |
+| -------- | ----------------------- | --------------------------- |
+| keycloak | +ports 8080:8080        | Browser → OIDC endpoint     |
+| keycloak | healthcheck accepts 302 | Keycloak redirects /auth/   |
+| frontend | +ports 3000:3000        | Browser → callback URL      |
+| ollama   | -healthcheck            | No curl/wget in image       |
+| backend  | ollama: service_started | Don't gate on ollama health |
 
 ---
 

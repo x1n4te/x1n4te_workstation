@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "HERMES.md",
+                "file": "wiki/sources/operational/2026-04-09-database-refactor-integration-tests.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "HERMES"
+              "title": "2026-04-09-database-refactor-integration-tests"
             }
           }
         ]
@@ -185,6 +185,16 @@
   },
   "active": "3b87d219b9fade2d",
   "lastOpenFiles": [
+    "wiki/sources/operational/2026-04-09-auth-loop-fix.md",
+    "wiki/sources/operational/2026-04-09-database-refactor-integration-tests.md",
+    "wiki/mocs/wims-bfp.md",
+    "wiki/concepts/agent-memory-taxonomy.md",
+    "wiki/artifacts/README.md",
+    "wiki/analyses/wims-bfp-thesis-codebase-gaps.md",
+    "wiki/analyses/memory-systems-comparison.md",
+    "wiki/analyses/4-agent-pipeline-postmortem.md",
+    "sources/ai-research/ai-2027.md",
+    "HERMES.md",
     "REDO-AUDIT.md",
     "wikilinks.md",
     "Mastra.md",
@@ -202,20 +212,10 @@
     "wiki/concepts/llm-security-learning-path.md",
     "wiki/concepts/llm-transformers-learning-path.md",
     "raw/misc/WIMS-BFP.pdf",
-    "wiki/entities/hermes-agent-setup.md",
-    "wiki/overview-state-of-field.md",
-    "sources/ai-research/ai-2027.md",
     "sources/ai-research",
     "sources",
     "Untitled.canvas",
-    "wiki/sources/operational/2026-04-09-auth-loop-fix.md",
-    "wiki/concepts/decisions-and-rationale.md",
-    "wiki/sources/operational/2026-04-09-database-refactor-integration-tests.md",
-    "sessions/session-template.md",
-    "wiki/concepts/environment-snapshot.md",
-    "wiki/log-archives/log-2026-04-08.md",
     "wiki/log-archives",
-    "wiki/mocs/wims-bfp.md",
     "Untitled 2.canvas",
     "raw/ai-research/2604.04853v1.pdf",
     "Untitled 1.canvas",

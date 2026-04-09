@@ -66,13 +66,13 @@ _SessionLocal: sessionmaker = sessionmaker(autocommit=False, autoflush=False, bi
 
 ## Test Results
 
-| Class | Tests | Result |
-|---|---|---|
-| TestCreateIncident | 4 | All pass |
-| TestReadIncidents | 3 | All pass |
-| TestUpdateIncident | 4 | All pass |
-| TestDeleteIncident | 4 | All pass |
-| **Total** | **15** | **15/15 pass** |
+| Class              | Tests  | Result         |
+| ------------------ | ------ | -------------- |
+| TestCreateIncident | 4      | All pass       |
+| TestReadIncidents  | 3      | All pass       |
+| TestUpdateIncident | 4      | All pass       |
+| TestDeleteIncident | 4      | All pass       |
+| **Total**          | **15** | **15/15 pass** |
 
 ---
 
