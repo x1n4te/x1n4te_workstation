@@ -217,6 +217,8 @@ The Celery worker handles:
 
 ## Connection to Thesis
 
+See also: [[overview-state-of-field]] for where this fits in the WIMS-BFP research landscape.
+
 This pipeline is evaluated in Chapter 3 using:
 - **Inference latency profiling** — target <5s (NFR requirement)
 - **MOS scoring** — XAI narrative intelligibility for non-technical BFP personnel

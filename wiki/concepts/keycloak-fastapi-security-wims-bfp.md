@@ -222,7 +222,7 @@ Keycloak uses `--import-realm` with `IGNORE_EXISTING` strategy. Once realm exist
 **What's persisted now:**
 - 5 custom realm roles (REGIONAL_ENCODER, SYSTEM_ADMIN, VALIDATOR, ANALYST, NATIONAL_ANALYST)
 - Audience mapper on wims-web
-- 5 test users (password: password123)
+- 5 test users (password set via `scripts/seed-dev-users.sh`)
 
 **What still needs scripts:** PostgreSQL user sync (`seed-dev-users.sh`) — realm JSON creates users in Keycloak but doesn't link UUIDs to `wims.users` table.
 

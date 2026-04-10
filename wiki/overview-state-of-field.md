@@ -83,6 +83,8 @@ Suricata is widely deployed but produces high-volume, low-context alerts. The in
 2. **AI agent memory systems** — comparative research (Mem0, MemGPT, MemMachine, DSPy) → [[analyses/memory-systems-comparison]]
 3. **Hermes agent architectures** — operational use and configuration → [[entities/hermes-agent-setup]]
 4. **Cybersecurity threat landscape** — CVE tracking for WIMS-BFP stack → [[mocs/cybersecurity]]
+5. **LLM learning pathway** — 5-category curriculum for cybersecurity practitioners → [[mocs/llm-learning]]
+6. **SLM/XAI pipeline** — Qwen2.5-3B log reading pipeline → [[concepts/slm-log-reading-pipeline]]
 
 ---
 

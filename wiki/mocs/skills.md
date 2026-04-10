@@ -19,6 +19,7 @@ related:
 # Skills — Map of Content
 
 **Total:** ~88 skills across 19 categories
+**Full inventory:** [[sources/software-dev/hermes-skills-inventory]]
 **Location:** `~/.hermes/skills/`
 **Last inventory:** 2026-04-08
 

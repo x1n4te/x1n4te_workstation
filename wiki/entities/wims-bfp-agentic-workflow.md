@@ -1,8 +1,29 @@
-# WIMS-BFP 4-Agent Delegate Architecture
+---
+id: wims-bfp-agentic-workflow-001
+type: entity
+created: 2026-04-07
+updated: 2026-04-10
+last_verified: 2026-04-10
+review_after: 2026-10-10
+stale_after: 2027-04-10
+confidence: medium
+status: archived
+tags:
+  - wims-bfp
+  - multi-agent
+  - hermes
+  - archived
+related:
+  - entities/hermes-agent-setup
+  - concepts/decisions-and-rationale
+  - analyses/4-agent-pipeline-postmortem
+---
 
-**Created:** 2026-04-07
-**Updated:** 2026-04-08
-**Status:** Active
+# WIMS-BFP 4-Agent Delegate Architecture (ARCHIVED)
+
+**Status:** ARCHIVED — multi-agent architecture abandoned
+**Replaced by:** Single-agent with Telegram + CLI → [[entities/hermes-agent-setup]]
+**See:** [[concepts/decisions-and-rationale]] and [[analyses/4-agent-pipeline-postmortem]]
 
 ---
 

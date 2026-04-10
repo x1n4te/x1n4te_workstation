@@ -24,6 +24,8 @@ Log of significant decisions and why they were made. Prevents second-guessing an
 
 ## Active Decisions
 
+**Related:** [[entities/hermes-agent-setup]], [[sources/operational/2026-04-09-auth-loop-fix]]
+
 ### Use MiMo v2 Pro as orchestrator (Nous Portal free-tier)
 - **When:** Current
 - **Why:** Free-tier, sufficient for tool-use orchestration, no cost, officially supported in v0.8.0

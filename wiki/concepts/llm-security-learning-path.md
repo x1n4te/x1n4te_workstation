@@ -344,7 +344,9 @@ Deploy: Add as a pre-processing guardrail to your XAI pipeline
 
 ## Cybersecurity Connection
 
-This IS the cybersecurity content. Every section above is directly relevant to your security career:
+This IS the cybersecurity content. See also: [[concepts/signs-of-ai-writing]] for detecting AI-generated content in the wild.
+
+Every section above is directly relevant to your security career:
 
 | Section | Career Relevance |
 |---|---|

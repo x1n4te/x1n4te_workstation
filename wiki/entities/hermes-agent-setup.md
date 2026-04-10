@@ -44,6 +44,8 @@ related:
 
 ---
 
+**Related:** [[concepts/decisions-and-rationale]], [[mocs/skills]], [[concepts/environment-snapshot]]
+
 ## Gateway Configuration
 
 ### Active Gateways
