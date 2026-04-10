@@ -2,8 +2,8 @@
 id: keycloak-fastapi-security-wims-bfp-concept-001
 type: concept
 created: 2026-04-08
-updated: 2026-04-08
-last_verified: 2026-04-08
+updated: 2026-04-10
+last_verified: 2026-04-10
 review_after: 2026-05-08
 stale_after: 2026-10-08
 confidence: high
@@ -198,6 +198,33 @@ if user.region:
 ```
 
 ---
+
+## Key Findings from Auth Loop Fix (2026-04-09)
+
+### KEYCLOAK_ISSUER vs KEYCLOAK_REALM_URL
+
+Backend uses two separate URLs:
+- `KEYCLOAK_REALM_URL=http://keycloak:8080/auth/realms/bfp` — for JWKS fetching (Docker internal network)
+- `KEYCLOAK_ISSUER=http://localhost/auth/realms/bfp` — for JWT `iss` claim validation (browser-visible)
+
+**Why:** Keycloak's `KC_HOSTNAME=localhost` means tokens have `iss: http://localhost/auth/realms/bfp`. But backend can't reach `localhost:8080` from inside Docker (port mapping is host→container only). Split config solves this.
+
+### Audience Mapper (oidc-audience-mapper)
+
+wims-web client needs an audience mapper to put `aud: "wims-web"` in access tokens. Without it, tokens have no audience or wrong audience → "Invalid audience" error.
+
+**Must be in bfp-realm.json** — if added via admin API only, lost on container recreation.
+
+### Realm JSON Persistence
+
+Keycloak uses `--import-realm` with `IGNORE_EXISTING` strategy. Once realm exists, JSON is NOT re-imported. All config (roles, mappers, users) must be in `bfp-realm.json` at first boot.
+
+**What's persisted now:**
+- 5 custom realm roles (REGIONAL_ENCODER, SYSTEM_ADMIN, VALIDATOR, ANALYST, NATIONAL_ANALYST)
+- Audience mapper on wims-web
+- 5 test users (password: password123)
+
+**What still needs scripts:** PostgreSQL user sync (`seed-dev-users.sh`) — realm JSON creates users in Keycloak but doesn't link UUIDs to `wims.users` table.
 
 ## Related
 
