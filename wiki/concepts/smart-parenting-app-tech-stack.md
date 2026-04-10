@@ -289,6 +289,63 @@ npx expo install react-native-chart-kit react-native-svg
 
 ---
 
+## Development Resources
+
+### React Native + Expo Tutorials
+
+| Resource | Type | Link |
+|---|---|---|
+| Expo Tutorial (official) | Docs | https://docs.expo.dev/tutorial/introduction/ |
+| React Native Full Course 2026 (Expo) | Video | https://www.youtube.com/watch?v=RdJhqaOIWn0 |
+| React Native Full Course 2026 (publish + monetize) | Video | https://www.youtube.com/watch?v=4nVoLX2taFg |
+| React Native Tutorial: Build 1st App in 3 Hours | Guide | https://tech-insider.org/react-native-tutorial-mobile-app-complete-guide-2026/ |
+| Expo SDK 52 overview | Blog | https://medium.com/@onix_react/what-to-expo-from-expo-sdk-52 |
+
+### Supabase + React Native
+
+| Resource | Type | Link |
+|---|---|---|
+| Supabase React Native quickstart (official) | Docs | https://supabase.com/docs/guides/auth/quickstarts/react-native |
+| Supabase Setup in React Native Expo 2026 | Video | https://www.youtube.com/watch?v=o5C6cEEAKkI |
+| Pocket Backend: React Native CRUD with Supabase | Blog | https://weblianz.com/blog/pocket-backend-react-native-crud-with-supabase |
+| Build CRUD App with React + Supabase | Guide | https://adevait.com/react/building-crud-app-with-react-js-supabase |
+
+### Firebase Auth + React Native
+
+| Resource | Type | Link |
+|---|---|---|
+| Firebase Setup in Expo (official) | Docs | https://docs.expo.dev/guides/using-firebase/ |
+| Firebase Setup in React Native Expo 2026 | Video | https://www.youtube.com/watch?v=H-vG4G8eKNE |
+| React Native Firebase Tutorial (2025) | Playlist | https://www.youtube.com/playlist?list=PLuP3JaGUSq82b23OQEiUoueDTGVTYdVra |
+
+### EAS Build + Deployment
+
+| Resource | Type | Link |
+|---|---|---|
+| EAS Build docs (official) | Docs | https://docs.expo.dev/build/introduction/ |
+| Build profiles config | Docs | https://docs.expo.dev/build/eas-json/ |
+| Submit to app stores | Docs | https://docs.expo.dev/submit/introduction/ |
+| Expo dev workflow 2026 | Blog | https://irfanqutab.dev/blog/expo-developer-workflow-2026 |
+
+### Mobile App Architecture
+
+| Resource | Type | Link |
+|---|---|---|
+| 9 Mobile App Architecture Best Practices | Guide | https://nextnative.dev/blog/mobile-app-architecture-best-practices |
+| React Native Architecture (2026) | Blog | https://medium.com/@silverskytechnology/react-native-architecture-explained-2026-edition |
+| React Design Patterns 2025 | Guide | https://www.telerik.com/blogs/react-design-patterns-best-practices |
+
+### AI Integration
+
+| Resource | Type | Link |
+|---|---|---|
+| OpenRouter quickstart | Docs | https://openrouter.ai/docs/quickstart |
+| OpenRouter API reference | Docs | https://openrouter.ai/docs/api/reference/overview |
+| OpenRouter models catalog | List | https://openrouter.ai/models |
+| OpenRouter React Native integration | Guide | https://openrouter.ai/docs/guides/community/frameworks-and-integrations-overview |
+
+---
+
 ## Related
 
 - [[concepts/llm-applied-learning-path]] — Applied LLMs learning path
