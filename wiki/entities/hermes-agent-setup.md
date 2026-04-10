@@ -44,7 +44,7 @@ related:
 
 ---
 
-**Related:** [[entities/hermes-agent-v2-reference]], [[concepts/decisions-and-rationale]], [[mocs/skills]], [[concepts/environment-snapshot]]
+**Related:** [[entities/hermes-agent-v2-reference]], [[concepts/decisions-and-rationale]], [[mocs/skills]], [[concepts/environment-snapshot]], [[concepts/vercel-web-interface-guidelines]]
 
 ## Gateway Configuration
 

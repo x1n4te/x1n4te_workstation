@@ -291,3 +291,5 @@ Voice commands: `/voice on` (voice-to-voice), `/voice tts` (always voice), `/voi
 - [[entities/hermes-agent-setup]] — Personal setup (MiMo v2 Pro, Telegram, CLI)
 - [[concepts/decisions-and-rationale]] — Why this setup was chosen
 - [[mocs/skills]] — Installed skills inventory
+- [[concepts/skill-md-standard]] — Open standard for agent skills
+- [[concepts/signs-of-ai-writing]] — Detecting AI-generated code patterns
