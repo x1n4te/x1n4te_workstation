@@ -4,17 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "e6fa9aaec6e493b1",
+        "id": "54bd2de45ab37dad",
         "type": "tabs",
         "children": [
           {
-            "id": "3b87d219b9fade2d",
+            "id": "8c1e1ac8123fb822",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "pdf",
+              "state": {
+                "file": "raw/misc/WIMS-BFP.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "WIMS-BFP"
             }
           }
         ]
@@ -74,8 +76,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "59176cab81153f26",
@@ -180,8 +181,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "3b87d219b9fade2d",
+  "active": "026e8b7cd1af58e1",
   "lastOpenFiles": [
+    "2026-04-10.md",
     "wiki/sources/cybersecurity/home-lab-soc-setup.md",
     "wiki/sources/cybersecurity/mitre-attack-command-sheet.md",
     "wiki/sources/cybersecurity/ctf-writeups-hackthebox.md",
@@ -209,7 +211,6 @@
     "raw/misc/Writeups/HTB Writeups/Previous.md",
     "raw/misc/Writeups/HTB Writeups/Preignition.md",
     "raw/misc/Writeups/HTB Writeups/MonitorsFour.md",
-    "raw/misc/Writeups/HTB Writeups/Mongod.md",
     "raw/misc/Writeups/THM Writeups",
     "raw/misc/Writeups/ROOT-ME",
     "raw/misc/Writeups/PicoCTF Writeups",

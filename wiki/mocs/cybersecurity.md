@@ -243,6 +243,15 @@ MEDIUM (patch this month):
 
 ---
 
+## Practical Cybersecurity (CTF Writeups + Home Lab)
+
+| Source | Count | Page |
+|---|---|---|
+| TryHackMe writeups | 9 | [[sources/cybersecurity/ctf-writeups-tryhackme]] |
+| HackTheBox writeups | 16 | [[sources/cybersecurity/ctf-writeups-hackthebox]] |
+| MITRE ATT&CK command sheets | 4 phases | [[sources/cybersecurity/mitre-attack-command-sheet]] |
+| Home lab SOC setup | Wazuh SIEM | [[sources/cybersecurity/home-lab-soc-setup]] |
+
 ## Open Questions / Research Gaps
 
 - Thesis Ch1-3 fully ingested (55 files → 8 pages + 1 analysis)
