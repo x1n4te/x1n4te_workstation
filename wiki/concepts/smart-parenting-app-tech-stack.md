@@ -289,6 +289,35 @@ npx expo install react-native-chart-kit react-native-svg
 
 ---
 
+## Current Versions (SDK 52)
+
+| Package | Version | Documentation |
+|---|---|---|
+| Expo | 52.0.49 | https://docs.expo.dev/ |
+| React Native | 0.76.3 | https://reactnative-archive-august-2025.netlify.app/docs/0.76/getting-started |
+| Expo Router | 4.0.22 | https://docs.expo.dev/router/introduction/ |
+| React Native Paper | 5.12.0 | https://callstack.github.io/react-native-paper/docs/guides/getting-started/ |
+| Supabase JS | 2.49.0 | https://supabase.com/docs/reference/javascript/start |
+
+### Key Documentation Links (Exact Versions)
+
+| Technology | Link | What |
+|---|---|---|
+| Expo SDK 52 overview | https://medium.com/@onix_react/what-to-expect-from-expo-sdk-52-48c28c07db6a | Features, breaking changes, new architecture |
+| Expo SDK 52 video | https://www.youtube.com/watch?v=gQqE55rkHO0 | Deep dive into SDK 52 updates |
+| Expo Router v4 docs | https://docs.expo.dev/versions/latest/sdk/router/ | API reference, hooks, navigation |
+| Expo Router intro | https://docs.expo.dev/router/introduction/ | File-based routing concepts |
+| Expo Router tutorial | https://www.youtube.com/watch?v=FWYiG6OIEJw | Login → Dashboard → Profile flow |
+| React Native 0.76 release | https://reactnative.dev/blog/2024/10/23/release-0.76-new-architecture | New architecture by default |
+| React Native 0.76 docs | https://reactnative-archive-august-2025.netlify.app/docs/0.76/getting-started | Getting started guide |
+| React Native Paper v5 | https://callstack.github.io/react-native-paper/docs/guides/getting-started/ | Setup, PaperProvider, components |
+| React Native Paper v5 guide | https://callstack.github.io/react-native-paper/docs/guides/migration-guide-to-5.0/ | Material You design |
+| Supabase React Native | https://supabase.com/docs/guides/auth/quickstarts/react-native | Quickstart guide |
+| Expo tutorial | https://docs.expo.dev/tutorial/introduction/ | Official step-by-step tutorial |
+| Expo EAS Build | https://docs.expo.dev/build/introduction/ | Cloud build for Android/iOS |
+
+---
+
 ## Development Resources
 
 ### React Native + Expo Tutorials
