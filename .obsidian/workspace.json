@@ -186,6 +186,7 @@
   },
   "active": "3b87d219b9fade2d",
   "lastOpenFiles": [
+    "wiki/concepts/vercel-web-interface-guidelines.md",
     "wiki/concepts/skill-md-standard.md",
     "wiki/entities/hermes-agent-setup.md",
     "wiki/analyses/4-agent-pipeline-postmortem.md",
@@ -213,7 +214,6 @@
     "Mastra.md",
     "wiki/entities/mastras.md",
     "wiki/entities/memgpt.md",
-    "wiki/entities/memmachine.md",
     "raw/misc/WIMS-BFP.pdf",
     "sources/ai-research",
     "sources",
