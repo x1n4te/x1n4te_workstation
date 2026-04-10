@@ -6,6 +6,19 @@ Append-only activity log. Newest entries first.
 
 ---
 
+## 2026-04-11
+
+**2026-04-11 | dev | Smart Parenting App — full UI redesign from v0/NestNote design**
+- Branch: `feature/ui-redesign-nestnote` (14 commits)
+- Ported 5 screens from v0.app Next.js design to React Native/Expo
+- Created: wiki/sources/operational/2026-04-10-smart-parenting-ui-redesign.md (full session doc)
+- Created: wiki/concepts/hci-design-principles-mobile.md (10 HCI principles with examples)
+- Bug fixes: RLS parent_id missing, auth guard race condition, child selection reset, signUp auto-login, Alert.alert web incompatibility, animation killed by redirect
+- UI: 6 activity types (added nap + physical), child picker modal, multi-child dashboard, stepper + text duration input, meal food groups, welcome/goodbye animations
+- Design tokens: primary #3B82F6, navy #0F172A, activity-specific colors
+
+---
+
 ## 2026-04-10
 
 **2026-04-10 | ingest | CTF writeups + command sheets + home lab SOC ingested**

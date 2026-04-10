@@ -1,7 +1,7 @@
 # Wiki Index
 
-**Last updated:** 2026-04-10
-**Total pages:** 81
+**Last updated:** 2026-04-11
+**Total pages:** 84
 
 ---
 
@@ -9,7 +9,8 @@
 
 | Date | Title | Category |
 |---|---|---|
-| 2026-04-09 | Signs of AI Writing — Full Reference | concepts |
+|| 2026-04-11 | Smart Parenting App UI Redesign — 2026-04-11 | sources |
+|| 2026-04-09 | Signs of AI Writing — Full Reference | concepts |
 | 2026-04-09 | Database Refactor + Integration Tests — 2026-04-09 | sources |
 | 2026-04-09 | Auth Loop Fix — 2026-04-09 | sources |
 | 2026-04-08 | PostGIS Secure Coding Practices | sources |
@@ -70,7 +71,8 @@
 
 | Date | Title |
 |---|---|
-| 2026-04-10 | Keycloak MFA Findings — What Works and What Doesn't |
+|| 2026-04-11 | HCI Design Principles — Mobile App Implementation | concepts |
+|| 2026-04-10 | Keycloak MFA Findings — What Works and What Doesn't |
 | 2026-04-09 | LLM Transformers & Attention — The Architecture Behind LLMs |
 | 2026-04-09 | LLM Foundations — How Neural Networks Learn |
 | 2026-04-09 | LLM Security — The Cybersecurity Edge |
