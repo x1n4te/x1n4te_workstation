@@ -161,7 +161,7 @@ Modal/Daytona: serverless hibernation — zero compute cost when idle, instant w
 
 ## Related Entities
 
-- [[entities/nous-research]] — Author organization
+- Nous Research — Author organization (see [[mocs/ai-research]])
 - [[concepts/procedural-memory]] — Core SKILL.md mechanism
 - [[concepts/delegate-task-architecture]] — Child agent spawning
 - [[concepts/closed-learning-loop]] — Execute → Evaluate → Extract → Refine → Retrieve

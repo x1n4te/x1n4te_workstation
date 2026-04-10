@@ -233,6 +233,6 @@ secrets:
 ## Related Pages
 
 - [[sources/software-dev/docker-cves-2025-2026]] — Docker/runc CVEs
-- [[sources/software-dev/docker-compose-security]] — PostgreSQL/Redis Docker Compose hardening
+- Docker Compose hardening — PostgreSQL/Redis (see [[concepts/docker-security-wims-bfp]])
 - [[concepts/docker-security-wims-bfp]] — WIMS-BFP Docker security synthesis
 - [[mocs/cybersecurity]] — Cybersecurity Map of Content

@@ -135,4 +135,4 @@ Code-to-comment ratio: 81.3% code / 5.5% comments
 ## Cross-References
 
 - [[analyses/wims-bfp-thesis-codebase-gaps]] — Thesis vs codebase discrepancies
-- [[sources/software-dev/wims-bfp-codebase-ingestion]] — Pre-refactor ingestion
+- [[sources/software-dev/wims-bfp-codebase-ingestion-2026-04-08]] — Pre-refactor ingestion

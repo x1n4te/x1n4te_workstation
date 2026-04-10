@@ -199,5 +199,5 @@ CREATE POLICY verification_logs_access ON wims.verification_logs
 - [[sources/software-dev/postgresql-security-best-practices]] — PostgreSQL security reference
 - [[sources/software-dev/postgresql-rls-limitations]] — RLS pitfalls and NULL bypass
 - [[sources/software-dev/postgresql-cves-2025-2026]] — PostgreSQL CVEs
-- [[rls-null-bypass-fix]] — WIMS-BFP-specific NULL bypass fix skill
+- rls-null-bypass-fix — WIMS-BFP-specific NULL bypass fix skill (see [[mocs/skills]])
 - [[mocs/cybersecurity]] — Cybersecurity Map of Content

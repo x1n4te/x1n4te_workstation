@@ -93,4 +93,4 @@ AI agent memory systems draw from cognitive science and adapt to LLM requirement
 
 - [[concepts/episodic-vs-semantic-memory]] — Detailed episodic vs semantic comparison
 - [[entities/memmachine]] — Implements STM + episodic + profile
-- [[concepts/llm-wiki-pattern]] — Knowledge management analog: raw/ = episodic, wiki/ = semantic
+- LLM wiki pattern — Knowledge management analog: raw/ = episodic, wiki/ = semantic

@@ -101,5 +101,5 @@ WIMS-BFP audit/remediation patterns (RLS policies, Celery task fixes, Suricata i
 ## Related
 
 - [[concepts/closed-learning-loop]] — The loop that generates SKILL.md
-- [[concepts/hermes-memory-taxonomy]] — All 4 memory layers
+- Memory taxonomy — All 4 memory layers (see [[concepts/agent-memory-taxonomy]])
 - [[entities/hermes-agent]] — Parent entity

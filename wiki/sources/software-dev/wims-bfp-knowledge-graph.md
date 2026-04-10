@@ -101,5 +101,5 @@ This document serves as:
 2. **Cross-reference anchor** — links thesis claims to actual code at a point in time
 3. **Audit trail** — documents what was found broken and when it was fixed
 
-For current codebase state, see [[sources/software-dev/wims-bfp-codebase-ingestion]].
+For current codebase state, see [[sources/software-dev/wims-bfp-codebase-ingestion-2026-04-08]].
 For discrepancy analysis, see [[analyses/wims-bfp-thesis-codebase-gaps]].

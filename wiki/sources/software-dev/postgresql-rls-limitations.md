@@ -169,5 +169,5 @@ CREATE VIEW wims.all_incidents
 - [[sources/software-dev/postgresql-security-best-practices]] — PostgreSQL security reference
 - [[sources/software-dev/postgresql-cves-2025-2026]] — PostgreSQL CVEs
 - [[concepts/postgresql-security-wims-bfp]] — WIMS-BFP PostgreSQL security synthesis
-- [[rls-null-bypass-fix]] — WIMS-BFP-specific NULL bypass fix skill
+- rls-null-bypass-fix — WIMS-BFP-specific NULL bypass fix skill (see [[mocs/skills]])
 - [[mocs/cybersecurity]] — Cybersecurity Map of Content

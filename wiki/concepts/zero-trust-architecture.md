@@ -117,7 +117,7 @@ Zero Trust Architecture (ZTA) is a cybersecurity framework that eliminates the c
 
 ## Related
 
-- [[concepts/authentication-architecture]] — Keycloak + JWT validation
+- Authentication architecture — Keycloak + JWT validation (see [[concepts/keycloak-fastapi-security-wims-bfp]])
 - [[sources/cybersecurity/nist-sp-800-207-zero-trust-architecture]] — Primary source
 - [[sources/cybersecurity/dod-zta-implementation-primer-2026]] — Practical implementation
 - [[sources/cybersecurity/zero-trust-complete-guide-2026]] — Market data + challenges

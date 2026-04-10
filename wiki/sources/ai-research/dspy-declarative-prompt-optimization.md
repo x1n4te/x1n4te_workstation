@@ -100,5 +100,5 @@ DSPy's declarative optimization could automate RLS policy prompt tuning for the 
 ## See Also
 
 - [[entities/dspy]]
-- [[concepts/declarative-prompt-optimization]]
-- [[analyses/dspy-vs-other-prompt-optimizers]]
+- Declarative prompt optimization concept (see [[concepts/agent-memory-taxonomy]])
+- DSPy vs other prompt optimizers analysis

@@ -102,4 +102,4 @@ The LLM Wiki pattern (Karpathy) is analogous to **semantic memory at the knowled
 
 - [[concepts/agent-memory-taxonomy]] — Full taxonomy: STM, episodic, semantic, procedural
 - [[entities/memmachine]] — Implements this taxonomy
-- [[concepts/llm-wiki-pattern]] — Analogous to the episodic/semantic split
+- LLM wiki pattern — Analogous to the episodic/semantic split

@@ -139,4 +139,4 @@ MemMachine's ground-truth-preserving episodic memory architecture maps directly 
 - [[entities/mem0]] — Competitor system
 - [[entities/mastras]] — Competitor: observational compression approach
 - [[analyses/memory-systems-comparison]] — Cross-system comparison
-- [[sources/ai-research/ai-2027]] — AI-2027 scenario context (agents in 2027)
+- AI-2027 scenario context (agents in 2027) — see [[sources/ai-research/hermes-agent]]
