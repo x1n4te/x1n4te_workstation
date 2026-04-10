@@ -132,6 +132,30 @@ npx expo run:android
 
 ---
 
+## Additional Fixes (Web + SSR)
+
+### 14. `crypto.randomUUID` not available (Hermes + web)
+**Error:** `TypeError: crypto.randomUUID is not a function`
+**Cause:** Hermes engine (used by Expo) doesn't have Web Crypto API
+**Fix:** Polyfill in `polyfills.js` — fallback to UUID generation with `Math.random()`
+
+### 15. `uuidv4` from expo-modules-core not found
+**Error:** `(0 , _expoModulesCore.uuidv4) is not a function`
+**Cause:** `expo-linking@7.0.5` bundles its own `expo-constants` that imports `uuidv4` from `expo-modules-core` — the native bridge function isn't available in SDK 52 + Expo Go 54
+**Fix:** Patch `node_modules/expo-linking/node_modules/expo-constants/build/ExponentConstants.web.js` — inline `uuidv4` with `crypto.randomUUID()` fallback
+
+### 16. `window is not defined` (SSR)
+**Error:** `ReferenceError: window is not defined` in `ExponentConstants.web.js`
+**Cause:** Expo Router renders on server first (SSR) — `window`, `navigator`, `localStorage` don't exist
+**Fix:** Add `typeof window !== 'undefined'` checks before all browser API references
+
+### 17. Supabase asyncStorage SSR error
+**Error:** `ReferenceError: window is not defined` in `AsyncStorage.js`
+**Cause:** Supabase client initializes at module load time (SSR) — `asyncStorage` uses `window.localStorage`
+**Fix:** Lazy-load AsyncStorage via Proxy pattern — defer to client-side only
+
+---
+
 ## Key Lessons
 
 1. **Expo Go version matters** — SDK 55 requires newer Expo Go than what's in the app store
@@ -140,7 +164,12 @@ npx expo run:android
 4. **Android SDK needs license acceptance** — sdkmanager --licenses is required
 5. **Permissions matter** — SDK directory must be writable by the build user
 6. **Missing peer dependencies** — expo-keep-awake, expo-linking, expo-constants are required but not auto-installed
-7. **Icon names must match the library** — MaterialCommunityIcons uses specific names, not all Material Icons names
+7. Icon names must match the library — MaterialCommunityIcons uses specific names, not all Material Icons names
+8. `node_modules` patches are temporary — overwritten on `npm install`, need postinstall script
+9. Expo SDK 52 + Expo Go 54.0.7 = incompatible native bridge for `uuidv4`
+10. SSR requires `typeof window` checks for all browser APIs
+11. `useLayoutEffect` warnings on web are harmless — React Navigation SSR support
+12. **Always reference the wiki before debugging** — we already documented these patterns
 
 ---
 
