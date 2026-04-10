@@ -226,6 +226,10 @@ Keycloak uses `--import-realm` with `IGNORE_EXISTING` strategy. Once realm exist
 
 **What still needs scripts:** PostgreSQL user sync (`seed-dev-users.sh`) — realm JSON creates users in Keycloak but doesn't link UUIDs to `wims.users` table.
 
+### MFA Status
+
+TOTP-based MFA is available via self-service enrollment (account page) or manual admin enrollment. `CONFIGURE_TOTP` forced enrollment is BROKEN in Keycloak 24.0.0 — see [[concepts/keycloak-mfa-findings]] for full analysis.
+
 ## Related
 
 - [[sources/software-dev/keycloak-production-security]] — Keycloak hardening guide

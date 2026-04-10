@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/concepts/agent-memory-taxonomy.md",
+                "file": "wiki/entities/wims-bfp-agentic-workflow.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "agent-memory-taxonomy"
+              "title": "wims-bfp-agentic-workflow"
             }
           }
         ]
@@ -183,11 +183,12 @@
       "bases:Create new base": false
     }
   },
-  "active": "3b87d219b9fade2d",
+  "active": "026e8b7cd1af58e1",
   "lastOpenFiles": [
+    "wiki/concepts/keycloak-mfa-findings.md",
+    "wiki/concepts/agent-memory-taxonomy.md",
     "sessions/2026-04-09.md",
     "wiki/artifacts/README.md",
-    "wiki/concepts/agent-memory-taxonomy.md",
     "raw/misc/[FIELD METHODS] Co-Parenting Research (2).pdf",
     "wiki/mocs/ai-research.md",
     "wiki/mocs/cybersecurity.md",
@@ -212,7 +213,6 @@
     "sessions/2026-04-08.md",
     "wiki/concepts/llm-applied-learning-path.md",
     "wiki/concepts/llm-papers-learning-path.md",
-    "wiki/concepts/llm-security-learning-path.md",
     "raw/misc/WIMS-BFP.pdf",
     "sources/ai-research",
     "sources",

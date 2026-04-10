@@ -6,6 +6,20 @@ Append-only activity log. Newest entries first.
 
 ---
 
+## 2026-04-10
+
+**2026-04-10 | research | Keycloak MFA findings — CONFIGURE_TOTP broken in Keycloak 24**
+- Created: wiki/concepts/keycloak-mfa-findings.md (6KB)
+- Finding: CONFIGURE_TOTP required action provider NOT registered in Keycloak 24.0.0
+- Finding: Forced TOTP enrollment via required actions does NOT work
+- Works: Self-service TOTP enrollment via account page
+- Works: Manual admin TOTP enrollment per user
+- Works: OTP subflow CONDITIONAL triggers after enrollment
+- Workaround: Browser flow cloning + OTP REQUIRED (but blocks unenrolled users)
+- Recommendation for thesis: Demonstrate MFA via manual enrollment, document as "available and configured"
+
+---
+
 ## 2026-04-09
 
 **2026-04-09 | ingest | Signs of AI Writing — full Wikipedia page ingested (52KB)**
