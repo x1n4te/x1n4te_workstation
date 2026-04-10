@@ -8,6 +8,13 @@ Append-only activity log. Newest entries first.
 
 ## 2026-04-10
 
+**2026-04-10 | ingest | CTF writeups + command sheets + home lab SOC ingested**
+- Created: wiki/sources/cybersecurity/ctf-writeups-tryhackme.md (9 THM writeups)
+- Created: wiki/sources/cybersecurity/ctf-writeups-hackthebox.md (16 HTB writeups)
+- Created: wiki/sources/cybersecurity/mitre-attack-command-sheet.md (4 MITRE ATT&CK kill chain refs)
+- Created: wiki/sources/cybersecurity/home-lab-soc-setup.md (QEMU/KVM + Wazuh SIEM setup)
+- Skills demonstrated: SSH tunneling, SQLi, IDOR, Splunk SIEM, phishing, AI security, PostgreSQL, Redis, RDP, LLMNR poisoning
+
 **2026-04-10 | ingest | Hermes Agent v0.8.0 full reference ingested**
 - Created: wiki/entities/hermes-agent-v2-reference.md (8.9KB)
 - Covers: CLI commands, slash commands, config sections, 18 providers, 15 toolsets, spawning modes (one-shot/PTY/multi-agent), voice STT/TTS, agent loop architecture, contributor reference
