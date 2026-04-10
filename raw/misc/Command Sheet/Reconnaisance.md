@@ -1,3 +1,0 @@
-
-
-Then proceed to [[Weaponization]].
