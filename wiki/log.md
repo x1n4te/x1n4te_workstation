@@ -63,6 +63,11 @@ Append-only activity log. Newest entries first.
 - Covers: transformer architecture diagram, attention mechanism step-by-step, Q/K/V walkthrough, RNN comparison, 5 cybersecurity connections
 - Resources: 3Blue1Brown Ch 5-7, Karpathy build GPT + tokenizer, Welch Labs DeepSeek MLA
 
+**2026-04-10 | wiki | Android build debugging session ingested (13 errors documented)**
+- Created: wiki/sources/operational/2026-04-10-android-build-debugging.md (5KB)
+- Covers: 13 build errors + fixes, SDK 54 compatible package versions, environment setup
+- Key lessons: Expo Go version matters, package versions must match SDK, Java 17 required
+
 **2026-04-09 | ingest | Revised thesis PDF ingested (title updated, 2 Table 21 items remaining)**
 - Updated: wiki/sources/software-dev/wims-bfp-abstract.md — new title, authors, adviser, institution
 - Updated: wiki/sources/software-dev/wims-bfp-thesis-revisions-2026-04-08.md — status 49/51, 2 remaining
