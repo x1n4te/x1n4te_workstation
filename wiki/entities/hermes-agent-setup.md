@@ -44,7 +44,7 @@ related:
 
 ---
 
-**Related:** [[concepts/decisions-and-rationale]], [[mocs/skills]], [[concepts/environment-snapshot]]
+**Related:** [[entities/hermes-agent-v2-reference]], [[concepts/decisions-and-rationale]], [[mocs/skills]], [[concepts/environment-snapshot]]
 
 ## Gateway Configuration
 

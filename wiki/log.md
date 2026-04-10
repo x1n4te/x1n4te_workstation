@@ -8,6 +8,15 @@ Append-only activity log. Newest entries first.
 
 ## 2026-04-10
 
+**2026-04-10 | ingest | Hermes Agent v0.8.0 full reference ingested**
+- Created: wiki/entities/hermes-agent-v2-reference.md (8.9KB)
+- Covers: CLI commands, slash commands, config sections, 18 providers, 15 toolsets, spawning modes (one-shot/PTY/multi-agent), voice STT/TTS, agent loop architecture, contributor reference
+- Source: hermes-agent skill v2.0.0
+
+---
+
+## 2026-04-10 (continued)
+
 **2026-04-10 | research | Keycloak MFA findings — CONFIGURE_TOTP broken in Keycloak 24**
 - Created: wiki/concepts/keycloak-mfa-findings.md (6KB)
 - Finding: CONFIGURE_TOTP required action provider NOT registered in Keycloak 24.0.0
