@@ -2,11 +2,13 @@
 id: keycloak-mfa-findings-001
 type: concept
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-04-11
 last_verified: 2026-04-10
 review_after: 2026-07-10
 stale_after: 2026-10-10
 confidence: high
+source_refs:
+  - sources/software-dev/keycloak-production-security
 status: active
 tags:
   - keycloak
@@ -121,21 +123,26 @@ Admin sets up TOTP for each user via the admin console:
 
 ## Recommended Setup for WIMS-BFP
 
-### Phase 1: Self-Service (Current)
+### Phase 1: Self-Service (Completed — 2026-04-10)
 - Keep `browser` flow as default (CONDITIONAL OTP)
 - Users enroll TOTP via account page
 - OTP subflow automatically triggers after enrollment
-- Document enrollment process for BFP personnel
 
-### Phase 2: Admin-Controlled (For Thesis)
-- Admin enrolls TOTP for each test user manually
+### Phase 2: Enforced MFA (2026-04-11 — Active)
+- Clone `browser` → `browser-with-mfa`
+- OTP subflow: change from CONDITIONAL → REQUIRED
+- **Remove `conditional-user-configured`** — the key insight is that this condition blocks unenrolled users when the subflow is REQUIRED
+- `auth-otp-form` when REQUIRED will prompt unenrolled users to set up TOTP (enrollment on first login)
+- Also: brute force protection (5 attempts), disable direct grants on wims-web, password policy
+
+### Phase 3: Admin-Controlled (For Thesis Defense)
+- Admin enrolls TOTP for each test user via admin console
 - Document as part of security evaluation
 - Demonstrate MFA in thesis defense
 
-### Phase 3: Enforced (Future — If Keycloak Fixes CONFIGURE_TOTP)
+### Phase 4: Future (If Keycloak Fixes CONFIGURE_TOTP)
 - When Keycloak properly registers CONFIGURE_TOTP as a required action
-- Re-enable forced enrollment approach
-- Update setup-mfa.sh script
+- Re-enable forced enrollment via required action approach
 
 ---
 

@@ -6,7 +6,67 @@ Append-only activity log. Newest entries first.
 
 ---
 
+## 2026-04-11 (continued)
+
+**2026-04-11 | upgrade | S++ optimization — taxonomy, queries layer, page splits**
+- Expanded: tag taxonomy 17→39 tags (7 categories: Project, Security, Infra, AI/ML, Dev, Research, Page Types)
+- Created: wiki/queries/ and wiki/comparisons/ directories (query + comparison layer)
+- Split: 10 oversized pages into overview + details sub-pages
+  - smart-parenting-app-tech-stack: 383→85L + 341L details
+  - wims-bfp-codebase-ingestion: 272→108L + 210L details
+  - docker-security-wims-bfp: 252→194L + 105L details
+  - slm-log-reading-pipeline: 245→96L + 193L details
+  - wims-bfp-thesis-codebase-gaps: 297→145L + 194L details
+  - keycloak-fastapi-security: 242→91L + 204L details
+  - fastapi-security: 191→124L + 122L details
+  - postgresql-security: 203→139L + 112L details
+  - postgis-security: 127→106L + 65L details
+  - vercel-web-interface: 216→71L + 185L details
+- Fixed: all wikilink paths (added directory prefixes for detail page cross-links)
+- Final: 111 pages, 0 broken links, 0 orphans, 0 missing frontmatter
+
+**2026-04-11 | fix | SCHEMA.md created + broken links + orphans + tag cleanup**
+- Created: wiki/SCHEMA.md — codified conventions, frontmatter spec, tag taxonomy (17 tags), page thresholds, update policy, archiving rules
+- Fixed: 12 broken wikilinks — stripped brackets from generic terms in CTF writeups (ftp, SSH, Linux, HTB, etc.)
+- Fixed: 2 orphan pages — added inbound [[wikilinks]] from llm-applied-learning-path → advisor-strategy, smart-parenting-ui-redesign → android-build-debugging
+- Fixed: 528 junk tags removed — wiki page paths (404), URLs/paths (124) stripped from tags: fields across 90+ files
+- Remaining: 522 topic-descriptor tags not in taxonomy (acceptable — real topic labels, just outside the 17-tag minimal set)
+
+**2026-04-11 | audit | LLM Wiki audit gate — Karpathy-pattern full sweep**
+- Fixed: 10 zero-wikilink pages — added inline [[wikilinks]] to body text
+- Fixed: 24 pages missing source_refs — batch-patched all concept/entity/MOC pages
+- Fixed: index page count (84→100), normalized table format (||→| )
+- Fixed: log truncated from 37→15 entries, 145 lines archived to log-archives/
+- Fixed: operational pages missing review_after/stale_after TTL fields
+- Post-fix: 0 zero-wikilink content pages, 0 missing frontmatter fields
+
+## 2026-04-11 (continued)
+
+**2026-04-11 | thesis | WIMS-BFP Section 3.9 ethics — full expansion + IERC integration**
+- Expanded 03-09-ethical-legal.md from ~47 lines to ~210 lines
+- Added: Regulatory Compliance Framework (RA 10173 lawful bases, data subject rights, RA 10175 provisions, NPC Circulars reframed as "designed to support," DPIA → risk assessment)
+- Added: Algorithmic/AI Impact section (3.9.2.4) per IERC Appendix H — XAI processing, bias risk, human oversight, transparency
+- Added: Ethical Safeguards (consent protocol, vulnerable populations, data sovereignty)
+- Added: Technical Data Protection (encryption, access control, audit) — rewritten as paragraphs
+- Added: Data Retention and Disposal — paragraph format
+- Renumbered: Data Migration Plans from 3.9.1 to 3.9.5 (resolved conflict with Regulatory Compliance Framework)
+- IERC integration: IRB → IERC throughout, added form numbers (FO-IREC-001, 002, 003, 010), PHREB compliance
+- AI writing remediation: both documents rewritten against Signs of AI Writing patterns (copulative avoidance, AI vocabulary, rule of three, significance puff, superficial -ing, promotional tone)
+- Created: IRB-Submission-WIMS-BFP.md (standalone ethics protocol)
+- Created: IREC-Form-01-WIMS-BFP.md (filled IREC application form)
+- Created: wiki wims-bfp-ierc-appendices.md (IERC form field details)
+- Created: wiki wims-bfp-ethics-section-revision-2026-04-11.md (revision log)
+
 ## 2026-04-11
+
+**2026-04-11 | ethics | WIMS-BFP ethics paper — IERC forms, Section 3.9 revision, de-AI writing**
+- Expanded thesis Section 3.9 (Ethical and Legal Considerations): added RA 10173 lawful bases, data subject rights, RA 10175 mitigations, NPC Circular readiness (not compliance — thesis prototype), DPIA framework, consent protocol, vulnerable populations, data sovereignty, algorithmic impact (3.9.2.4 for XAI module), encryption standards, access control, audit/non-repudiation, data retention, data migration plans (3.9.5)
+- IRB → IERC terminology update: referenced FO-IREC-001, 002, 003, 010 form numbers, PHREB compliance
+- Created: wiki/sources/software-dev/wims-bfp-ierc-appendices.md (appendix key details, screening checklist, document checklist)
+- Created: ethics/IRB-Submission-WIMS-BFP.md (standalone IRB protocol)
+- Created: ethics/IREC-Form-01-WIMS-BFP.md (in-depth FO-IREC-001 fill-out with all 6 sections)
+- De-AI-ified all ethics prose using Signs of AI Writing patterns (removed copulative avoidance, AI vocabulary, rule of three, significance inflation, superficial -ing phrases)
+- Skill created: ierc-ethics-review-submission (IERC form workflow + de-AI writing)
 
 **2026-04-11 | dev | Smart Parenting App — full UI redesign from v0/NestNote design**
 - Branch: `feature/ui-redesign-nestnote` (14 commits)
@@ -110,148 +170,16 @@ Append-only activity log. Newest entries first.
 - Cleanup: Claude removed 11 stale files (1,655 lines), CHANGELOG.md moved to docs/
 - Wiki: created wiki/sources/operational/2026-04-09-database-refactor-integration-tests.md
 
----
 
-## 2026-04-08
+## 2026-04-11
 
-**2026-04-08 | wiki | LLM Wiki audit gate — 6 Karpathy-pattern fixes applied**
-- Created: wiki/overview-state-of-field.md — WIMS-BFP field overview, research landscape, knowledge gaps
-- Added: inline [[wikilinks]] to abstract (6), ch3b-architecture (5), hermes-agent-setup (3)
-- Created: wiki/mocs/wims-bfp.md — thesis architectural MOC tying all sources/concepts together
-- Normalized: wiki/index.md table formatting (all sections now use standard | markdown)
-- Truncated: wiki/log.md to 20 entries (12 archived to wiki/log-archives/)
-- Reclassified: 4-agent postmortem → archived/lessons-learned with decision rationale cross-links
-- Index: updated (68 pages)
-
-**2026-04-08 | wiki | LLM Wiki audit gate — 6 fixes applied**
-- Created: wiki/overview-state-of-field.md — WIMS-BFP field overview, research landscape, knowledge gaps
-- Added: inline [[wikilinks]] to abstract (6), ch3b-architecture (5), hermes-agent-setup (3)
-- Created: wiki/mocs/wims-bfp.md — thesis architectural MOC tying all sources/concepts together
-- Normalized: wiki/index.md table formatting (all sections now use standard | markdown)
-- Truncated: wiki/log.md to 20 entries (12 older entries archived)
-- Index: updated (68 pages)
-
-**2026-04-08 | wiki | Created skills MOC, environment, decisions, commands quick ref**
-- Created: wiki/mocs/skills.md — 88 skills indexed by category (WIMS-BFP, dev, MLOps, creative, research, etc.)
-- Created: wiki/concepts/environment-snapshot.md — Arch Linux, i5-9300H, 19GB RAM, GTX 1050 Max-Q, Wayland+Kitty
-- Created: wiki/concepts/decisions-and-rationale.md — MiMo v2 Pro choice, Telegram over Discord, abandoned multi-agent, FARM stack rationale
-- Created: wiki/concepts/common-hermes-commands.md — session, gateway, model, auth, cron, skills, approval commands
-- Updated: wiki/index.md (67 pages)
-
-**2026-04-08 | wiki | Created hermes-agent-setup.md + operational/ directory + artifacts/**
-- Created: wiki/entities/hermes-agent-setup.md — personal hermes config, provider setup, gateway config, Telegram image pipeline
-- Created: wiki/sources/operational/ — directory for session logs, incident notes, debug artifacts
-- Created: wiki/artifacts/ — image descriptions from Telegram/CLI (vision-analyze pipeline)
-- Updated: wiki/index.md (63 pages, artifacts section added)
-- Note: multi-agent Discord architecture documented as abandoned
-
-**2026-04-08 | skill | Created docs-vs-code-discrepancy-scan + patched ultraplan**
-- Created: ~/.hermes/skills/software-development/docs-vs-code-discrepancy-scan/SKILL.md (5-phase methodology: extract claims → scan evidence → cross-reference matrix → severity → resolution)
-- Patched: ultraplan skill with execution lessons (delegate failures, iterative deepening, ground truth sources)
-- Inventory: updated (25 dirs, ~85 skills)
-
-**2026-04-08 | session-close | End of session — session file updated**
-- Session: 2026-04-08.md rewritten with full session summary
-- Memory: codebase entry updated with regional CRUD + Docker state
-- Wiki: 61 pages total
-- Commits today: 12 (thesis ingestion, discrepancy analysis, codebase metrics, Docker lockdown, CRUD, security fixes, tests, wiki logging)
-
-**2026-04-08 | audit | Regional Encoder CRUD + backend security scan**
-- Created: wiki/sources/software-dev/wims-bfp-regional-encoder-audit-2026-04-08.md
-- CRUD: POST/PUT/DELETE routes added to regional.py (8 total routes)
-- Security: 4 error message leakage fixes (str(e) -> generic messages + logger.exception)
-- CVE check: all packages at safe versions
-- Tests: 10/10 passing
-- Index: updated (total pages: 61)
-
-**2026-04-08 | ingest | WIMS-BFP codebase metrics — refactoring targets identified**
-- Created: wiki/sources/software-dev/wims-bfp-codebase-metrics.md
-- 118 code files, 19,879 lines (Python 45%, TSX 37%, TS 10%, SQL 8%)
-- CRITICAL: regional.py (1,876 lines), 01_wims_initial.sql (1,468 lines)
-- HIGH: WildlandAforManualForm (927), IncidentForm (772), api.ts (507)
-- Refactoring plan: Phase 1 backend (2 files → 10), Phase 2 frontend (4 files → 12)
-- Index: updated (total pages: 60)
-
-**2026-04-08 | ingest | WIMS-BFP thesis revision log — 51 changes documented**
-- Created: wiki/sources/software-dev/wims-bfp-thesis-revisions-2026-04-08.md
-- Ch1: 7 changes (microservices→containerized, Dexie→idb, hybrid→AES-256-GCM)
-- Ch2: 6 changes (offline claims toned down, hybrid→AES-256-GCM)
-- Ch3: 38 changes (Table 21 rewrite, Dexie→idb, X25519 removed, OpenBao/Instructor/PyNaCl/TanStack removed, Llama.cpp→Ollama)
-- All 10 discrepancies resolved. No code changes needed.
-- Index: updated (total pages: 59)
-
-**2026-04-08 | ingest | WIMS-BFP Thesis Chapters 1-3 + Abstract (55 files → 8 wiki pages)**
-- Created: wiki/sources/software-dev/wims-bfp-ch1-introduction.md (9 files, purpose/context/objectives/scope/CIA/STRIDE/definitions)
-- Created: wiki/sources/software-dev/wims-bfp-ch2-rrl.md (5 files, theoretical framework/4 paradigms, related literature/6 themes, related studies/6 comparative, synthesis/3 gaps)
-- Created: wiki/sources/software-dev/wims-bfp-ch3a-research-design.md (8 files, hybrid research design, FR/NFR/security requirements, V-model)
-- Created: wiki/sources/software-dev/wims-bfp-ch3b-architecture.md (10 files, 3-layer architecture, ER diagram, AI 4-stage pipeline, deployment)
-- Created: wiki/sources/software-dev/wims-bfp-ch3c-security-tools.md (7 files, security practices/hybrid encryption, FARM stack, testing tools)
-- Created: wiki/sources/software-dev/wims-bfp-ch3d-testing-data.md (13 files, testing methodologies, ISO 25010 evaluation, data gathering, ethics/RA 10173)
-- Created: wiki/sources/software-dev/wims-bfp-abstract.md (full abstract)
-- Created: wiki/sources/software-dev/wims-bfp-knowledge-graph.md (architecture alignment, health report findings)
-- Created: wiki/analyses/wims-bfp-thesis-codebase-gaps.md (3 CRITICAL, 2 HIGH discrepancies: offline PWA not implemented, model mismatch, microservices claim)
-- Index: updated (total pages: 58)
-
-**2026-04-08 | skill | Created ultraplan skill**
-- Created: ~/.hermes/skills/software-development/ultraplan/SKILL.md
-- 4-phase workflow: AUDIT (scan codebase) → ANALYZE (gaps/risks) → PLAN (bite-sized tasks) → REVIEW (security gate)
-- WIMS-BFP specific: RLS, PostGIS, DMZ, Celery RLS context, SRID 4326 checks
-
-**2026-04-08 | ingest | PostGIS Secure Coding Practices + concept**
-- Sources: wiki/sources/software-dev/postgis-secure-coding-practices.md (15-point audit checklist, CVE-2025-69662, spatial SQL injection, geometry validation, RLS integration)
-- Concept: wiki/concepts/postgis-security-wims-bfp.md (5 security layers, ZTA mapping, critical rules)
-- MOC: updated cybersecurity MOC
-- Index: updated (total pages: 50)
-
-**2026-04-08 | ingest | Hermes skills inventory documented**
-- Created: wiki/sources/software-dev/hermes-skills-inventory.md (23 dirs, ~83 skills, categorized by priority tier)
-- Index: updated (total pages: 48)
-
-**2026-04-08 | postmortem | 4-agent pipeline failure documented**
-- Created: wiki/analyses/4-agent-pipeline-postmortem.md (full postmortem: 5 root causes, lessons learned, next steps)
-- Updated: wiki/entities/hermes-agent.md (WIMS-BFP section now references failure, not proposal)
-- Index: updated (total pages: 47)
-
-**2026-04-08 | step-1 | Orchestrator config → Nous Portal (OAuth)**
-- Changed: provider: nous, default: mimo-v2-pro
-- Auth: hermes login --provider nous
-
-**2026-04-08 | ingest | FastAPI + Celery/Redis Security → 3 sources + 1 concept**
-- Sources: wiki/sources/software-dev/fastapi-security-best-practices.md, wiki/sources/software-dev/fastapi-cves-2025-2026.md, wiki/sources/software-dev/celery-redis-security.md
-- Concept: wiki/concepts/fastapi-security-wims-bfp.md (8-layer security stack, complete backend checklist)
-- MOC: updated cybersecurity MOC with FastAPI/Celery section
-- Index: updated (total pages: 45)
-
-**2026-04-08 | ingest | Keycloak + FastAPI Auth Security → 2 sources + 1 concept**
-- Sources: wiki/sources/software-dev/keycloak-production-security.md, wiki/sources/software-dev/fastapi-keycloak-jwt-rbac.md
-- Concept: wiki/concepts/keycloak-fastapi-security-wims-bfp.md (auth flow, ZTA mapping, complete auth audit checklist)
-- MOC: updated cybersecurity MOC with Keycloak section
-- Index: updated (total pages: 41)
-
-**2026-04-08 | ingest | Docker Security → 2 sources + 1 concept**
-- Sources: wiki/sources/software-dev/docker-security-best-practices.md, wiki/sources/software-dev/docker-cves-2025-2026.md
-- Concept: wiki/concepts/docker-security-wims-bfp.md (Compose template, runc CVEs, ZTA mapping, audit checklist)
-- MOC: updated cybersecurity MOC with Docker section
-- Index: updated (total pages: 38)
-
-**2026-04-08 | ingest | PostgreSQL Security → 3 sources + 1 concept**
-- Sources: wiki/sources/software-dev/postgresql-security-best-practices.md, wiki/sources/software-dev/postgresql-rls-limitations.md, wiki/sources/software-dev/postgresql-cves-2025-2026.md
-- Concept: wiki/concepts/postgresql-security-wims-bfp.md (RLS rules, NULL safety, CVE checklist, ZTA mapping)
-- MOC: updated cybersecurity MOC with PostgreSQL security section
-- Index: updated (total pages: 35)
-
-**2026-04-08 | ingest | Secure Coding Practices → 3 sources + 1 concept (OWASP, CWE, code review)**
-- Sources: wiki/sources/software-dev/owasp-top-10-2025.md, wiki/sources/software-dev/cwe-top-25-2025.md, wiki/sources/software-dev/owasp-secure-code-review.md
-- Concept: wiki/concepts/secure-coding-practices.md (synthesis, WIMS-BFP checklist, cross-links to ZTA/CVEs)
-- MOC: updated cybersecurity MOC with secure coding section
-- Index: updated (total pages: 31)
-
-**2026-04-08 | wiki | Cybersecurity MOC created + cross-links fixed**
-- MOC: wiki/mocs/cybersecurity.md (CVE summary, ZTA reading path, WIMS-BFP relevance)
-- Fixed 7 broken cross-references (concepts/threat-detection-pipeline, authentication-architecture, frontend-security → replaced with existing pages)
-- Added bidirectional wikilinks between all 6 cybersecurity source pages + ZTA concept
-
-**2026-04-08 | ingest | Zero Trust Architecture → 3 sources + 1 concept page**
-- Sources: wiki/sources/cybersecurity/nist-sp-800-207-zero-trust-architecture.md, wiki/sources/cybersecurity/dod-zta-implementation-primer-2026.md, wiki/sources/cybersecurity/zero-trust-complete-guide-2026.md
-- Concept: wiki/concepts/zero-trust-architecture.md (7 tenets, 7 pillars, WIMS-BFP alignment)
-- Index: updated (total pages: 27)
+**2026-04-11 | security | Keycloak auth hardening — MFA enforcement, account lockout, session timeout**
+- Scope: 3 security gaps identified in WIMS-BFP prototype
+  - MFA: OTP policy NOT SET, no OTP step in browser flow, CONFIGURE_TOTP broken in KC 24
+  - Account lockout: bruteForceProtected=False (completely disabled)
+  - Session timeout: ssoSessionIdleTimeout=1800 already correct, frontend has NO idle detection
+- Decision: Clone browser flow to `browser-with-mfa` — OTP subflow REQUIRED WITHOUT `conditional-user-configured` (forces TOTP enrollment prompt for unenrolled users)
+- Decision: Account lockout via Keycloak brute force protection (5 failures → temporary lockout, escalating to permanent)
+- Decision: Disable directAccessGrantsEnabled on wims-web client (PKCE-only, prevents MFA bypass)
+- Task breakdown: 8 steps (OTP policy → flow clone → brute force → client lockdown → password policy → session verify → apply → test)
+- Branch: `feature/suricata-celery-ingestion` (will create feature/auth-hardening if needed)
