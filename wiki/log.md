@@ -195,3 +195,17 @@ Append-only activity log. Newest entries first.
   - Users with TOTP: prompted for OTP on every login (verified)
   - Users without TOTP: CONDITIONAL subflow skipped, login succeeds (verified)
 - Desk check: encoder_test and analyst_test login OK, validator_test needs VERIFY_PROFILE action
+
+**2026-04-11 | security | Keycloak 26.6.0 upgrade — MFA now fully enforced**
+- Upgraded: Keycloak 24.0.0 → 26.6.0 (latest, April 2026)
+- Breaking changes fixed:
+  - KC_PROXY: edge → KC_PROXY_HEADERS: forwarded
+  - KC_HOSTNAME_STRICT removed (deprecated in KC 26 hostname v2)
+  - 'displayName' field removed from AuthenticationExecutionExportRepresentation (KC 26 schema change)
+  - Test user passwords updated to meet new policy (WimsBFP2026!)
+- Critical fix: CONFIGURE_TOTP now properly registered with alias='CONFIGURE_TOTP' (was null in KC 24)
+  - Set as defaultAction: True — forces TOTP enrollment on first login for all users
+- MFA flow: browser-with-mfa (created via API, clone endpoint broken in KC 26)
+  - Cookie [ALTERNATIVE], Username/Password [REQUIRED], OTP Form [REQUIRED]
+  - With CONFIGURE_TOTP as defaultAction: unenrolled users get TOTP setup page
+- Commits: 2953d2a (docker-compose + realm JSON)

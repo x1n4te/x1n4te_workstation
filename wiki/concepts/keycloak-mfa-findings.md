@@ -128,16 +128,18 @@ Admin sets up TOTP for each user via the admin console:
 - Users enroll TOTP via account page
 - OTP subflow automatically triggers after enrollment
 
-### Phase 2: Enforced MFA (2026-04-11 — Active, CONDITIONAL)
-- Clone `browser` → `browser-with-mfa` — set as default browser flow
-- OTP subflow: CONDITIONAL (not REQUIRED — Keycloak 24 CONFIGURE_TOTP bug)
-- `auth-otp-form` with `userSetupAllowed` config created (configurable=false, not actually used)
-- **DB fix:** disabled broken `CONFIGURE_TOTP` default_action (empty alias entry in `required_action_provider` table)
-  - This fixed "Cannot login, credential setup required" error that affected ALL users
+### Phase 2: Enforced MFA (2026-04-11 — KC 26.6.0 upgrade — FULLY ENFORCED)
+- Upgraded: Keycloak 24.0.0 → 26.6.0 (latest, April 2026)
+- **CONFIGURE_TOTP is FIXED in KC 26.6.0** — proper `alias='CONFIGURE_TOTP'` registration (was null in KC 24)
+- Set `CONFIGURE_TOTP` as `defaultAction: True` — forces TOTP enrollment on first login for all users
+- Created `browser-with-mfa` flow via API (clone endpoint broken in KC 26):
+  - Cookie [ALTERNATIVE]
+  - Username Password Form [REQUIRED]
+  - OTP Form [REQUIRED]
 - Behavior:
-  - Users with TOTP configured → prompted for OTP on every login ✓
-  - Users without TOTP → CONDITIONAL subflow skipped, login proceeds ✓
-- Also: brute force protection (5 attempts), direct grants disabled, password policy
+  - **Unenrolled users:** After entering credentials → Keycloak shows TOTP setup page (QR code) → must scan + enter OTP → login succeeds
+  - **Enrolled users:** After entering credentials → Keycloak shows OTP input → enter code → login succeeds
+  - **MFA is fully enforced for all users** — no skip possible
 
 ### Phase 3: Admin-Controlled (For Thesis Defense)
 - Admin enrolls TOTP for each test user via admin console
