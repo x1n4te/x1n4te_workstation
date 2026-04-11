@@ -183,3 +183,15 @@ Append-only activity log. Newest entries first.
 - Decision: Disable directAccessGrantsEnabled on wims-web client (PKCE-only, prevents MFA bypass)
 - Task breakdown: 8 steps (OTP policy → flow clone → brute force → client lockdown → password policy → session verify → apply → test)
 - Branch: `feature/suricata-celery-ingestion` (will create feature/auth-hardening if needed)
+
+**2026-04-11 | fix | Keycloak auth hardening — desk check results + DB fix**
+- Applied: brute force protection (5 failures), password policy (12+ chars), wims-web direct grants disabled — all verified
+- Applied: browser-with-mfa flow as default browser flow
+- Fixed: "Cannot login, credential setup required" error on ALL users
+  - Root cause: broken CONFIGURE_TOTP entry in required_action_provider table
+    with empty alias and default_action=true in bfp realm
+  - Fix: UPDATE required_action_provider SET default_action=false WHERE alias='' AND provider_id='CONFIGURE_TOTP'
+- MFA: CONDITIONAL OTP (not REQUIRED) — Keycloak 24.0.0 CONFIGURE_TOTP bug prevents forced enrollment
+  - Users with TOTP: prompted for OTP on every login (verified)
+  - Users without TOTP: CONDITIONAL subflow skipped, login succeeds (verified)
+- Desk check: encoder_test and analyst_test login OK, validator_test needs VERIFY_PROFILE action

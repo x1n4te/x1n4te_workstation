@@ -128,12 +128,16 @@ Admin sets up TOTP for each user via the admin console:
 - Users enroll TOTP via account page
 - OTP subflow automatically triggers after enrollment
 
-### Phase 2: Enforced MFA (2026-04-11 — Active)
-- Clone `browser` → `browser-with-mfa`
-- OTP subflow: change from CONDITIONAL → REQUIRED
-- **Remove `conditional-user-configured`** — the key insight is that this condition blocks unenrolled users when the subflow is REQUIRED
-- `auth-otp-form` when REQUIRED will prompt unenrolled users to set up TOTP (enrollment on first login)
-- Also: brute force protection (5 attempts), disable direct grants on wims-web, password policy
+### Phase 2: Enforced MFA (2026-04-11 — Active, CONDITIONAL)
+- Clone `browser` → `browser-with-mfa` — set as default browser flow
+- OTP subflow: CONDITIONAL (not REQUIRED — Keycloak 24 CONFIGURE_TOTP bug)
+- `auth-otp-form` with `userSetupAllowed` config created (configurable=false, not actually used)
+- **DB fix:** disabled broken `CONFIGURE_TOTP` default_action (empty alias entry in `required_action_provider` table)
+  - This fixed "Cannot login, credential setup required" error that affected ALL users
+- Behavior:
+  - Users with TOTP configured → prompted for OTP on every login ✓
+  - Users without TOTP → CONDITIONAL subflow skipped, login proceeds ✓
+- Also: brute force protection (5 attempts), direct grants disabled, password policy
 
 ### Phase 3: Admin-Controlled (For Thesis Defense)
 - Admin enrolls TOTP for each test user via admin console
