@@ -2,10 +2,10 @@
 id: smart-parenting-app-tech-stack-001
 type: concept
 created: 2026-04-10
-updated: 2026-05-05
-last_verified: 2026-04-25
-review_after: 2026-07-18
-stale_after: 2026-10-18
+updated: 2026-05-07
+last_verified: 2026-05-07
+review_after: 2026-07-06
+stale_after: 2026-09-04
 confidence: high
 source_refs:
   - raw/articles/smart-parenting-app-codebase-2026-04-18
@@ -27,6 +27,7 @@ source_refs:
   - sources/operational/2026-05-01-spa-history-activity-crud-phase2
   - sources/operational/2026-05-01-spa-history-activity-crud-ui
   - sources/operational/2026-05-05-spa-notification-orphan-fixes
+  - sources/operational/2026-05-07-spa-rls-stale-cache-bypass
 status: active
 tags:
   - react-native
@@ -45,6 +46,7 @@ related:
   - sources/operational/2026-04-12-smart-parenting-session
   - sources/operational/2026-04-12b-smart-parenting-codebase-reingestion
   - concepts/who-bmi-calculator
+  - sources/operational/2026-05-07-spa-rls-stale-cache-bypass
 ---
 
 # Smart Parenting App — Tech Stack
@@ -68,7 +70,7 @@ related:
 | UI | React Native Paper | ^5.12.0 | Material Design 3 components |
 | Forms | react-hook-form + zod | ^7.54.0 / ^3.24.0 | Form validation |
 | Charts | react-native-chart-kit | ^6.12.0 | Activity charts |
-| AI | OpenRouter API | — | Child activity analysis |
+| AI | OpenRouter API | env-driven model | Child activity analysis via Supabase Edge Function |
 
 ---
 
@@ -205,7 +207,7 @@ Tab bar: 80px Android, 100px iOS. `tabBarShowLabel: true`. Coral active tint (#F
 
 ---
 
-## AI Recommendation Flow (2026-04-25)
+## AI Recommendation Flow (2026-04-25, verified 2026-05-07)
 
 **Pattern:** Stateless zero-shot prompting with context injection plus deterministic post-model validation.
 
@@ -214,7 +216,7 @@ Tab bar: 80px Android, 100px iOS. `tabBarShowLabel: true`. Coral active tint (#F
 2. `analyzeChild()` fetches in parallel: 28-day activity summary, last 3 recommendations, child profile
 3. Edge Function aggregates raw activities into structured stats (sleep avg, screen time breakdown, meal frequency, etc.)
 4. Builds zero-shot prompt: system role + child profile + activity summary + previous recommendations
-5. Calls OpenRouter API (`openrouter/elephant-alpha`, free, stateless — no session)
+5. Calls OpenRouter API via the `OPENROUTER_MODEL` environment variable; live repo default is `inclusionai/ling-2.6-1t:free`
 6. Parses AI JSON response, normalizes recommendation categories/metadata, then inserts into `recommendations` table with `based_on` audit trail
 7. App reloads recommendations from DB, displays with category badges + priority colors
 
@@ -229,15 +231,25 @@ Tab bar: 80px Android, 100px iOS. `tabBarShowLabel: true`. Coral active tint (#F
   "activity_summary": { "sleep": {...}, "screen_time": {...}, "meals": {...} },
   "previous_rec_ids": ["uuid-1", "uuid-2"],
   "child_settings": { "max_screen_time_minutes": 120, "min_sleep_minutes": 540 },
-  "model": "openrouter/elephant-alpha"
+  "model": "inclusionai/ling-2.6-1t:free"
 }
 ```
 
 **Edge Function:** `supabase/functions/analyze-child/index.ts` (329 lines)
 - Activity aggregation (group by type, compute stats)
 - Prompt engineering (child development advisor role)
-- OpenRouter API call (free model, temperature 0.7)
+- OpenRouter API call with env-driven model selection; current code default is `inclusionai/ling-2.6-1t:free`
 - Supabase REST insert with service role key (bypasses RLS)
+
+**Model drift note (2026-05-07):** a user handoff reported a switch to `baidu/cobuddy:free`, but live code still defaults to `inclusionai/ling-2.6-1t:free`. Treat the provider path as operationally mutable until runtime config or a code diff confirms the switch.
+
+## Child soft-delete RPC bypass (2026-05-07)
+
+Direct `children` updates for soft-delete were replaced with `supabase.rpc('soft_delete_child', { child_id })` after the APK kept hitting a stale PostgREST view of the `children_update` policy. The consolidated schema now documents the fix in two layers:
+- `children_update` allows `WITH CHECK (parent_id = auth.uid())` without a `deleted_at IS NULL` self-contradiction on the new row.
+- `soft_delete_child(child_id UUID)` is a `SECURITY DEFINER` RPC that re-checks ownership internally before setting `deleted_at = NOW()`.
+
+This keeps authorization anchored in the database while bypassing a temporarily untrustworthy REST policy cache path. See [[sources/operational/2026-05-07-spa-rls-stale-cache-bypass]].
 
 ## Uniform Headers (2026-04-14)
 

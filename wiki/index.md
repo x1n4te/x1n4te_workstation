@@ -1,7 +1,7 @@
 # Wiki Index
 
-**Last updated:** 2026-05-04
-**Total pages:** 205
+**Last updated:** 2026-05-07
+**Total pages:** 206
 **Log:** Rotated 2026-04-16 (500+ entries → archived)
 
 ---
@@ -17,6 +17,7 @@
 | 2026-04-30 | Karpathy — Software 3.0: LLMs as a New Computer (AISLE Symposium) | raw/transcripts |
 | 2026-04-30 | Matt Pocock — How to Fix Any Codebase (Improve Codebase Architecture Deep Dive) | raw/transcripts |
 | 2026-04-26 | Mac Poynton — Software Fundamentals Matter More Than Ever (AI Coding Failure Modes) | sources/ai-research |
+| 2026-05-07 | Smart Parenting App — RLS Stale Cache Bypass via SECURITY DEFINER RPC | sources/operational |
 | 2026-04-26 | Smart Parenting App — MainApplication.kt Iterative AI Corruption + Fix (Failure Mode #3) | sources/operational |
 | 2026-04-24 | Smart Parenting App — Meal Time Logging | sources/operational |
 | 2026-04-23 | Smart Parenting App — Final Product Dual-Agent QA Plan | sources/operational |

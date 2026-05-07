@@ -2,16 +2,17 @@
 id: smart-parenting-app-system-architecture-001
 type: concept
 created: 2026-04-23
-updated: 2026-04-23
-last_verified: 2026-04-23
-review_after: 2026-06-22
-stale_after: 2026-08-21
+updated: 2026-05-07
+last_verified: 2026-05-07
+review_after: 2026-07-06
+stale_after: 2026-09-04
 confidence: high
 source_refs:
   - concepts/smart-parenting-app-client-handover
   - concepts/smart-parenting-app-tech-stack
   - concepts/expo-local-notifications
   - sources/operational/2026-04-23-spa-dashboard-scheduled-activities-session
+  - sources/operational/2026-05-07-spa-rls-stale-cache-bypass
   - /home/xynate/local-projects/smart-parenting-app/wiki/components/dashboard-screen.md
   - /home/xynate/local-projects/smart-parenting-app/wiki/components/log-screen.md
   - /home/xynate/local-projects/smart-parenting-app/wiki/components/history-screen.md
@@ -35,6 +36,7 @@ related:
   - concepts/smart-parenting-app-tech-stack
   - concepts/expo-local-notifications
   - concepts/hci-design-principles-mobile
+  - sources/operational/2026-05-07-spa-rls-stale-cache-bypass
 ---
 
 # Smart Parenting App — System Architecture
@@ -144,6 +146,11 @@ The backend security model is parent-scoped ownership via RLS.
 
 This is the most important backend design choice in the app: the client can hold an anon key and still remain safe because the database checks ownership on every query.
 
+### Soft-delete exception path (2026-05-07)
+One path now intentionally avoids the normal PostgREST table-update route: child soft-delete. The app hit a stale cached version of the `children_update` RLS policy on the REST API even after PostgreSQL had the corrected policy definition. To fail closed without waiting for cache convergence, `deleteChild()` now calls `soft_delete_child(child_id UUID)` as a `SECURITY DEFINER` RPC.
+
+The function does not grant broad bypass power. It still performs an internal ownership check against `children` using `parent_id = auth.uid()` and `deleted_at IS NULL`, then updates only the authorized row. This is a surgical reliability workaround, not an authorization relaxation. See [[sources/operational/2026-05-07-spa-rls-stale-cache-bypass]].
+
 ### Storage and media
 Child photos are stored separately from relational rows, with the child profile holding the resulting URL/reference. Architecturally: media is selected on-device, uploaded through the Supabase path, and then attached to the child record.
 
@@ -234,10 +241,11 @@ Key rule: authorization lives at the Supabase policy layer, not in screen logic.
 
 ### AI provider drift
 The sources agree that AI runs through `analyze-child`, but they disagree on the exact upstream provider/model.
-- Main wiki pages still describe OpenRouter / `elephant-alpha`.
-- Repo wiki Edge Function documentation currently describes an Ollama Cloud / `qwen3.5` path.
+- Older main wiki pages describe OpenRouter / `openrouter/elephant-alpha`.
+- Live code currently defaults to OpenRouter with `inclusionai/ling-2.6-1t:free` via `OPENROUTER_MODEL`.
+- The 2026-05-07 operational handoff claims the model was changed to `baidu/cobuddy:free`, but that switch is not visible in the current repo code.
 
-Conclusion: treat the AI layer as provider-pluggable until the docs are reconciled.
+Conclusion: treat the AI layer as provider-pluggable and distinguish verified code defaults from user-reported runtime or deployment changes.
 
 ### Notification scope drift
 The sources agree that routine reminders are local notifications, but they do not fully agree on the exact toggle model.

@@ -7,6 +7,15 @@ Append-only activity log. Newest entries first.
 - 2026-04-16 to 2026-04-26 → wiki/log-archives/log-2026-04-26.md
 
 ---
+**2026-05-07 | ingest | Smart Parenting App RLS stale cache bypass via SECURITY DEFINER RPC**
+
+- Raw source captured: `raw/articles/smart-parenting-app-rls-stale-cache-bypass-2026-05-07.md`
+- Created: `sources/operational/2026-05-07-spa-rls-stale-cache-bypass.md`
+- Updated: `concepts/smart-parenting-app-tech-stack.md`, `concepts/smart-parenting-app-system-architecture.md`, `index.md`
+- Verified in live repo: `lib/api.ts` uses `supabase.rpc('soft_delete_child', { child_id: childId })`; `database/migrations/20260507_soft_delete_child_rpc.sql` and `database/schema.sql` both define the `SECURITY DEFINER` function.
+- Verified drift note: live `supabase/functions/analyze-child/index.ts` still defaults to `inclusionai/ling-2.6-1t:free`; user handoff claim of `baidu/cobuddy:free` is recorded as unverified runtime/docs drift.
+
+---
 **2026-05-05 | session | Hindsight memory provider set up — Groq GPT OSS 120B, bank hermes-main seeded**
 
 - Hindsight 0.5.3 running in Docker on localhost:8888. LLM: Groq GPT OSS 120B free tier (llama-3.3-70b-versatile). Local embeddings (BAAI/bge-small-en-v1.5) and local reranker (cross-encoder/ms-marco-MiniLM-L-6-v2) built into image. No external embedding provider needed.
