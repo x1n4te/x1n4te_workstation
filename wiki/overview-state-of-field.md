@@ -7,6 +7,9 @@ last_verified: 2026-04-08
 review_after: 2026-05-08
 stale_after: 2026-10-08
 confidence: high
+source_refs:
+  - sources/software-dev/wims-bfp-abstract
+  - sources/software-dev/wims-bfp-ch1-introduction
 status: active
 tags:
   - overview

@@ -7,6 +7,8 @@ last_verified: 2026-04-10
 review_after: 2026-07-10
 stale_after: 2026-10-09
 confidence: high
+source_refs:
+  - sources/operational/2026-04-10-smart-parenting-ui-redesign
 status: active
 tags:
   - operational

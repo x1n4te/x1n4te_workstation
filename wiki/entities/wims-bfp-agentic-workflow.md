@@ -7,12 +7,13 @@ last_verified: 2026-04-10
 review_after: 2026-10-10
 stale_after: 2027-04-10
 confidence: medium
+source_refs:
+  - analyses/4-agent-pipeline-postmortem
 status: archived
 tags:
   - wims-bfp
   - multi-agent
   - hermes
-  - archived
 related:
   - entities/hermes-agent-setup
   - concepts/decisions-and-rationale

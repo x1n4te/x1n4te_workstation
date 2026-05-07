@@ -19,6 +19,7 @@ tags:
   - security
 related:
   - concepts/keycloak-fastapi-security-wims-bfp
+  - concepts/keycloak-forgot-password-test
   - entities/hermes-agent-setup
   - sources/software-dev/keycloak-production-security
 ---

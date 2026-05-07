@@ -7,6 +7,7 @@ last_verified: 2026-04-08
 review_after: 2026-07-08
 stale_after: 2026-10-08
 confidence: high
+source_refs: []
 status: active
 tags:
   - skills
@@ -39,19 +40,23 @@ related:
 
 ## Software Development
 
-| Skill | Purpose |
-|-------|---------|
-| `software-development/code-review` | Code review methodology |
-| `software-development/docs-vs-code-discrepancy-scan` | 5-phase: extract claims → scan evidence → cross-reference → severity → resolution |
-| `software-development/plan` | Planning methodology |
-| `software-development/requesting-code-review` | Request review workflow |
-| `software-development/subagent-driven-development` | Multi-agent dev workflow |
-| `software-development/systematic-debugging` | Debugging methodology |
-| `software-development/tdd-triple-agent` | TDD with 3 agents |
-| `software-development/test-driven-development` | TDD workflow |
-| `software-development/thesis-grounded-review` | Review against thesis claims |
-| `software-development/ultraplan` | Deep planning with iterative refinement |
-| `software-development/writing-plans` | Plan writing methodology |
+|| Skill | Purpose |
+||-------|---------|
+|| `software-development/code-review` | Code review methodology |
+|| `software-development/design-an-interface` | Parallel interface design exploration via sub-agents (Design It Twice) |
+|| `software-development/docs-vs-code-discrepancy-scan` | 5-phase: extract claims → scan evidence → cross-reference → severity → resolution |
+|| `software-development/grill-me` | Iterative 5-domain design alignment — ask 5 questions per round until shared understanding |
+|| `software-development/improve-codebase-architecture` | Refactor shallow modules into deep modules for better AI navigation |
+|| `software-development/plan` | Planning methodology |
+|| `software-development/requesting-code-review` | Request review workflow |
+|| `software-development/subagent-driven-development` | Multi-agent dev workflow |
+|| `software-development/systematic-debugging` | Debugging methodology |
+|| `software-development/tdd-triple-agent` | TDD with 3 agents |
+|| `software-development/test-driven-development` | TDD workflow — red-green-refactor with AI-specific adjustments |
+|| `software-development/thesis-grounded-review` | Review against thesis claims |
+|| `software-development/ultraplan` | Deep planning with iterative refinement |
+|| `software-development/ubiquitous-language` | Extract DDD-style domain glossary — shared terminology for AI + team |
+|| `software-development/writing-plans` | Plan writing methodology |
 
 ## Autonomous AI Agents
 

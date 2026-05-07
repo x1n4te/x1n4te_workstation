@@ -1,0 +1,71 @@
+# === DEPENDENCIES ===
+node_modules/
+.pnp
+.pnp.js
+
+# === EXPO / REACT NATIVE ===
+.expo/
+.expo-shared/
+android/
+ios/
+*.orig
+*.swp
+*.swo
+
+# === BUILD OUTPUTS ===
+dist/
+web-build/
+*.tgz
+
+# === ENVIRONMENT / SECRETS ===
+.env
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
+
+# === LOGS ===
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# === OS FILES ===
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# === EDITORS ===
+.vscode/
+.idea/
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# === TESTING ===
+coverage/
+*.lcov
+
+# === CERTIFICATES / KEYS ===
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# === MISC ===
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.vuepress/dist
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port

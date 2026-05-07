@@ -7,6 +7,9 @@ last_verified: 2026-04-08
 review_after: 2026-07-08
 stale_after: 2026-10-08
 confidence: high
+source_refs:
+  - entities/hermes-agent-setup
+  - entities/hermes-agent-v2-reference
 status: active
 tags:
   - hermes
@@ -23,7 +26,7 @@ related:
 ## Session Management
 
 ```bash
-hermes chat                          # Start new CLI session
+hermes chat                          # Start new CLI session (see [[entities/hermes-agent-setup]])
 hermes chat --resume                 # Resume a previous session (interactive picker)
 hermes chat --session <id>           # Resume specific session by ID
 hermes /new                         # New session (inside chat)
@@ -69,7 +72,7 @@ hermes cron remove <id>              # Remove a job
 ## Skills
 
 ```bash
-hermes skills list                   # List available skills
+hermes skills list                   # See [[concepts/procedural-memory]] for skill management                   # List available skills
 hermes skills install <skill>        # Install a skill
 hermes skills remove <skill>         # Remove a skill
 ```

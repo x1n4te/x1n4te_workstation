@@ -1,7 +1,7 @@
 ---
 id: dspy-entity-001
 type: entity
-title: "DSPy (Declarative Self-improving Python)"
+title: DSPy (Declarative Self-improving Python)
 created: 2026-04-07
 updated: 2026-04-07
 last_verified: 2026-04-07

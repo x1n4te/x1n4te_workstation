@@ -6,6 +6,8 @@ confidence: high
 source_refs:
   - ~/WIMS-BFP-NEW/LOCAL-WIMS-BFP-PROTOTYPE/src/docker-compose.yml
 status: active
+review_after: 2026-07-09
+stale_after: 2026-10-09
 tags:
   - operational
   - docker
@@ -19,7 +21,8 @@ related:
 
 # Auth Loop Fix — 2026-04-09
 
-**Problem:** Infinite authentication loop on dashboard login. User authenticates via Keycloak, gets redirected, app can't validate session, loops back to login.
+**Problem:** Infinite authentication loop on dashboard login. User authenticates via [[sources/cybersecurity/keycloak-cves-2026|Keycloak]], gets redirected, app can't validate session, loops back to login.
+Related: [[sources/operational/2026-04-09-database-refactor-integration-tests]], [[concepts/docker-security-wims-bfp]], [[concepts/keycloak-fastapi-security-wims-bfp]]
 
 **Status:** RESOLVED — 2026-04-09. All 10 root causes fixed. Auth flow functional.
 

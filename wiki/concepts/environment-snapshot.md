@@ -7,6 +7,9 @@ last_verified: 2026-04-08
 review_after: 2026-07-08
 stale_after: 2026-10-08
 confidence: high
+source_refs:
+  - ~/
+  - ~/.hermes/config.yaml
 status: active
 tags:
   - environment
@@ -23,6 +26,8 @@ related:
 ---
 
 ## Hardware
+
+Related: [[entities/hermes-agent-setup]], [[concepts/secure-coding-practices]]
 
 | Component | Spec |
 |-----------|------|

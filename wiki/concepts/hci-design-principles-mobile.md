@@ -2,11 +2,14 @@
 id: hci-design-principles-mobile-001
 type: concept
 created: 2026-04-11
-updated: 2026-04-11
-last_verified: 2026-04-11
+updated: 2026-04-19
+last_verified: 2026-04-19
 review_after: 2026-07-11
 stale_after: 2026-10-11
 confidence: high
+source_refs:
+  - sources/operational/2026-04-10-smart-parenting-ui-redesign
+  - sources/operational/2026-04-19-spa-add-child-hci-validation-session
 status: active
 tags:
   - hci
@@ -18,11 +21,12 @@ related:
   - concepts/vercel-web-interface-guidelines
   - concepts/smart-parenting-app-tech-stack
   - sources/operational/2026-04-10-smart-parenting-ui-redesign
+  - sources/operational/2026-04-19-spa-add-child-hci-validation-session
 ---
 
 # HCI Design Principles — Mobile App Implementation
 
-**Context:** Applied during Smart Parenting App UI redesign (2026-04-11)
+**Context:** Applied during Smart Parenting App UI redesign (2026-04-11) and History screen (2026-04-13)
 **Reference:** Nielsen's 10 Usability Heuristics, iOS Human Interface Guidelines, Material Design
 
 ---
@@ -158,6 +162,7 @@ related:
 | Child switching | None (single child) | Dashboard chips + log screen picker |
 | Meal detail | Type + quality | Type + quality + 7 food groups |
 | Animation | None | Welcome/goodbye with fade in/out |
+| History browsing | None | SectionList with date grouping, filter pills (NEW 2026-04-13) |
 
 ---
 

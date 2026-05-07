@@ -7,6 +7,9 @@ last_verified: 2026-04-09
 review_after: 2026-07-09
 stale_after: 2026-10-09
 confidence: high
+source_refs:
+  - https://www.3blue1brown.com/
+  - https://karpathy.ai/2025/01/16/llmwiki/
 status: active
 tags:
   - llm

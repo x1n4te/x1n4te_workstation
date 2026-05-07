@@ -55,9 +55,9 @@ related:
 ## Format
 
 Informal Obsidian-style notes with:
-- Wikilinks: `[[Linux]]`, `[[Walkthrough]]`
+- Wikilinks: `Linux`, `Walkthrough`
 - Status tags: `#completed`
-- Screenshots: `![[Screenshot_*.png]]`
+- Screenshots: `!Screenshot_*.png`
 - Step-by-step reasoning with personal observations
 - Questions and further improvements sections
 

@@ -22,6 +22,8 @@ related:
 
 # Hermes Skills Inventory
 
+Related: [[mocs/skills]], [[concepts/procedural-memory]], [[entities/hermes-agent]]
+
 **Location:** `~/.hermes/skills/`
 **Last audited:** 2026-04-08
 **Total skill directories:** 25

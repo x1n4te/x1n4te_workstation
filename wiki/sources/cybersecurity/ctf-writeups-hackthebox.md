@@ -67,9 +67,9 @@ Frontmatter with Obsidian tags:
 ```yaml
 date: 2025-12-29
 status: #completed
-platform: [[HTB]] [[Starting Point]]
-difficulty: [[VERY EASY]]
-tags: [[Linux]] [[ftp]] [[SSH]] [[Postgre-SQL]]
+platform: HTB Starting Point
+difficulty: VERY EASY
+tags: Linux ftp SSH PostgreSQL
 ```
 
 Sections: First Look → Exploit → Questions → Further Improvements

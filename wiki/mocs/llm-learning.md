@@ -7,6 +7,7 @@ last_verified: 2026-04-09
 review_after: 2026-07-09
 stale_after: 2026-10-09
 confidence: high
+source_refs: []
 status: active
 tags:
   - moc

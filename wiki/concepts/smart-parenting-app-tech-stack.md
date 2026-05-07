@@ -2,44 +2,73 @@
 id: smart-parenting-app-tech-stack-001
 type: concept
 created: 2026-04-10
-updated: 2026-04-10
-last_verified: 2026-04-10
-review_after: 2026-07-10
-stale_after: 2026-10-09
+updated: 2026-05-05
+last_verified: 2026-04-25
+review_after: 2026-07-18
+stale_after: 2026-10-18
 confidence: high
+source_refs:
+  - raw/articles/smart-parenting-app-codebase-2026-04-18
+  - sources/operational/2026-04-16-spa-gender-bmi-ui-fixes-session
+  - sources/operational/2026-04-18-spa-time-input-centering-session
+  - sources/operational/2026-04-19-spa-add-child-hci-validation-session
+  - sources/operational/2026-04-23-spa-dashboard-scheduled-activities-session
+  - sources/operational/2026-04-23-spa-hci-alert-fix-session
+  - sources/operational/2026-04-23-spa-qa-baseline-session
+  - sources/operational/2026-04-23-spa-schedule-reminder-session
+  - sources/operational/2026-04-23-spa-update-schedule-modal-refactor
+  - sources/operational/2026-04-23-spa-final-product-dual-agent-qa-plan
+  - sources/operational/2026-04-23-spa-hci-alert-fix-session
+  - sources/operational/2026-04-24-spa-meal-time-logging-session
+  - sources/operational/2026-04-24-spa-sdk55-schema-migration-session
+  - sources/operational/2026-04-25-spa-ai-recommendation-category-normalization
+  - sources/operational/2026-04-25-spa-consolidated-database-schema
+  - sources/operational/2026-04-25-spa-ai-insights-notification-ux-session
+  - sources/operational/2026-05-01-spa-history-activity-crud-phase2
+  - sources/operational/2026-05-01-spa-history-activity-crud-ui
+  - sources/operational/2026-05-05-spa-notification-orphan-fixes
 status: active
 tags:
   - react-native
   - expo
-  - firebase
   - supabase
   - openrouter
-  - mobile-development
-  - commission
+  - mobile-dev
+  - smart-parenting-app
+  - expo-notifications
+  - bmi-calculator
 related:
   - concepts/llm-applied-learning-path
-  - entities/hermes-agent-setup
+  - concepts/hci-design-principles-mobile
+  - concepts/react-native-text-input-centering
+  - analyses/smart-parenting-app-final-product-qa-plan
+  - sources/operational/2026-04-12-smart-parenting-session
+  - sources/operational/2026-04-12b-smart-parenting-codebase-reingestion
+  - concepts/who-bmi-calculator
 ---
 
-# Smart Parenting App — Tech Stack & Documentation
+# Smart Parenting App — Tech Stack
 
-**Project:** Smart Parenting App with AI-Based Child Activity Monitoring
-**Client:** Freelance commission (₱12K)
-**Deadline:** 1 week
-**Platforms:** Android + iOS
+**Project:** Smart Parenting App (NestNote) — AI-Based Child Activity Monitoring
+**Platforms:** Android + iOS (Expo EAS)
+**Repo:** ~/local-projects/smart-parenting-app/
+**Branch:** feature/ui-redesign-nestnote (5 tabs, coral theme finalized)
 
 ---
 
-## Tech Stack Overview
+## Tech Stack (Verified from package.json)
 
-| Layer | Technology | Role |
-|---|---|---|
-| Mobile | React Native + Expo SDK 52 | Cross-platform Android + iOS app |
-| Auth | Firebase Auth | Email/password + social login |
-| Database | Supabase (PostgreSQL) | Cloud database + realtime |
-| AI | OpenRouter API | Activity analysis + recommendations |
-| Build | Expo EAS Build | Cloud APK/IPA builds |
-| Backend (optional) | FastAPI | If needed beyond Firebase |
+| Layer | Technology | Version | Role |
+|---|---|---|---|
+| Framework | React Native | 0.83.6 | Cross-platform mobile |
+| Platform | Expo SDK | ~55.0.0 | Tooling, builds, modules |
+| Routing | Expo Router | ~55.0.13 | File-based routing |
+| Auth + DB | Supabase | ^2.49.0 | Auth, PostgreSQL, RLS |
+| State | Zustand | ^5.0.0 | Client state management |
+| UI | React Native Paper | ^5.12.0 | Material Design 3 components |
+| Forms | react-hook-form + zod | ^7.54.0 / ^3.24.0 | Form validation |
+| Charts | react-native-chart-kit | ^6.12.0 | Activity charts |
+| AI | OpenRouter API | — | Child activity analysis |
 
 ---
 
@@ -50,7 +79,7 @@ related:
 **Key docs:**
 - Expo docs: https://docs.expo.dev/
 - Expo Router (file-based routing): https://docs.expo.dev/router/introduction/
-- Expo SDK 52 overview: https://medium.com/@onix_react/what-to-expo-from-expo-sdk-52
+- Expo SDK 55 docs: https://docs.expo.dev/versions/v55.0.0/
 - React Native Directory (library search): https://reactnative.directory/
 
 **Quick start:**
@@ -73,309 +102,337 @@ npx expo start
 - Pre-built modules (camera, notifications, storage)
 - Faster iteration cycle
 
+- `lib/database.types.ts` now includes `scheduled_activities.food_groups` from the linked Supabase schema (regenerated 2026-04-24 after applying the additive v3 migration).
+- `database/schema.sql` is now the single consolidated database bootstrap file (2026-04-25); former incremental migration SQL files were folded into it, and optional seed data was renamed to `seed_test_account.sql.template` so `schema.sql` is the only `.sql` under `database/`.
+- SDK 55 compatibility: current upload code imports legacy base64 APIs from `expo-file-system/legacy`; notification foreground behavior uses `shouldShowBanner` + `shouldShowList`.
+
 ---
 
-## Firebase Auth
+## UI Patterns (Verified from Codebase)
 
-**What:** Google's authentication service. Handles email/password, social login, MFA. Free tier: 10K monthly active users.
+### Coral Theme Tokens (applied 2026-04-12)
 
-**Key docs:**
-- Firebase console: https://console.firebase.google.com/
-- Firebase Auth docs: https://firebase.google.com/docs/auth
-- Expo + Firebase guide: https://docs.expo.dev/guides/using-firebase/
-- React Native Firebase setup (YouTube): https://www.youtube.com/watch?v=H-vG4G8eKNE
-
-**Setup:**
-```bash
-# 1. Create project at console.firebase.google.com
-# 2. Enable Email/Password auth
-# 3. Add Android app → download google-services.json
-# 4. Add iOS app → download GoogleService-Info.plist
-# 5. Install in Expo project
-npx expo install @react-native-firebase/app @react-native-firebase/auth
+```
+Primary:        #FF7F60  (coral/salmon)
+PrimaryContainer: #FFE5E0
+Background:     #FEFBF6  (cream)
+Surface:        #FFFDFF  (near-white)
+Error:          #EF4444
+OnSurface:      #0F172A
+Outline:        #E2E8F0
 ```
 
-**Key features for this project:**
-- Email/password signup + login
-- Session management (automatic token refresh)
-- Password reset flow
-- Free tier covers expected usage
+Activity category colors preserved: screenTime=#FF7F60, sleep=#10B981, meals=#F59E0B, education=#8B5CF6.
 
-**Alternative:** Supabase Auth (integrated with Supabase DB, simpler setup)
+### Welcome/Goodbye Animation Pattern
 
----
-
-## Supabase
-
-**What:** Open-source Firebase alternative. PostgreSQL database with auth, realtime, storage, and edge functions. Free tier: 500MB database, 50K monthly active users.
-
-**Key docs:**
-- Supabase docs: https://supabase.com/docs/
-- React Native quickstart: https://supabase.com/docs/guides/auth/quickstarts/react-native
-- Supabase JS SDK: https://supabase.com/docs/reference/javascript/start
-- Database guide: https://supabase.com/docs/guides/database
-
-**Quick start:**
-```bash
-# 1. Create project at supabase.com
-# 2. Get project URL + anon key
-# 3. Install in React Native
-npx expo install @supabase/supabase-js @react-native-async-storage/async-storage react-native-url-polyfill
-```
-
-**Key features for this project:**
-- PostgreSQL database (activity logs, child profiles, recommendations)
-- Row Level Security (parents only see their children's data)
-- Realtime subscriptions (live dashboard updates)
-- Storage (child profile photos)
-- Auth (alternative to Firebase — can use either)
-
-**Why Supabase over Firebase:**
-- PostgreSQL (you already know it from WIMS-BFP)
-- Row Level Security (you already know RLS)
-- Open source (no vendor lock-in)
-- Realtime built-in
-- Free tier is generous
-
----
-
-## OpenRouter API
-
-**What:** Unified API for 400+ AI models. One API key, access to GPT-4, Claude, Gemini, Llama, Qwen, and more. Pay-per-use, free tier available.
-
-**Key docs:**
-- OpenRouter docs: https://openrouter.ai/docs/quickstart
-- API reference: https://openrouter.ai/docs/api/reference/overview
-- Models list: https://openrouter.ai/models
-- React Native integration: https://openrouter.ai/docs/guides/community/frameworks-and-integrations-overview
-
-**Quick start:**
-```javascript
-const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Bearer ' + OPENROUTER_API_KEY,
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'google/gemma-4-26b-a4b-it:free',  // free model
-    messages: [{role: 'user', content: prompt}],
-  }),
+Used on login (welcome) and sign-out (goodbye). Pattern:
+```tsx
+// Parallel animation: fade in + spring scale
+Animated.parallel([
+  Animated.timing(opacity, { toValue: 1, duration: 400, useNativeDriver: true }),
+  Animated.spring(scale, { toValue: 1, friction: 6, useNativeDriver: true }),
+]).start(() => {
+  // Show for 1.2s, then fade out
+  setTimeout(() => {
+    Animated.timing(opacity, { toValue: 0, duration: 300, useNativeDriver: true }).start();
+  }, 1200);
 });
 ```
 
-**Key features for this project:**
-- Free models available (Gemma, Llama, Qwen)
-- Structured output support (JSON mode)
-- Same API as OpenAI (drop-in compatible)
-- Pay-per-token (no subscription needed)
-- Auto-fallback (if one provider is down, routes to another)
+Auth guard in `_layout.tsx` delays redirect by 1.8s to let the animation play.
 
-**Why OpenRouter over direct providers:**
-- One API key for all models
-- Free tier covers development + testing
-- You already use it for WIMS-BFP (Nous Portal)
-- Easy to switch models without code changes
+### Sign-Out Confirmation Modal
+
+Modal (transparent, fade animationType) with centered card. Pattern:
+- Overlay: `rgba(0,0,0,0.4)`, dismissible on background tap
+- Card: white, 24px borderRadius, icon + title + text + Cancel/Sign Out buttons
+- Cancel: `#F1F5F9` background, gray text
+- Sign Out: `#EF4444` background, white text
+
+### Settings Screen Architecture (profile.tsx — 532L)
+
+Reusable components: `Section` (title + card wrapper), `Item` (icon + label + description + trailing), `ChildCard` (avatar + name + age). Sections: Account, Children, Notifications (Switch toggles), Privacy & Security, Support.
+
+### History Screen (history.tsx — 564L, NEW 2026-04-13)
+
+SectionList with date-grouped sections (Today, Yesterday, full weekday date). Filter pills horizontal scroll (All + 6 types). Child picker cycles via avatar tap. Activity cards show type icon + formatted label + time. States: loading spinner, error with retry button, empty state with CTA. Pull-to-refresh with coral tint. Uses `useFocusEffect` to reload on tab focus.
+
+Key helpers:
+- `groupByDate()` — groups activities by ISO date key, sorts newest-first
+- `getActivityLabel()` — formats each type with duration, quality, device/food/subject
+- `getSectionTitle()` — Today/Yesterday/locale date string
+
+### Tab Navigation (5 tabs — updated 2026-04-13)
+
+```
+Dashboard → Log → History → AI Insights → Settings
+home      → add  → time    → bulb        → settings
+```
+
+Tab bar: 80px Android, 100px iOS. `tabBarShowLabel: true`. Coral active tint (#FF7F60).
 
 ---
 
-## Expo EAS Build
+## New Features (2026-04-14)
 
-**What:** Cloud build service for Expo/React Native apps. Builds APK (Android) and IPA (iOS) without local native build tools.
+### Screen Time Category
+- Screen time logs now have a `category` field: `leisure` or `educational`
+- Log screen shows Category selector (Leisure / Educational) before Device selector
+- Display: `Screen time (leisure) — 1h 30m on phone`
 
-**Key docs:**
-- EAS Build docs: https://docs.expo.dev/build/introduction/
-- Build profiles: https://docs.expo.dev/build/eas-json/
-- Android build: https://docs.expo.dev/build/setup/
-- iOS build: https://docs.expo.dev/build-reference/ios-build/
-- Submit to stores: https://docs.expo.dev/submit/introduction/
+### Time Range Input (Sleep/Nap/Education/Physical)
+- Replaced manual hours/minutes stepper with Start → End time picker
+- Vertical layout (Start ↓ End) to fit mobile screens
+- Auto-calculates duration from start/end times
+- Supports overnight (e.g., 9PM → 6AM = 9h)
+- Screen time still uses manual hours/minutes
 
-**Quick start:**
-```bash
-# 1. Install EAS CLI
-npm install -g eas-cli
+### Meal Time Logging (updated 2026-04-24)
+- Manual meal logs capture a single `start_time` in the activity `value` JSONB payload.
+- Meal time uses the compact `RNTextInput` + wrapper View pattern for Android-safe vertical centering.
+- Dashboard and History labels display saved meal time as `Meal @ H:MM AM/PM` when present.
 
-# 2. Login
-eas login
+### Per-Child Settings
+- DB: `max_screen_time_minutes` and `min_sleep_minutes` columns on `children` table
+- Settings modal on tap of child card in Settings screen
+- Presets: Screen time (30m/1h/1.5h/2h/3h/none), Sleep (8-12h/none)
+- Saved to Supabase via `updateChildSettings()` API
 
-# 3. Configure
-eas build:configure
+### Child Picker Modal (History)
+- History screen child selector now opens a modal listing all children
+- Previously cycled round-robin on tap
 
-# 4. Build Android APK
-eas build --platform android --profile preview
+---
 
-# 5. Build iOS IPA (requires Apple Developer account)
-eas build --platform ios --profile preview
-```
+## AI Recommendation Flow (2026-04-25)
 
-**Build profiles (eas.json):**
+**Pattern:** Stateless zero-shot prompting with context injection plus deterministic post-model validation.
+
+**Flow:**
+1. Parent taps "Run AI Insights" on AI tab
+2. `analyzeChild()` fetches in parallel: 28-day activity summary, last 3 recommendations, child profile
+3. Edge Function aggregates raw activities into structured stats (sleep avg, screen time breakdown, meal frequency, etc.)
+4. Builds zero-shot prompt: system role + child profile + activity summary + previous recommendations
+5. Calls OpenRouter API (`openrouter/elephant-alpha`, free, stateless — no session)
+6. Parses AI JSON response, normalizes recommendation categories/metadata, then inserts into `recommendations` table with `based_on` audit trail
+7. App reloads recommendations from DB, displays with category badges + priority colors
+
+**Category hardening (2026-04-25):** The Edge Function no longer trusts raw model category output. Allowed categories are exactly `screen_time`, `sleep`, `meal`, `education`, `physical_activity`, and `general`. Legacy/ambiguous outputs are normalized deterministically: `nutrition` → `meal`, `activity` → inferred from cited content, and generic scheduled/routine activity advice → `general`. `physical_activity` is only used when movement evidence is explicit.
+
+**Caching:** Recommendations cached until next day. `isToday()` check skips API call if recs already generated today.
+
+**Audit trail (`based_on` JSONB):**
 ```json
 {
-  "build": {
-    "development": { "developmentClient": true, "distribution": "internal" },
-    "preview": { "distribution": "internal" },
-    "production": {}
-  }
+  "period": "2026-03-17 to 2026-04-14",
+  "activity_summary": { "sleep": {...}, "screen_time": {...}, "meals": {...} },
+  "previous_rec_ids": ["uuid-1", "uuid-2"],
+  "child_settings": { "max_screen_time_minutes": 120, "min_sleep_minutes": 540 },
+  "model": "openrouter/elephant-alpha"
 }
 ```
 
-**Key features:**
-- Cloud builds (no local Android Studio / Xcode needed)
-- Automatic credential management (keystores, provisioning profiles)
-- Parallel builds (Android + iOS simultaneously)
-- Build caching (faster subsequent builds)
-- Free tier: 30 builds/month
+**Edge Function:** `supabase/functions/analyze-child/index.ts` (329 lines)
+- Activity aggregation (group by type, compute stats)
+- Prompt engineering (child development advisor role)
+- OpenRouter API call (free model, temperature 0.7)
+- Supabase REST insert with service role key (bypasses RLS)
+
+## Uniform Headers (2026-04-14)
+
+**Component:** `components/ScreenHeader.tsx` — shared across Log, History, AI Insights screens.
+
+**Layout:** Icon + title on left, child picker pill (avatar + name + chevron) on right.
+
+**Child picker:** Tap → modal with all children → select → updates globally via Zustand.
+
+**HCI principles applied:** Consistency & Standards (#4), Recognition over Recall (#6), User Control (#3), Visibility of System Status (#1).
 
 ---
 
-## React Native Paper (UI Library)
+## Related Sections
+*Detailed content split into sub-pages for readability. See [[concepts/smart-parenting-app-tech-stack-details]] for the full reference.*
+*Client-facing handover documentation: [[concepts/smart-parenting-app-client-handover]]*
+*System architecture overview: [[concepts/smart-parenting-app-system-architecture]]*
 
-**What:** Material Design components for React Native. Pre-built buttons, forms, cards, navigation.
-
-**Docs:** https://callstack.github.io/react-native-paper/
-
-**Install:**
-```bash
-npx expo install react-native-paper react-native-safe-area-context
-```
-
-**Why:** Pre-built Material Design components. Saves time on UI development. Accessible by default.
+Session documentation: [[sources/operational/2026-04-12-smart-parenting-session]], [[sources/operational/2026-04-12b-smart-parenting-codebase-reingestion]], [[sources/operational/2026-04-10-smart-parenting-ui-redesign]], [[sources/operational/2026-04-14-smart-parenting-feature-session]], [[sources/operational/2026-04-23-spa-dashboard-scheduled-activities-session]]
 
 ---
 
-## react-native-chart-kit (Charts)
+## Dashboard Scheduled Activities (2026-04-23)
 
-**What:** Pre-built chart components for React Native. Line, bar, pie charts.
+The Dashboard "Upcoming" section displays pending `scheduled_activities` rows. Each card shows type icon, date label ("Today" or short date), time range, and up to 3 action buttons.
 
-**Docs:** https://github.com/indiespirit/react-native-chart-kit
-
-**Install:**
-```bash
-npx expo install react-native-chart-kit react-native-svg
-```
-
-**Why:** Pre-built charts for activity reports. Minimal config, good enough for a prototype.
-
----
-
-## Architecture Diagram
+### UpcomingItem Card Layout
 
 ```
-┌─────────────────────────────────┐
-│   React Native App (Expo)       │
-│   ┌─────────┐  ┌─────────────┐ │
-│   │ Firebase │  │  Supabase   │ │
-│   │  Auth    │  │  Database   │ │
-│   └─────────┘  └─────────────┘ │
-│          │           │          │
-│          └─────┬─────┘          │
-│                │                │
-│         ┌──────┴──────┐         │
-│         │  Activity   │         │
-│         │  Logging    │         │
-│         └──────┬──────┘         │
-│                │                │
-│         ┌──────┴──────┐         │
-│         │  OpenRouter │         │
-│         │  AI Engine  │         │
-│         └──────┬──────┘         │
-│                │                │
-│         ┌──────┴──────┐         │
-│         │ AI Reports  │         │
-│         │ + Alerts    │         │
-│         └─────────────┘         │
-└─────────────────────────────────┘
+├───────────────────────────────────────────────────┐
+│  📱 Screen        [Today]                  │  ← top row (icon + meta + badge)
+│  3:00 PM → 5:00 PM  · up to 2h             │
+│                                         │
+│  Log    Update    Cancel                │  ← action row (3 buttons)
+└───────────────────────────────────────────────────┘
 ```
 
----
+Card container: `flexDirection: 'column'` (default), white surface, 14px radius, 1px `#E2E8F0` border.
 
-## Current Versions (SDK 52)
+### Three Actions
 
-| Package | Version | Documentation |
+| Button | Behavior | API Call |
 |---|---|---|
-| Expo | 52.0.49 | https://docs.expo.dev/ |
-| React Native | 0.76.3 | https://reactnative-archive-august-2025.netlify.app/docs/0.76/getting-started |
-| Expo Router | 4.0.22 | https://docs.expo.dev/router/introduction/ |
-| React Native Paper | 5.12.0 | https://callstack.github.io/react-native-paper/docs/guides/getting-started/ |
-| Supabase JS | 2.49.0 | https://supabase.com/docs/reference/javascript/start |
+| **Log** | Opens `LogConfirmModal` (meal: quality + food groups + meal type + notes; others: notes only). Log button only appears once `start_time <= now`. | `logActivity()` + cancel schedule-specific reminders |
+| **Update** | Opens `UpdateScheduleModal` slide-up sheet | `updateScheduledActivity()` + reschedule one-off reminders |
+| **Cancel** | Inline confirmation: "Delete this schedule permanently?" → Keep / Delete | `deleteScheduledActivity()` + cancel one-off reminders |
 
-### Key Documentation Links (Exact Versions)
+### Log — Confirmation Modal Mapping
 
-| Technology | Link | What |
-|---|---|---|
-| Expo SDK 52 overview | https://medium.com/@onix_react/what-to-expect-from-expo-sdk-52-48c28c07db6a | Features, breaking changes, new architecture |
-| Expo SDK 52 video | https://www.youtube.com/watch?v=gQqE55rkHO0 | Deep dive into SDK 52 updates |
-| Expo Router v4 docs | https://docs.expo.dev/versions/latest/sdk/router/ | API reference, hooks, navigation |
-| Expo Router intro | https://docs.expo.dev/router/introduction/ | File-based routing concepts |
-| Expo Router tutorial | https://www.youtube.com/watch?v=FWYiG6OIEJw | Login → Dashboard → Profile flow |
-| React Native 0.76 release | https://reactnative.dev/blog/2024/10/23/release-0.76-new-architecture | New architecture by default |
-| React Native 0.76 docs | https://reactnative-archive-august-2025.netlify.app/docs/0.76/getting-started | Getting started guide |
-| React Native Paper v5 | https://callstack.github.io/react-native-paper/docs/guides/getting-started/ | Setup, PaperProvider, components |
-| React Native Paper v5 guide | https://callstack.github.io/react-native-paper/docs/guides/migration-guide-to-5.0/ | Material You design |
-| Supabase React Native | https://supabase.com/docs/guides/auth/quickstarts/react-native | Quickstart guide |
-| Expo tutorial | https://docs.expo.dev/tutorial/introduction/ | Official step-by-step tutorial |
-| Expo EAS Build | https://docs.expo.dev/build/introduction/ | Cloud build for Android/iOS |
+Duration is still taken from `max_duration_minutes`, but the log flow is now user-confirmed before insertion.
 
----
+- **meal**: parent chooses `meal_type`, `quality`, `food_groups`, optional `notes`
+- **screen_time / sleep / nap / physical_activity / education**: optional `notes` only
+- After successful log, schedule-specific one-off reminders for that schedule are cancelled
 
-## Development Resources
+### UpdateScheduleModal
 
-### React Native + Expo Tutorials
+Slide-up modal with 3 sections:
+1. **Type picker** — 6 chips, color-coded border on active
+2. **Start Time** — CompactTimeBlock pattern: stepper ±, RNTextInput, AM/PM toggles
+3. **Min / Max Allotted Duration** — hour/minute inputs with fixed-width digit columns (`modalCompactRow`)
+4. **Category or Meal Type** — tailored chip sets per activity type:
+   - Screen Time: `leisure`, `educational`
+   - Physical Activity: `sports`, `playground`, `outdoor`, `other`
+   - Education: `reading`, `math`, `science`, `art`, `music`, `other`
 
-| Resource | Type | Link |
-|---|---|---|
-| Expo Tutorial (official) | Docs | https://docs.expo.dev/tutorial/introduction/ |
-| React Native Full Course 2026 (Expo) | Video | https://www.youtube.com/watch?v=RdJhqaOIWn0 |
-| React Native Full Course 2026 (publish + monetize) | Video | https://www.youtube.com/watch?v=4nVoLX2taFg |
-| React Native Tutorial: Build 1st App in 3 Hours | Guide | https://tech-insider.org/react-native-tutorial-mobile-app-complete-guide-2026/ |
-| Expo SDK 52 overview | Blog | https://medium.com/@onix_react/what-to-expo-from-expo-sdk-52 |
+**Time conversion:**
+- Open: ISO `start_time` → 12h `{h, m, p}` via `to12h()`; `min_duration_minutes` / `max_duration_minutes` → hour/minute breakdown
+- Save: 12h → 24h via `from12h()`, reconstruct ISO on base date. `planned_end_time` auto-computed from `start_time + max_duration_minutes`.
 
-### Supabase + React Native
+**Live range preview:** Green card shows calculated loggable window in real time:
+- `3:00 PM → 3:30 PM – 4:00 PM` (when min ≠ max)
+- `3:00 PM → 4:00 PM` (when min = max)
 
-| Resource | Type | Link |
-|---|---|---|
-| Supabase React Native quickstart (official) | Docs | https://supabase.com/docs/guides/auth/quickstarts/react-native |
-| Supabase Setup in React Native Expo 2026 | Video | https://www.youtube.com/watch?v=o5C6cEEAKkI |
-| Pocket Backend: React Native CRUD with Supabase | Blog | https://weblianz.com/blog/pocket-backend-react-native-crud-with-supabase |
-| Build CRUD App with React + Supabase | Guide | https://adevait.com/react/building-crud-app-with-react-js-supabase |
+### Hard-Delete Cancel
 
-### Firebase Auth + React Native
+Old behavior: `updateScheduledActivityStatus(id, 'skipped')` — row persisted.
+New behavior: `deleteScheduledActivity(id)` — `DELETE FROM scheduled_activities WHERE id = $1`. Row gone permanently. Inline confirmation prevents accidents.
 
-| Resource | Type | Link |
-|---|---|---|
-| Firebase Setup in Expo (official) | Docs | https://docs.expo.dev/guides/using-firebase/ |
-| Firebase Setup in React Native Expo 2026 | Video | https://www.youtube.com/watch?v=H-vG4G8eKNE |
-| React Native Firebase Tutorial (2025) | Playlist | https://www.youtube.com/playlist?list=PLuP3JaGUSq82b23OQEiUoueDTGVTYdVra |
+### One-Off Schedule Reminders (2026-04-23)
 
-### EAS Build + Deployment
+Each pending `scheduled_activities` row now schedules up to **2 local notifications**:
+- `scheduled-min-{scheduleId}` → `start_time + min_duration_minutes - 5 minutes`
+- `scheduled-max-{scheduleId}` → `start_time + max_duration_minutes - 5 minutes`
 
-| Resource | Type | Link |
-|---|---|---|
-| EAS Build docs (official) | Docs | https://docs.expo.dev/build/introduction/ |
-| Build profiles config | Docs | https://docs.expo.dev/build/eas-json/ |
-| Submit to app stores | Docs | https://docs.expo.dev/submit/introduction/ |
-| Expo dev workflow 2026 | Blog | https://irfanqutab.dev/blog/expo-developer-workflow-2026 |
+Rules:
+- Past triggers are skipped
+- If min/max resolve to the same time, only the max reminder is scheduled
+- Updating a schedule cancels and rebuilds its reminders
+- Cancelling or logging from the card cancels remaining schedule-specific reminders
 
-### Mobile App Architecture
+## Final Product QA Strategy (2026-04-23)
 
-| Resource | Type | Link |
-|---|---|---|
-| 9 Mobile App Architecture Best Practices | Guide | https://nextnative.dev/blog/mobile-app-architecture-best-practices |
-| React Native Architecture (2026) | Blog | https://medium.com/@silverskytechnology/react-native-architecture-explained-2026-edition |
-| React Design Patterns 2025 | Guide | https://www.telerik.com/blogs/react-design-patterns-best-practices |
+Smart Parenting QA now has two layers:
 
-### AI Integration
+1. **Baseline QA** — static audit + severity-ranked fixes
+2. **Final Product QA** — release-candidate validation focused on runtime correctness, end-to-end parent flows, failure handling, data integrity, performance, and codebase bloat
 
-| Resource | Type | Link |
-|---|---|---|
-| OpenRouter quickstart | Docs | https://openrouter.ai/docs/quickstart |
-| OpenRouter API reference | Docs | https://openrouter.ai/docs/api/reference/overview |
-| OpenRouter models catalog | List | https://openrouter.ai/models |
-| OpenRouter React Native integration | Guide | https://openrouter.ai/docs/guides/community/frameworks-and-integrations-overview |
+The final-product track is designed for **two concurrent agents**:
+- **MiniMax-M2.7** → compliance auditor for checklist validation, data integrity, security assumptions, release gating, and bloat review
+- **Kimi-K2.6** → product dogfooder for end-to-end flow testing, HCI friction detection, runtime behavior checks, and edge-case reproduction
+
+Phases 3–9 cover:
+- runtime product validation
+- core flow certification
+- failure and edge-case behavior
+- data integrity and security validation
+- performance and bloat audit
+- release-candidate readiness
+- final ship/no-ship sign-off
+
+Hard ship gate:
+- 0 known Critical issues
+- 0 known High issues
+- 0 dead primary actions
+- 0 unresolved console/runtime errors in certified flows
+- 0 must-fix bloat findings
+
+See [[analyses/smart-parenting-app-final-product-qa-plan]] for the detailed dual-agent execution design.
 
 ---
 
-## Related
+## AI Insights Screen — UX Redesign (2026-04-25)
 
-- [[concepts/llm-applied-learning-path]] — Applied LLMs learning path
-- [[entities/hermes-agent-setup]] — Hermes agent setup
+### Category Capping + Recency Badges
+
+The AI Insights screen now limits each category to **3 most recent recommendations** and surfaces **recency** to help parents identify what changed:
+
+- **Max 3 per category** — `screen_time`, `sleep`, `meal`, `education`, `physical_activity`, and `general` each show their 3 newest recommendations
+- **Creation date** on every card footer (`MMM D, YYYY`)
+- **Recency badge:**
+  - 🟢 **Latest** — newest in that category (today or most recent run)
+  - 🟡 **2nd Latest** — second most recent
+  - ⬜ **Oldest** — third most recent (still within the 3-cap)
+- **Sort order:** Grouped by category name alphabetically, then date descending within each group
+- **Filter interaction:** Active filters apply before the cap. Filtering to "Sleep" shows only the 3 most recent Sleep recommendations.
+- **Pagination:** "Load More" works on the post-capped list (shows next 5 items regardless of category)
+
+This prevents information overload when the AI generates many recommendations across categories while preserving the ability to see full history via Load More or filter.
+
+---
+
+## Notification System — Privacy-by-Default (2026-04-25)
+
+### Problem
+
+Previously, creating a child immediately scheduled **all 10 routine notifications** on the device. Parents received surprise alerts without having explicitly opted in.
+
+### Solution
+
+New children are created with all notification toggles **OFF by default**. Parents must explicitly enable each routine notification they want:
+
+| Routine | Default | Opt-In Location |
+|---------|---------|-----------------|
+| Bedtime | OFF | Settings → Child → Bedtime toggle |
+| Wake Up | OFF | Settings → Child → Wake Up toggle |
+| Breakfast | OFF | Settings → Child → Breakfast toggle |
+| Lunch | OFF | Settings → Child → Lunch toggle |
+| Snack | OFF | Settings → Child → Snack toggle |
+| Dinner | OFF | Settings → Child → Dinner toggle |
+| Nap | OFF | Settings → Child → Nap toggle |
+| Activity | OFF | Settings → Child → Activity toggle |
+| Learn | OFF | Settings → Child → Learn toggle |
+| Weekly Growth | OFF | Settings → Child → Weekly Growth toggle |
+
+### Implementation
+
+- Wizard (`app/child/wizard.tsx`) saves `defaultNotifs` (all `false`) to Supabase via `updateChildSettings()` before calling `scheduleChildNotifications()`
+- `scheduleChildNotifications()` skips any type whose toggle is `false`
+- Existing children retain their saved `notifications` JSONB value — no migration needed
+- Master toggle in Settings → Notifications still works globally (cancels all / re-enables all)
+
+### Debug Logging
+
+Every toggle flip and save action now emits `__DEV__`-guarded console logs:
+- Toggle action: `[ChildSettings] snack toggled OFF ❌`
+- Save summary: `[ChildSettings] Saved with 3 notification(s) OFF for Emma: snack, nap, weekly_growth`
+- Scheduler skip: `[Notifications] snack for Emma — toggle is OFF, skipping`
+- Master toggle: `[Profile] All notifications turned OFF for all children`
+
+See [[concepts/expo-local-notifications]] for full notification architecture details.
+
+---
+
+## Schedule Creation Redirect (2026-04-25)
+
+After creating a scheduled activity from the Log tab, the app now **instantly redirects to the History tab** instead of staying on the Log form:
+
+```typescript
+// app/(tabs)/log.tsx
+router.replace('/(tabs)/history');  // was: '/(tabs)' (Dashboard)
+```
+
+Rationale: after scheduling, the parent's next need is to **verify and manage** upcoming activities. The History tab (now "Schedule" tab) shows all pending scheduled activities with Log / Update / Cancel actions. Using `replace` (not `push`) prevents back-navigation to the filled form.
+
+---
+
+## Related Sections

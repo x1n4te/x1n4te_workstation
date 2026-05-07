@@ -7,6 +7,8 @@ source_refs:
   - ~/WIMS-BFP-NEW/LOCAL-WIMS-BFP-PROTOTYPE/src/backend/database.py
   - ~/WIMS-BFP-NEW/LOCAL-WIMS-BFP-PROTOTYPE/src/backend/tests/integration/test_regional_crud.py
 status: active
+review_after: 2026-07-09
+stale_after: 2026-10-09
 tags:
   - operational
   - database
@@ -20,6 +22,8 @@ related:
 ---
 
 # Database Refactor + Integration Tests — 2026-04-09
+
+Related: [[sources/operational/2026-04-09-auth-loop-fix]], [[concepts/fastapi-security-wims-bfp]], [[concepts/postgresql-security-wims-bfp]], [[sources/software-dev/wims-bfp-codebase-ingestion-2026-04-08]]
 
 **Delegated to:** Claude Code (print mode)
 **Cost:** $1.74, 23 turns

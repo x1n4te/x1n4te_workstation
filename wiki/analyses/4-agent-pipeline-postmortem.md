@@ -17,7 +17,6 @@ tags:
   - postmortem
   - wims-bfp
   - lessons-learned
-  - archived
 related:
   - entities/hermes-agent-setup
   - concepts/decisions-and-rationale

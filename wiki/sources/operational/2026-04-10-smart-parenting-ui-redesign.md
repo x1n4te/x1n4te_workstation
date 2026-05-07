@@ -24,6 +24,7 @@ related:
   - concepts/hci-design-principles-mobile
 ---
 
+Related: [[sources/operational/2026-04-10-android-build-debugging]], [[concepts/hci-design-principles-mobile]]
 # Smart Parenting App — UI Redesign Session (2026-04-10/11)
 
 **Session:** 2026-04-10 23:37 → 2026-04-11 ~02:00

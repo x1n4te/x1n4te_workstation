@@ -44,7 +44,7 @@ related:
 
 These files are minimal references — mostly phase names with Obsidian wikilinks to the next phase. They follow the MITRE ATT&CK kill chain structure.
 
-**Obsidian tags:** `[[Weaponization]]`, `[[Action on Objectives]]`, etc.
+**Obsidian tags:** `**Weaponization**`, `**Action on Objectives**`, etc.
 
 ---
 

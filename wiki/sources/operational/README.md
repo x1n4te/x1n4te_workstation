@@ -6,6 +6,8 @@ created: 2026-04-08
 
 # Operational Sources
 
+Related: [[mocs/wims-bfp]], [[sources/software-dev/wims-bfp-codebase-ingestion-2026-04-08]]
+
 This folder accumulates over time as you use hermes day to day.
 
 ## What Goes Here
@@ -35,9 +37,12 @@ id: ops-YYYY-MM-DD-topic
 type: source
 created: YYYY-MM-DD
 confidence: high | medium | low
+status: active
+source_refs: []
+review_after: 2026-07-08
+stale_after: 2026-10-08
 tags:
   - operational
-  - <relevant tags>
 ---
 
 # [What Happened]
@@ -57,4 +62,4 @@ Anything to remember for next time.
 
 ---
 
-*No files yet. This folder grows organically.*
+*50+ operational source files accumulated across sessions (2026-04-12 to 2026-04-26).*

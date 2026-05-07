@@ -17,6 +17,8 @@ related:
   - sources/ai-research/memmachine
   - sources/ai-research/dspy-declarative-prompt-optimization
   - sources/ai-research/hermes-agent
+  - concepts/llm-wiki-pattern
+  - concepts/local-llm-finetuning-roadmap
 ---
 
 # AI Research — Map of Content

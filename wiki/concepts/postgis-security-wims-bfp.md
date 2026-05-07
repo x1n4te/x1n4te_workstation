@@ -98,30 +98,9 @@ National Analyst
 
 ---
 
-## Critical Rules for WIMS-BFP
-
-1. **ST_MakePoint, NOT ST_GeomFromText** — ST_MakePoint accepts numeric params directly (no WKT parsing = no injection surface)
-2. **Always SET wims.current_region_id** — RLS depends on this; missing = data leak across regions
-3. **Validate geometry BEFORE DB** — Shapely in application layer, CHECK constraint in DB
-4. **GeoPandas >= 1.1.2** — CVE-2025-69662 is critical; any version < 1.1.2 is exploitable
-5. **SRID 4326 everywhere** — Mixed SRIDs cause silent distance errors, bypass regional boundaries
+## Related Sections
+*Detailed content split into sub-pages for readability. See [[concepts/postgis-security-wims-bfp-details]] for the full reference.*
 
 ---
 
-## Audit Checklist Summary
-
-15-point checklist in [[sources/software-dev/postgis-secure-coding-practices]] §8. Key items:
-- No string interpolation in spatial constructors
-- Parameterized queries everywhere
-- Geometry validation at app + DB layer
-- Metadata table access hardened
-- RLS + spatial filtering integrated
-
----
-
-## Related
-
-- [[sources/software-dev/postgis-secure-coding-practices]] — Full secure coding guide
-- [[concepts/postgresql-security-wims-bfp]] — PostgreSQL base security
-- [[concepts/keycloak-fastapi-security-wims-bfp]] — Auth layer
-- [[concepts/docker-security-wims-bfp]] — Container security
+*This page is scannable in 30 seconds. Full reference content moved to sub-pages.*

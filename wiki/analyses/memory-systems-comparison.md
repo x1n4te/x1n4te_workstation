@@ -22,6 +22,7 @@ related:
   - entities/mem0
   - entities/mastras
   - entities/memgpt
+  - entities/hindsight
   - concepts/agent-memory-taxonomy
   - sources/ai-research/memmachine
 ---
@@ -36,7 +37,7 @@ related:
 | Mem0 | Mem0.ai | LLM extraction to hybrid vector+graph DB |
 | MemGPT | Packer et al. (2024) | Virtual memory hierarchy / OS-inspired |
 | Mastra | Mastra | Observational compression (Observer+Reflector) |
-| Zep | Zep AI | Temporal knowledge graph |
+| Hindsight | Vectorize | Self-hosted semantic memory, 4-strategy retrieval (semantic+BM25+graph+temporal), LLM extraction |
 | MemOS | Li et al. (2025) | Unified MemCube: text+KV+parametric |
 | Memobase | memodb.io | Structured memory storage |
 | LangMem | LangChain | Memory for LangChain ecosystem |
@@ -54,6 +55,7 @@ related:
 | Mem0 | ✗ | Per-message extraction |
 | Mastra | ✗ | Aggressive compression |
 | Zep | Partial | Temporal graph |
+| Hindsight | ✗ | LLM extraction to semantic facts |
 | MemOS | Mixed | Varies by MemCube type |
 
 **2. Retrieval Strategy**
@@ -65,6 +67,7 @@ related:
 | MemGPT | Virtual memory paging (context ↔ external storage) |
 | Mastra | No retrieval — compressed observation log always in context |
 | Zep | Temporal knowledge graph + vector search |
+| Hindsight | 4 parallel: semantic + BM25 + graph + temporal → RRF merge → cross-encoder rerank |
 | MemOS | MemCube scheduler: predictive preloading, cross-type transforms |
 
 **3. Memory Types Implemented**
@@ -76,6 +79,7 @@ related:
 | MemGPT | ✓ | ✓ | ✗ | ✗ |
 | Mastra | ✓ | ✗ | ✓ (Observation log) | ✗ |
 | Zep | ✓ | ✓ | ✓ | ✗ |
+| Hindsight | ✓ | ✓ (via consolidation) | ✓ | ✗ |
 | MemOS | ✓ | ✓ (text MemCube) | ✓ | Partial (via LoRA) |
 
 **4. Token Cost Efficiency**
@@ -86,6 +90,7 @@ related:
 | Mastra | Aggressive caching + compression — very low retrieval cost |
 | MemGPT | Variable — paging decisions affect context size |
 | Mem0 | High — per-message LLM extraction |
+| Hindsight | Low — free local embeddings, LLM extraction only (Groq llama-3.3-70b at ~$0) |
 | Zep | Moderate — graph + vector hybrid |
 | MemOS | Variable — MemCube type determines cost |
 

@@ -7,6 +7,8 @@ last_verified: 2026-04-10
 review_after: 2026-07-10
 stale_after: 2026-10-10
 confidence: high
+source_refs:
+  - entities/hermes-agent-setup
 status: active
 tags:
   - hermes

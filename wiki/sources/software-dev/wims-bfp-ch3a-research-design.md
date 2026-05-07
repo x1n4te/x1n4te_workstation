@@ -30,7 +30,8 @@ related:
 
 # WIMS-BFP Chapter 3a: Research Design + Requirements
 
-**Source:** raw/misc/ (8 files)
+**Source:** raw/software-dev/ (4 files)
+Related: [[sources/software-dev/wims-bfp-ch3b-architecture]], [[sources/software-dev/wims-bfp-ch3d-testing-data]], [[mocs/wims-bfp]]
 **Chapter:** 3a — Research Design, Requirements Analysis, Development Model
 
 ---

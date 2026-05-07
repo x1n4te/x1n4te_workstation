@@ -1,22 +1,79 @@
 {
-  "collapse-filter": true,
+  "collapse-filter": false,
   "search": "",
   "showTags": false,
   "showAttachments": false,
   "hideUnresolved": false,
-  "showOrphans": true,
+  "showOrphans": false,
   "collapse-color-groups": true,
-  "colorGroups": [],
+  "colorGroups": [
+    {
+      "query": "tag:#wims-bfp  ",
+      "color": {
+        "a": 1,
+        "rgb": 968755
+      }
+    },
+    {
+      "query": "tag:#smart-parenting-app  ",
+      "color": {
+        "a": 1,
+        "rgb": 14725458
+      }
+    },
+    {
+      "query": "tag:#cybersecurity  ",
+      "color": {
+        "a": 1,
+        "rgb": 11657298
+      }
+    },
+    {
+      "query": "tag:#ai-research  ",
+      "color": {
+        "a": 1,
+        "rgb": 5431378
+      }
+    },
+    {
+      "query": "tag:#llm  ",
+      "color": {
+        "a": 1,
+        "rgb": 5431473
+      }
+    },
+    {
+      "query": "tag:#hermes  ",
+      "color": {
+        "a": 1,
+        "rgb": 5419488
+      }
+    },
+    {
+      "query": "tag:#training  ",
+      "color": {
+        "a": 1,
+        "rgb": 5395168
+      }
+    },
+    {
+      "query": "tag:#agents  ",
+      "color": {
+        "a": 1,
+        "rgb": 11621088
+      }
+    }
+  ],
   "collapse-display": true,
-  "showArrow": false,
+  "showArrow": true,
   "textFadeMultiplier": 0,
-  "nodeSizeMultiplier": 1,
-  "lineSizeMultiplier": 1,
+  "nodeSizeMultiplier": 0.527473958333333,
+  "lineSizeMultiplier": 0.699739583333333,
   "collapse-forces": false,
-  "centerStrength": 0.502604166666667,
-  "repelStrength": 14.609375,
-  "linkStrength": 0.6015625,
-  "linkDistance": 362,
-  "scale": 0.13873223932666073,
+  "centerStrength": 0.307291666666667,
+  "repelStrength": 12.3177083333333,
+  "linkStrength": 0.709635416666667,
+  "linkDistance": 230,
+  "scale": 0.09248815955110715,
   "close": true
 }
